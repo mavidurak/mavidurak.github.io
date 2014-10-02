@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Passport.js ile Node JS'de Yetkilendirme Yönetimi"
-date:   2014-10-02 23:12:00
+date:   2014-10-02 00:50
 categories: nodejs
 ---
 
