@@ -4,7 +4,7 @@
   date:   2014-10-02 23:12:00
   categories: nodejs
   ---
-  
+
   Passport.js Node JS için geliştirilmiş authentication(yetkilendirme) modülüdür, bu modülü kullanarak destek veren tüm sosyal ağ hesaplarına erişebilir, web uygulamalarınızda oturum denetimini bu sosyal ağların aracılığıyla yönetebilirsiniz.
   Bu modül tek bir işi yerine getirmek için geliştirilmiştir, yetkilendirme. Yazıda ilerledikçe göreceksiniz ki işinde oldukça iyi ve oldukça kullanışlı özelliklere sahip. Destek veren herhangi bir sosyal ağın API(Application Programming Interface)'nı kullanarak ziyaretçilerin web uygulamanıza giriş yapmanızı sağlamanız Passport.js ile çok kolaydır.
   
