@@ -131,12 +131,11 @@ passport.authenticate('local', function(err, user, info) {
   
   PassportJs bağlantıları yetkilendirirken `Strategy` denilen kuralları kullanır. Kullanıcı adı ve parolayı `OAuth` ya da `OpenID` aracılığıyla doğrular ve oturumu yönetir.
   Passport'a bir doğrulama-yetkilendirme isteği yollamadan önce `Strategy` denilen kurallar mutlaka tanımlanmalıdır.
-  Stratejiler ve onların konfigrasyonları `use()` fonksiyonunu destekler, Kullanıcı adı ve şifreyle yapılan bir lokal doğrulama için şu koda bi göz atalım
+  Stratejiler ve onların konfigrasyonları `use()` fonksiyonunu destekler, Kullanıcı adı ve şifreyle yapılan bir lokal doğrulama için şu koda bi göz atalım;
   
 {% highlight javascript %}
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
-
 passport.use(new LocalStrategy(
   function(username, password, done) {
     User.findOne({ username: username }, function (err, user) {
@@ -153,6 +152,7 @@ passport.use(new LocalStrategy(
 ));
 {% endhighlight %}
   
+
 ## Doğrulama Yanıtları (Verify Callbacks)
   
   Her ne kadar Türkçe kaynak oluşsun diye uğraşıyor olsak da bazı terimlerin ingilizcelerini duymanız sizin için daha yararlı olcaktır, aksi halde bildiğiniz terimleri duyduğunuz dahi ingilizcesini bilmediğinizden olaya fransız kalmanız kaçınılmaz olacaktır, bu yüzden elimden geldiğince Türkçe'ye çevirmeye çalışsam da özgün tabirleri ingilizce olarak da yazıyorum.
@@ -216,7 +216,6 @@ $ npm install passport-local
 {% highlight javascript %}
 var passport = require('passport')
 , LocalStrategy = require('passport-local').Strategy;
-
 passport.use(new LocalStrategy(
 function(username, password, done) {
 User.findOne({ username: username }, function(err, user) {
@@ -289,4 +288,5 @@ Okuduysanız yazının linkini paylaşmanız teşekkür yerine geçecektir. Ayr�
 
 Furkan BAŞARAN <frknbasaran@gmail.com>
 @frknbasaran
+
 
