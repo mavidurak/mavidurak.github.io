@@ -19,11 +19,11 @@ app.post('/login', passport.authenticate('local', { successRedirect: '/',
                                                   failureRedirect: '/login' }));
 {% endhighlight %}
   
-  PassportJS'i node package manager üzerinden tek satırla yükleyebilir, uygulamanıza ekleyebilirsiniz.
-  
-  {% highlight bash %}
-  $ npm install passport
-  {% endhighlight %}
+PassportJS'i node package manager üzerinden tek satırla yükleyebilir, uygulamanıza ekleyebilirsiniz.
+
+{% highlight bash %}
+$ npm install passport
+{% endhighlight %}
   
 ### Yetkilendirme
   
