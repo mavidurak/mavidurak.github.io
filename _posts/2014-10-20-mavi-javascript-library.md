@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "mavi javascript library"
-date:   2014-10-20 21:09:27
+title:  "Mavi.js"
+date:   2014-10-20 00:09:27
 categories: javascript
 ---
 
