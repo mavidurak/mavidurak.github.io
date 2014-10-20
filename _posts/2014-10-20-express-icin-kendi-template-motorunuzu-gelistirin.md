@@ -18,7 +18,7 @@ Peki eğer istersek bizim belirlediğimiz kurallarla çalışan kendi template m
 
  Şimdi aşağıdaki kodla çok basit bi template motoru geliştirelim, dosya uzantımız ".ebe" olsun.
 
-```javascript
+{% highlight javascript %}
 var fs = require('fs'); // dosya işlemleri yapacağımız için fs modülünü çağırmak zorundayız
 app.engine('ebe', function (filePath, options, callback) { // burada template incaynımızı tanımlıyoruz ^^
   fs.readFile(filePath, function (err, content) {
@@ -31,24 +31,27 @@ app.engine('ebe', function (filePath, options, callback) { // burada template in
 });
 app.set('views', './views'); // burada views klasörümüzü kendimiz belirleyebiliriz
 app.set('view engine', 'ebe'); // dosya uzantımızı belirterek template motorumuzu express'e tanımlıyoruz
-```
+{% endhighlight %}
+
 
 
  Express uygulamamız artık <b>.ebe</b> uzantılı dosyaları render edebilecek, hemen index.ebe adında bir dosya oluşturup <b>view</b> klasörünün içine atalım ve içine şunları yazalım.
 
-```javascript
+{% highlight javascript %}
 #title#
 #message#
-```
+{% endhighlight %}
 
 Daha sonra express uygulamamızda şu rotayı tanımlıyoruz.
 
-```javascript
+
+{% highlight javascript %}
 app.get('/', function (req, res) {
   res.render('index', { title: 'Ebe Template Engine', message: 'Web artık ebelere emanet!'});
 })
-```
-Uygulamayı ayağa kaldırdıktan sonra "<b>/</b>" adresini ziyaret edip sonucun html'e render edilmiş halini görebilirsin.
+{% endhighlight %}
+
+Uygulamayı ayağa kaldırdıktan sonra "/" adresini ziyaret edip sonucun html'e render edilmiş halini görebilirsin.
 
 Furkan BAŞARAN <frknbasaran@gmail.com>
 @frknbasaran
