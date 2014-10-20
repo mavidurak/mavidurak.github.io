@@ -34,7 +34,7 @@ Yukarıda  listelenen programlama dilleri JVM bünyesinde koşturulabilmektedir.
 Örneğin JVM üzerinde Ruby dili ile uygulama geliştirmek istiyoranız, JRuby bağımlılığını Java projenize eklemelisiniz.
 
 JRuby Maven Dependency
-{% highlight javascript %} 
+{% highlight xml %} 
 <dependency>
 <groupId>org.jruby</groupId>
 <artifactId>jruby</artifactId>
@@ -81,7 +81,7 @@ js de diziler dinemiktir  eleman eklendiğinde  devamlı  elaman eklenebilir. na
 kullanılabilir
 
 ### Nashorn Engine Örneği
-{% highlight java %}
+{% highlight javascript %}
 //Nashorn Engine elde ediliyor.
 ScriptEngine engine = ScriptEngineFactory.getEngine("nashorn");
 engine.eval("function topla(a,b){ return a + b; }");
@@ -159,7 +159,7 @@ var  arrayList= java.util.ArrayList;
 var  arrayListType= new  arrayList;
 arrayListType.add('onur');
 print(arrayListType.size());
-{% endhighlight  %}
+{% endhighlight %}
 
 ###JS NESNELERİNİ JSON TÜRÜNDEN YAZMA
 {% highlight javascript %}
