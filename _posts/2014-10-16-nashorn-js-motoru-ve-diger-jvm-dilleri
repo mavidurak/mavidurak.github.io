@@ -5,13 +5,13 @@ date:   2014-10-14 13:00
 categories: java
 ---
 
- JVM içerisinde statik tipli dilleri çalıştırabilmenin birden fazla amacı bulunmaktadır. Bunlar;
+JVM içerisinde statik tipli dilleri çalıştırabilmenin birden fazla amacı bulunmaktadır. Bunlar;
 
 ###JIT (Just in Time) Compiler ile yüksek performans sunmak
 ###Birçok dilin çalıştırılmasıyla JVM’i Polyglot bir ortam haline getirmek
 ###Farklı dil ve ekosistemleri Java ekosistemine yakınlaştırmak
 ###Farklı dil ekosistemlerinin gücünü JVM’de birleştirmek
- Java Sanal Makinesi üzerinde birçok programlama dili çalıştırılabilmektedir. Bu diller   ve   uygulayıcı kütüphaneler aşşağıda;
+Java Sanal Makinesi üzerinde birçok programlama dili çalıştırılabilmektedir. Bu diller   ve   uygulayıcı kütüphaneler aşşağıda;
 ###dil= uygulayıcı  kütüphane şeklinde yazılmıştır.
 Ada==JGNAT
 BBx=BBj is a superset of BBx, PRO/5, and Visual PRO/5.
@@ -78,7 +78,7 @@ js de diziler dinemiktir  eleman eklendiğinde  devamlı  elaman eklenebilir. na
 -masaüstü ve  javascript
 -java fx projelerinde
 -sunucu taraflı  javaascipt
-  kullanılabilir
+kullanılabilir
 
 ### Nashorn Engine Örneği
 {% highlight java %}
@@ -96,40 +96,40 @@ nashornun  bir komut aracı ( shell)i var . java8 bilgisayarınızda yüklü ise
 
 oracle  tarafından geliştirilen javascript dilidir .Nashorn js motoru içinde çalıştırılabilir.avatar js yi kullanabilmek için minimum java 8  gerekir
 open jdk  sitesinden bulunabilir.avatarjs  nodejs ye benzetilebilir. nashorn ile  avatar.js ile  kullanabiliriz
- js ile yazılmış kompanentleri bileşenleri kullanabiliyoruz.
+js ile yazılmış kompanentleri bileşenleri kullanabiliyoruz.
 Bir node.js  geliştiricisi avatar.js ile javanın framework'üne , teknolojisine erişmek  isterse  avatar.js kullanabilir ve  REST kullanmaya ,websocket uygulamaarı geliştirebilir
 https://avatar.java.net avatar js ye burdan ulaşabilirsiniz.
 
 ###  ENGİNE  VERSİYONLARI  VE   NASHORN  TAKMA ADLARI
 {% highlight java %}
 public  static  void main(String  args[])throws FileNotFoundException,ScriptException{
-    ScriptEngineManager  mgr= new ScriptEngineManager();
-    for(ScriptEngineFactory  factory : mgr.getEngineFactories()) {
-        System.out.println("scrip tengine factory info");
-        System.out.printf("\t script engine %s(%s)\n",factory.getEngineName(),factory.getEngineVersion());
-        System.out.printf("\t language ::%s (%s)\n",factory.getLanguageName(),factory.getLanguageVersion());
-        for(String na : factory.getNames()) {
-            System.out.printf("\t engine  alias ::::::: %s\n",na);
-        }
-    }
+ScriptEngineManager  mgr= new ScriptEngineManager();
+for(ScriptEngineFactory  factory : mgr.getEngineFactories()) {
+  System.out.println("scrip tengine factory info");
+  System.out.printf("\t script engine %s(%s)\n",factory.getEngineName(),factory.getEngineVersion());
+  System.out.printf("\t language ::%s (%s)\n",factory.getLanguageName(),factory.getLanguageVersion());
+  for(String na : factory.getNames()) {
+      System.out.printf("\t engine  alias ::::::: %s\n",na);
+  }
+}
 }
 {% endhighlight  %}
 
 ## İNVOCABLE ARAYÜZÜ
 {% highlight java %}
 public  static  void  main(String [] args )throws ScriptException,NoSuchMethodException{
-    // invocable arayüzü java tarafından  javascript fonksiyonarını koşturmak için  bulunan  opsiyonel  bir arayüzdürs
-    ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-    engine.eval("var  person={};");
-    engine.eval("person.name='onur';");
-    engine.eval("person.surname='altunsoy';");
-    engine.eval("person.calculate=function(age){return  this.name+'::: '+this.surname+'::: '+age};");
-    engine.eval("calculate=function(one,two){return (one*two);}");
-    Invocable inv =(Invocable)engine;
-    Object person = engine.get("person");
-    Object  calculate =  inv.invokeMethod(person ,"calculate", 24);
-    System.out.println(calculate);
-    System.out.println(inv.invokeFunction("calculate",5,4));
+// invocable arayüzü java tarafından  javascript fonksiyonarını koşturmak için  bulunan  opsiyonel  bir arayüzdürs
+ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+engine.eval("var  person={};");
+engine.eval("person.name='onur';");
+engine.eval("person.surname='altunsoy';");
+engine.eval("person.calculate=function(age){return  this.name+'::: '+this.surname+'::: '+age};");
+engine.eval("calculate=function(one,two){return (one*two);}");
+Invocable inv =(Invocable)engine;
+Object person = engine.get("person");
+Object  calculate =  inv.invokeMethod(person ,"calculate", 24);
+System.out.println(calculate);
+System.out.println(inv.invokeFunction("calculate",5,4));
 }
 {% endhighlight  %}
 
@@ -142,13 +142,13 @@ onur::: altunsoy::: 24
 ##EVAL METODU İLE ÖRNEK
 {% highlight java %}
 public  static  void  main(String [] args )throws ScriptException{
-   ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-   engine.eval("var person= new  Object();");
-   engine .eval("person.name='onur';");
-   engine.eval("person.surname='altunsoy';");
-   engine.eval("print(JSON.stringify(person));");
-   engine.eval("person.age=24;");
-   engine.eval("print(JSON.stringify(person));");
+ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+engine.eval("var person= new  Object();");
+engine .eval("person.name='onur';");
+engine.eval("person.surname='altunsoy';");
+engine.eval("print(JSON.stringify(person));");
+engine.eval("person.age=24;");
+engine.eval("print(JSON.stringify(person));");
 }
 {% endhighlight %}
 
@@ -167,7 +167,7 @@ var  person ={};
 person.name="onur";
 person.surname="altunsoy";
 person.fullName=fullName=function() {
-   return this.name +"  "+this.surname;
+return this.name +"  "+this.surname;
 }
 print (JSON.stringify(person));
 print(person.fullName());
@@ -177,9 +177,9 @@ print(person.fullName());
 {% highlight javascript %}
 var Thread = Java.type("java.lang.Thread");
 var MyThread = Java.extend(Thread, {
-    run : function() {
-      print("thread calisiyor");
-    }
+run : function() {
+print("thread calisiyor");
+}
 });
 var th = new MyThread();
 th.start();
@@ -213,11 +213,11 @@ value  grey
 ##JAVA STRİNG  SINIFI KULLANMA
 
 {% highlight javascript %}
- var StrArray = Java.type("java.lang.String");
- print(StrArray);
- var  StrArray  =new  StrArray(3);
- print(StrArray);
- StrArray[0]="onur";
- StrArray[0]="furkan";
- StrArray[0]="ömer";
-  {% highlight  %}
+var StrArray = Java.type("java.lang.String");
+print(StrArray);
+var  StrArray  =new  StrArray(3);
+print(StrArray);
+StrArray[0]="onur";
+StrArray[0]="furkan";
+StrArray[0]="ömer";
+{% highlight  %}
