@@ -1,19 +1,28 @@
 ---
 layout: post
-title:  "Git Kullanım Rehberi Oluşturuldu"
-date:   2014-08-15 13:09:27
-categories: mavidurak git doküman
+title:  "mavi"
+date:   2014-10-20 21:09:27
+categories: javascript
 ---
 
-Merhabalar,
+#### A JavaScript Library Tale
 
-[Eray Alakese](https://twitter.com/erayalakese) arkadaşımızın emekleri ile Git kullanım rehberi oluşturuldu. Dökümana [GitHub](https://github.com/mavidurak/docs-git) adresinden ulaşabilirsiniz. Ayrıca siz de bu dökümana katkıda bulunarak, bilginin çoğaltılmasına yardım edebilirsiniz.
+Biz bilgisayarı bızdıklayanların öyle havalı hikayeleri olmadığı için üzgünüm. Belki daha romantik girişli yani ne biliyim belki serseriye aşık olan bi kızın hikayesini okumak isterdiniz. Bizim serserimiz genelde **semicolon** bağımlı programlama dilleri oluyor.
 
-### Döküman Başlıkları
+Hikayemiz böyle yukarda bahsettiğim bir programlama dilinin hikayesi işte. Tripli mi tripli *JavaScript*imizin. Öyle bir programalama dili ki adına milyonlarca satır kitap yazılıp raflara yerleştirilmiş binlerce kütüphaneye sahip olmuştur.
 
-* [Git Nedir?](https://github.com/mavidurak/docs-git/blob/master/docs/01-Git.md)
-* [Terimler](https://github.com/mavidurak/docs-git/blob/master/docs/02-Terminology.md)
-* [Örnek](https://github.com/mavidurak/docs-git/blob/master/docs/03-Sample.md)
-* [Pull/Push](https://github.com/mavidurak/docs-git/blob/master/docs/04-Pull&Push.md)
-* [Ekip Çalışması](https://github.com/mavidurak/docs-git/blob/master/docs/05-Teamwork.md)
-* [Conflict/Merge](https://github.com/mavidurak/docs-git/blob/master/docs/06-Conflict&Merge.md)
+Biz de durur muyuz?!
+
+Evet, [mavidurak-io](https://github.com/mavidurak) ekibi olarak biz de kendi kütüphanemizi oluşturuyoruz!
+
+Bir aşk hikayesiyle yeşillendirmeyip hevesinizi kırdığım için özür dilerim. Siz de sürekli anlatmaktan bıktığınız hikayelerinizle bize gelin bir iki karalamayla onu kütüphanemize yerleştirelim.
+
+##### Belki destanlaşır, ne dersiniz?
+
+[benim de hikayem var!](https://github.com/mavidurak/mavi/pulls)
+
+[abi ben romantik şeyleri okumayı seviyorum ya :/](https://github.com/mavidurak/mavi)
+
+[peki kızın esas oğlana tepkisi neymiş?](https://github.com/mavidurak/mavi/blob/master/mavi.js)
+
+@eryarslan Eray Arslan
