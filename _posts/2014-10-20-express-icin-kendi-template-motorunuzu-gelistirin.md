@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Express için kendi template motorunuzu geliştirin"
+title:  "Express İçin Kendi Template Motorunuzu Geliştirin"
 date:   2014-10-20 00:50
 categories: nodejs
 ---
