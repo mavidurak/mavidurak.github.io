@@ -1,33 +1,34 @@
 ---
 layout: post
 title:  "Nashorn JS  Motoru ve Diğer JVM Dilleri"
-date:   2014-10-20 00:59
+date:   2014-10-24 00:59
 categories: java
 ---
 
 JVM içerisinde statik tipli dilleri çalıştırabilmenin birden fazla amacı bulunmaktadır. Bunlar;
 
-###JIT (Just in Time) Compiler ile yüksek performans sunmak
-###Birçok dilin çalıştırılmasıyla JVM’i Polyglot bir ortam haline getirmek
-###Farklı dil ve ekosistemleri Java ekosistemine yakınlaştırmak
-###Farklı dil ekosistemlerinin gücünü JVM’de birleştirmek
-Java Sanal Makinesi üzerinde birçok programlama dili çalıştırılabilmektedir. Bu diller   ve   uygulayıcı kütüphaneler aşşağıda;
-###dil= uygulayıcı  kütüphane şeklinde yazılmıştır.
-Ada==JGNAT
-BBx=BBj is a superset of BBx, PRO/5, and Visual PRO/5.
-C=C to Java Virtual Machine compilers
-CFML=Adobe ColdFusion,Railo,Open BlueDragon
-Common Lisp=Armed Bear Common Lisp,CLforJava
-JavaScript=Rhino,Nashorn
-Pascal=Free Pascal,MIDletPascal
-Perl 6=Rakudo Perl 6
-Prolog=JIProlog,TuProlog
-Python=Jython
-REXX=NetRexx
-Ruby=JRuby
-Scheme=Bigloo,Kawa,SISC,JScheme
-Tcl=Jacl
-Kaynak: http://en.wikipedia.org/wiki/List_of_JVM_languages
+* JIT (Just in Time) Compiler ile yüksek performans sunmak
+* Birçok dilin çalıştırılmasıyla JVM’i Polyglot bir ortam haline getirmek
+* Farklı dil ve ekosistemleri Java ekosistemine yakınlaştırmak
+* Farklı dil ekosistemlerinin gücünü JVM’de birleştirmek
+
+Java Sanal Makinesi üzerinde birçok programlama dili çalıştırılabilmektedir. Bu diller   ve   uygulayıcı kütüphaneler aşşağıdadır (dil= uygulayıcı  kütüphane şeklinde yazılmıştır. [*Kaynak](http://en.wikipedia.org/wiki/List_of_JVM_languages))
+
+* `Ada`: JGNAT
+* `BBx`: BBj is a superset of BBx, PRO/5, and Visual PRO/5.
+* `C`: C to Java Virtual Machine compilers
+* `CFML`: Adobe ColdFusion,Railo,Open BlueDragon
+* `Common :Lisp` Armed Bear Common Lisp,CLforJava
+* `JavaScript`: Rhino,Nashorn
+* `Pascal`: Free Pascal,MIDletPascal
+* `Perl :6` Rakudo Perl 6
+* `Prolog`: JIProlog,TuProlog
+* `Python`: Jython
+* `REXX`: NetRexx
+* `Ruby`: JRuby
+* `Scheme`: Bigloo,Kawa,SISC,JScheme
+* `Tcl`: Jacl
+
 
 Yukarıda  listelenen programlama dilleri JVM bünyesinde koşturulabilmektedir.jsr 223( javax.scipt  paketi )  sayesinde jvm ortamında farklı  script dilleri koşturulabiliyor. Bazı diller yorumlama usülüyle koşturulurken, bazıları ise bayt koda dönüştürüldükten sonra koşturulmaktadır. Fakat, JavaScript haricindeki dillere karşılık bir uygulayıcı kütüphaneyi projenize eklemeniz gerekmektedir.
 
@@ -208,7 +209,7 @@ key  phone
 value  red
 value  black
 value  grey
-{% highlight %}
+{% endhighlight %}
 
 ##JAVA STRİNG  SINIFI KULLANMA
 
@@ -220,4 +221,4 @@ print(StrArray);
 StrArray[0]="onur";
 StrArray[0]="furkan";
 StrArray[0]="ömer";
-{% highlight  %}
+{% endhighlight  %}
