@@ -9,8 +9,25 @@ layout: default
   <ul class="post-list">
     {% for post in site.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" | replace "Oct","Ekim" }}</span>
-
+        <span class="post-meta">
+            {% assign m = page.date | date: "%-m" %}
+            {{ page.date | date: "%-d" }}
+            {% case m %}
+              {% when '1' %}Ocak
+              {% when '2' %}Şubat
+              {% when '3' %}Mart
+              {% when '4' %}Nisan
+              {% when '5' %}Mayıs
+              {% when '6' %}Hazıran
+              {% when '7' %}Temmuz
+              {% when '8' %}Ağustos
+              {% when '9' %}Eylül
+              {% when '10' %}Ekim
+              {% when '11' %}Kasım
+              {% when '12' %}Aralık
+            {% endcase %}
+            {{ page.date | date: "%Y" }}
+        </span>
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
