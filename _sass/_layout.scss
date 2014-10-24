@@ -3,6 +3,7 @@
  */
 
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,800);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 .site-header {
     border-top: 5px solid $grey-color-dark;
@@ -267,5 +268,5 @@ span.posts-title {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAXElEQVQ4jWPw8wv4T03MQAsDG6iJGQY/ICOcGuhuIEmBHhAQ4EC14BkF2AHVc8rgLxwGP6BGUeXr68vl4+OX7+sbaENRGMIM9Pf3z4OKvaGWgea+vv7v/Pz8lgAALtlxck7w38YAAAAASUVORK5CYII=);
     padding-left: 28px;
     background-position: center left;
-    background-repeat: none;
+    background-repeat: no-repeat;
 }
