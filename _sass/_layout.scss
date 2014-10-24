@@ -45,6 +45,10 @@
         &:not(:first-child) {
             margin-left: 20px;
         }
+        &:hover {
+            background-color: $text-color;
+            color: $white;
+        }
     }
 
     @include media-query($on-palm) {
