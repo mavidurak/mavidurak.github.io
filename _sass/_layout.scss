@@ -11,6 +11,7 @@
 
     // Positioning context for the mobile navigation icon
     position: relative;
+    background-color: #fafafa;
 }
 
 .site-title {
@@ -20,6 +21,7 @@
     margin-bottom: 0;
     float: left;
     font-family: "Raleway";
+    font-weight: 800;
 
     &,
     &:visited {
