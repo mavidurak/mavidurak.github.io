@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kolektif Mavi</title>
+    <description>Mavidurak-IO Sakarya'da yaşayan ya da Sakarya'da öğrenim  gören geliştiricilerin oluşturduğu topluluktur.
+</description>
+    <link>http://mavidurak.github.io/</link>
+    <atom:link href="http://mavidurak.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>2014-10-24 21:21:38 +0300</pubDate>
+    <lastBuildDate>2014-10-24 21:21:38 +0300</lastBuildDate>
+    <generator>Jekyll v</generator>
+    
+      <item>
+        <title>Nashorn JS  Motoru ve Diğer JVM Dilleri</title>
+        <description>&lt;p&gt;JVM içerisinde statik tipli dilleri çalıştırabilmenin birden fazla amacı bulunmaktadır. Bunlar;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;JIT (Just in Time) Compiler ile yüksek performans sunmak&lt;/li&gt;
+  &lt;li&gt;Birçok dilin çalıştırılmasıyla JVM’i Polyglot bir ortam haline getirmek&lt;/li&gt;
+  &lt;li&gt;Farklı dil ve ekosistemleri Java ekosistemine yakınlaştırmak&lt;/li&gt;
+  &lt;li&gt;Farklı dil ekosistemlerinin gücünü JVM’de birleştirmek&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Java Sanal Makinesi üzerinde birçok programlama dili çalıştırılabilmektedir. Bu diller   ve   uygulayıcı kütüphaneler aşşağıdadır (dil= uygulayıcı  kütüphane şeklinde yazılmıştır. &lt;a href=&quot;http://en.wikipedia.org/wiki/List_of_JVM_languages&quot;&gt;*Kaynak&lt;/a&gt;)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Ada&lt;/code&gt;: JGNAT&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;BBx&lt;/code&gt;: BBj is a superset of BBx, PRO/5, and Visual PRO/5.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;C&lt;/code&gt;: C to Java Virtual Machine compilers&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;CFML&lt;/code&gt;: Adobe ColdFusion,Railo,Open BlueDragon&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Common :Lisp&lt;/code&gt; Armed Bear Common Lisp,CLforJava&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;JavaScript&lt;/code&gt;: Rhino,Nashorn&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Pascal&lt;/code&gt;: Free Pascal,MIDletPascal&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Perl :6&lt;/code&gt; Rakudo Perl 6&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Prolog&lt;/code&gt;: JIProlog,TuProlog&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Python&lt;/code&gt;: Jython&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;REXX&lt;/code&gt;: NetRexx&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Ruby&lt;/code&gt;: JRuby&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Scheme&lt;/code&gt;: Bigloo,Kawa,SISC,JScheme&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Tcl&lt;/code&gt;: Jacl&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Yukarıda  listelenen programlama dilleri JVM bünyesinde koşturulabilmektedir.jsr 223( javax.scipt  paketi )  sayesinde jvm ortamında farklı  script dilleri koşturulabiliyor. Bazı diller yorumlama usülüyle koşturulurken, bazıları ise bayt koda dönüştürüldükten sonra koşturulmaktadır. Fakat, JavaScript haricindeki dillere karşılık bir uygulayıcı kütüphaneyi projenize eklemeniz gerekmektedir.&lt;/p&gt;
+
+&lt;p&gt;Örneğin JVM üzerinde Ruby dili ile uygulama geliştirmek istiyoranız, JRuby bağımlılığını Java projenize eklemelisiniz.&lt;/p&gt;
+
+&lt;p&gt;JRuby Maven Dependency&lt;/p&gt;
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;xml&quot;&gt;&amp;lt;dependency&amp;gt;
+&amp;lt;groupId&amp;gt;org.jruby&amp;lt;/groupId&amp;gt;
+&amp;lt;artifactId&amp;gt;jruby&amp;lt;/artifactId&amp;gt;
+&amp;lt;version&amp;gt;1.7.16&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Diğer  diller için de benzer biçimde gereken bağımlılık Java projenize eklenmelidir.
+Fakat, JavaScript programlama dili için olay biraz farklı bir durumda. Çünkü, Java 7 Rhino, Java 8 ise Nashorn isimli JavaScript motorlarını gömülü olarak JVM içerisinde bulundurmaktadır. Bu Java ekosisteminin JavaScript diline ne kadar önem verdiğini ayrıca göstermektedir.&lt;/p&gt;
+
+&lt;h2 id=&quot;java-scripting-api&quot;&gt;Java Scripting API&lt;/h2&gt;
+&lt;p&gt;Java programlama dili, tüm bu listeli dilleri koşturabilmek için ortak arayüzlerin bulunduğu bir API sunmaktadır. Java Scripting API bileşenleri javax.script paketi içerisinde bulunmaktadır.
+javax.script paketi oldukça basit arayüz ve sınıflar içermektedir.Bunlardan en önemlisi ScriptEngine arayüzüdür.&lt;/p&gt;
+
+&lt;h2 id=&quot;scriptengine&quot;&gt;ScriptEngine&lt;/h2&gt;
+&lt;p&gt;ScriptEngine türünden nesneler, ScriptEngineFactory#getEngine metodu üzerinden eşsiz bir takma isim ile elde edilmektedir. Bu nesneler ile, String türünden kod blokları koşturulabilmekte, ayrıca Java ile iletişim kurulabilmektedir. Örneğin, Nashorn JavaScript motoru için “nashorn” veya “rhino” takma adları, Ruby için ise “jruby” takma adı kullanılmaktadır.&lt;/p&gt;
+
+&lt;h3 id=&quot;rnein&quot;&gt;Örneğin;&lt;/h3&gt;
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;java&quot;&gt;// Java 8 için JavaScript motoru
+ScriptEngine engine = ScriptEngineFactory.getEngine(&amp;quot;nashorn&amp;quot;);
+//Java 7 için JavaScript motor
+ScriptEngine engine = ScriptEngineFactory.getEngine(&amp;quot;rhino&amp;quot;); 
+//Ruby için JRuby motoru
+ScriptEngine engine = ScriptEngineFactory.getEngine(&amp;quot;jruby&amp;quot;); 
+//Python için Jython motoru
+ScriptEngine engine = ScriptEngineFactory.getEngine(&amp;quot;jython&amp;quot;);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;nashorn&quot;&gt;NASHORN&lt;/h2&gt;
+
+&lt;p&gt;Nashorn, Java 8 için özel olarak sıfırdan geliştirilen bir JavaScript motorudur.En buyuk avantajı jvm  ortamında  javascript dilini kullanmaya  olanak tanır.Aslında JVM içinde javascript çalışması okadar da yeni değil 1998 yılında  çıkarılan Rhino motoru  kullanılıyordu fakat  diğer js mootorlarına  göreçok yavaştı. Nashorn, Rhino JavaScript motoruna göre 5 kat daha fazla performans sunmaktadır.&lt;/p&gt;
+
+&lt;p&gt;Nashorn JavaScript motoru ecmascript 5.1 i destekler ecmascript  js dilinin standardize edilmiş halidir.Nashorn  bir browser  ortamı  değildir&lt;/p&gt;
+
+&lt;p&gt;JVM dillerinden Java Scripting API destekleyenler, ScriptEngine eval metodu ile kod bloklarını koşturma imkanı elde etmektedir. Bu sayede ortak arayüz bileşenleri üzerinden Java harici diller JVM üzerinde koşturulabilmektedir.&lt;/p&gt;
+
+&lt;p&gt;js de diziler dinemiktir  eleman eklendiğinde  devamlı  elaman eklenebilir. nashorn tip dönüşümü açısından  sadece  dizilere  izin veriyor.
+## NASHORN’U NERDE KULLANABİLİRİZ
+-konsolda(jjs)
+-masaüstü ve  javascript
+-java fx projelerinde
+-sunucu taraflı  javaascipt
+kullanılabilir&lt;/p&gt;
+
+&lt;h3 id=&quot;nashorn-engine-rnei&quot;&gt;Nashorn Engine Örneği&lt;/h3&gt;
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;//Nashorn Engine elde ediliyor.
+ScriptEngine engine = ScriptEngineFactory.getEngine(&amp;quot;nashorn&amp;quot;);
+engine.eval(&amp;quot;function topla(a,b){ return a + b; }&amp;quot;);
+String sonuc=(String)engine.eval(topla(3,5);); //topla isimli JavaScript fonksiyonu tanımlanıyor.
+System.out.println(sonuc); // topla fonksiyonu Nashorn ile koşturuluyor, ve sonucu elde ediliyor.sonuc=8&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;jjsjava-javascrpt-shell&quot;&gt;JJS(JAVA JAVASCRİPT SHELL)&lt;/h2&gt;
+&lt;p&gt;nashornun  bir komut aracı ( shell)i var . java8 bilgisayarınızda yüklü ise hemen cmd yi açıp JJS yazıp  javascript kodlarınızı  yazıp çalıştıabilir veya cmd den  dosyanızın oldugu bölüme kadar  gelin ve  jjs yi çalıştırın daha sonra load(“dosyanızın_adı.js”); komutuu girersk çalıştırın. jjs  de  console.log  diye ekrana  çıktı veremeyiz tabiki  onun  yerine  print(); kullanacağız&lt;/p&gt;
+
+&lt;h2 id=&quot;avatarjs&quot;&gt;AVATAR.JS&lt;/h2&gt;
+
+&lt;p&gt;oracle  tarafından geliştirilen javascript dilidir .Nashorn js motoru içinde çalıştırılabilir.avatar js yi kullanabilmek için minimum java 8  gerekir
+open jdk  sitesinden bulunabilir.avatarjs  nodejs ye benzetilebilir. nashorn ile  avatar.js ile  kullanabiliriz
+js ile yazılmış kompanentleri bileşenleri kullanabiliyoruz.
+Bir node.js  geliştiricisi avatar.js ile javanın framework’üne , teknolojisine erişmek  isterse  avatar.js kullanabilir ve  REST kullanmaya ,websocket uygulamaarı geliştirebilir
+https://avatar.java.net avatar js ye burdan ulaşabilirsiniz.&lt;/p&gt;
+
+&lt;h3 id=&quot;engne--versyonlari--ve---nashorn--takma-adlari&quot;&gt;ENGİNE  VERSİYONLARI  VE   NASHORN  TAKMA ADLARI&lt;/h3&gt;
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;java&quot;&gt;public  static  void main(String  args[])throws FileNotFoundException,ScriptException{
+ScriptEngineManager  mgr= new ScriptEngineManager();
+for(ScriptEngineFactory  factory : mgr.getEngineFactories()) {
+  System.out.println(&amp;quot;scrip tengine factory info&amp;quot;);
+  System.out.printf(&amp;quot;\t script engine %s(%s)\n&amp;quot;,factory.getEngineName(),factory.getEngineVersion());
+  System.out.printf(&amp;quot;\t language ::%s (%s)\n&amp;quot;,factory.getLanguageName(),factory.getLanguageVersion());
+  for(String na : factory.getNames()) {
+      System.out.printf(&amp;quot;\t engine  alias ::::::: %s\n&amp;quot;,na);
+  }
+}
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;nvocable-arayz&quot;&gt;İNVOCABLE ARAYÜZÜ&lt;/h2&gt;
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;java&quot;&gt;public  static  void  main(String [] args )throws ScriptException,NoSuchMethodException{
+// invocable arayüzü java tarafından  javascript fonksiyonarını koşturmak için  bulunan  opsiyonel  bir arayüzdürs
+ScriptEngine engine = new ScriptEngineManager().getEngineByName(&amp;quot;nashorn&amp;quot;);
+engine.eval(&amp;quot;var  person={};&amp;quot;);
+engine.eval(&amp;quot;person.name='onur';&amp;quot;);
+engine.eval(&amp;quot;person.surname='altunsoy';&amp;quot;);
+engine.eval(&amp;quot;person.calculate=function(age){return  this.name+'::: '+this.surname+'::: '+age};&amp;quot;);
+engine.eval(&amp;quot;calculate=function(one,two){return (one*two);}&amp;quot;);
+Invocable inv =(Invocable)engine;
+Object person = engine.get(&amp;quot;person&amp;quot;);
+Object  calculate =  inv.invokeMethod(person ,&amp;quot;calculate&amp;quot;, 24);
+System.out.println(calculate);
+System.out.println(inv.invokeFunction(&amp;quot;calculate&amp;quot;,5,4));
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;sonuç:&lt;/p&gt;
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;html&quot;&gt;onur::: altunsoy::: 24
+20.0&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;eval-metodu-le-rnek&quot;&gt;EVAL METODU İLE ÖRNEK&lt;/h2&gt;
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;java&quot;&gt;public  static  void  main(String [] args )throws ScriptException{
+ScriptEngine engine = new ScriptEngineManager().getEngineByName(&amp;quot;nashorn&amp;quot;);
+engine.eval(&amp;quot;var person= new  Object();&amp;quot;);
+engine .eval(&amp;quot;person.name='onur';&amp;quot;);
+engine.eval(&amp;quot;person.surname='altunsoy';&amp;quot;);
+engine.eval(&amp;quot;print(JSON.stringify(person));&amp;quot;);
+engine.eval(&amp;quot;person.age=24;&amp;quot;);
+engine.eval(&amp;quot;print(JSON.stringify(person));&amp;quot;);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;java-arraylst--sinifini-kullanma&quot;&gt;JAVA ARRAYLİST  SINIFINI KULLANMA&lt;/h2&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var  arrayList= java.util.ArrayList;
+var  arrayListType= new  arrayList;
+arrayListType.add('onur');
+print(arrayListType.size());&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;js-nesnelern-json-trnden-yazma&quot;&gt;JS NESNELERİNİ JSON TÜRÜNDEN YAZMA&lt;/h3&gt;
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var  person ={};
+person.name=&amp;quot;onur&amp;quot;;
+person.surname=&amp;quot;altunsoy&amp;quot;;
+person.fullName=fullName=function() {
+return this.name +&amp;quot;  &amp;quot;+this.surname;
+}
+print (JSON.stringify(person));
+print(person.fullName());&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;java-nin--thread-sinifini-js--nde-kullanma&quot;&gt;JAVA NIN  THREAD SINIFINI JS  İÇİNDE KULLANMA&lt;/h3&gt;
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var Thread = Java.type(&amp;quot;java.lang.Thread&amp;quot;);
+var MyThread = Java.extend(Thread, {
+run : function() {
+print(&amp;quot;thread calisiyor&amp;quot;);
+}
+});
+var th = new MyThread();
+th.start();
+th.join();&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;javanin-hashmap-sinifini-kullanma&quot;&gt;JAVANIN HASHMAP SINIFINI KULLANMA&lt;/h3&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var HashMap = java.util.HashMap;
+var map = new HashMap();
+map.put(&amp;quot;apple&amp;quot;,&amp;quot;red&amp;quot;);
+map.put(&amp;quot;car&amp;quot;,&amp;quot;black&amp;quot;);
+map.put(&amp;quot;phone&amp;quot;,&amp;quot;grey&amp;quot;);
+print(&amp;quot;phone &amp;quot; + map.get(&amp;quot;phone&amp;quot;));
+for (var  key  in map) print(&amp;quot;key  &amp;quot;+key);
+for each(var value in map) print(&amp;quot;value  &amp;quot;+value);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;SONUÇ:&lt;/p&gt;
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;html&quot;&gt;phone  grey
+key  apple
+key  car
+key  phone
+value  red
+value  black
+value  grey&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;java-strng--sinifi-kullanma&quot;&gt;JAVA STRİNG  SINIFI KULLANMA&lt;/h2&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var StrArray = Java.type(&amp;quot;java.lang.String&amp;quot;);
+print(StrArray);
+var  StrArray  =new  StrArray(3);
+print(StrArray);
+StrArray[0]=&amp;quot;onur&amp;quot;;
+StrArray[0]=&amp;quot;furkan&amp;quot;;
+StrArray[0]=&amp;quot;ömer&amp;quot;;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>2014-10-24 00:59:00 +0300</pubDate>
+        <link>http://mavidurak.github.io/java/2014/10/24/nashorn-js-motoru-ve-diger-jvm-dilleri.html</link>
+        <guid isPermaLink="true">http://mavidurak.github.io/java/2014/10/24/nashorn-js-motoru-ve-diger-jvm-dilleri.html</guid>
+        
+        
+        <category>java</category>
+        
+      </item>
+    
+      <item>
+        <title>Swift - Optionals Kavramı</title>
+        <description>&lt;p&gt;Merhaba bugün 2014 model bir dil (Swift) ile gelen, çokta aşina olmadığımız bir kavrama değineceğim.&lt;/p&gt;
+
+&lt;p&gt;Apple’ ın desteği ile çıkan Swift yeni olmasının getirdiği bir çok avantaja sahip. Bunlardan bir tanesi, programlamada eksikliği hissedilen durumlara çözüm üreterek gelmesidir. Lafı daha fazla uzatmadan Optional kavramına giriş yapalım, buyrun.&lt;/p&gt;
+
+&lt;p&gt;Optional, türkçede ki karşılığı opsiyonel, isteğe bağlı, standart olmayan anlamına gelmektedir. Ben yine burada yazarken Optional olarak kullanacağım.&lt;/p&gt;
+
+&lt;h2 id=&quot;problem&quot;&gt;Problem?&lt;/h2&gt;
+
+&lt;p&gt;Düşünün bir fonksiyonunuz var, sonucu ise gelen değere göre değişecek (bazen bir değer verip, bazende bir değer vermeme durumu var). Apple’ ın daha önce uygulama geliştirmek için kullandığı Objective - C dilinde bu durum obje veya nil (boş değer) döndürerek çözülür. Ancak bu durum sadece objeler için geçerlidir. Obje dışında ki veri türleri için &lt;code&gt;NSNotFound&lt;/code&gt; gibi özel bir değer döndürülür. Bu gibi durumlarda geriye dönecek değer bilinmelidir, yoksa çok ciddi güvenlik problemleri oluşabilir veya Runtime (Çalışma zamanı) hatası alabiliriz.  &lt;/p&gt;
+
+&lt;h2 id=&quot;optional-kavram&quot;&gt;Optional Kavramı&lt;/h2&gt;
+
+&lt;p&gt;Yukarıda da bahsettik bu dilin yeni olmasının avantajı daha önce eksikliği hissedilmiş konulara çözüm getirmesiydi, Optional da bunlardan biri. Program yazarken sonucu net olmayan durumlarla karşılaşabiliriz, ailenin yeni üyesi (Swift), belirsizlikleri ortadan kaldırmak için tüm veri türlerini kapsayan, &lt;code&gt;Optional&lt;/code&gt;’ ı beraberinde getirdi.&lt;/p&gt;
+
+&lt;p&gt;Hemen bir tane Optional tanımlayalım.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;swift&quot;&gt;var optionalValue : Int?&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;optionalValue&lt;/code&gt; adında Integer bir Optional tanımladık, dikkat ederseniz normal bir değişken tanımlamadan farkı, veri tipinin sonuna &lt;code&gt;?&lt;/code&gt; gelmesidir.&lt;/p&gt;
+
+&lt;p&gt;Optional olarak bir değişken tanımladınız ve program öyle bir yere geldi ki sonucun ne olacağı belli, &lt;code&gt;?&lt;/code&gt; işareti ile sonuca ulaşabilirsin.&lt;/p&gt;
+
+&lt;p&gt;Madem o kadar eminsin buyur.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;swift&quot;&gt;var possibleString : String? = &amp;quot;Merhaba&amp;quot;
+
+println(possibleString!) // Ünlem işarei ile sonuca direkt ulaştık ve yazdırdık.&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Swift bize her ne kadar doğrudan erişim sunsa da uzmanlar böyle bir kullanıma sıcak bakmıyorlar. Peki önerilen ne? Şöyle ki; biz bu Optional değişkenimizi if - else yapısıyla entegre bir şekilde kullanabiliyoruz ve tavsiye edilende bu şekilde.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;swift&quot;&gt;if possibleString {
+
+println(&amp;quot;possibleString değeri : \(possibleString!)&amp;quot;)
+
+} else {
+
+println(&amp;quot;possibleString değeri nil&amp;quot;)
+
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;possibleString&lt;/code&gt; değeri varsa ekrana yazacaktır, eğer yoksa da &lt;code&gt;nil&lt;/code&gt;’ dir. Sağlıklı olan budur.&lt;/p&gt;
+
+&lt;p&gt;Biz bunu neden yaptık? Belirsizlikleri ortadan kaldırmış olduk, burada çok fark etmeyebilir ancak büyük çaplı projelerde fark eder, kod satırlarımız kısalır ve dökümantasyonu yazarken ciddi anlamda işimizi kolaylaştırır, standartlar bellidir.&lt;/p&gt;
+
+&lt;p&gt;Son olarak küçük bir uygulama yapıp bitirelim.&lt;/p&gt;
+
+&lt;p&gt;Bir metin için aradığımız karakterin yerini gösteren bir uygulama olsun.&lt;/p&gt;
+
+&lt;p&gt;Harfin yerini döndüren bir fonksiyon yazalım.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;swift&quot;&gt;func positionFinding (letter: Character, str: String) -&amp;gt; Int? {
+
+    var location = 0
+    for l in str {
+        var location++
+        if l == letter {
+            return location
+        }
+    }
+    return nil
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Fonksiyonumuz bu kadar, harfi ve metni parametre olarak alıyoruz, konumumu tutacak &lt;code&gt;location&lt;/code&gt; adında bir değişken tanımladık ve çok aşina olmadığımız for döngüsüyle metnin harflerini tek tek kontrol kontrol ediyoruz.&lt;/p&gt;
+
+&lt;p&gt;Dikkat ederseniz fonksiyon dönüş tipini Optional Integer olarak belirledik, yani bu fonksiyon bize Integer bir değerde döndürebilir veya hiç bir şey döndürmez (nil), bu fonksiyon bize ya harfin yerini verecek ya da boş bir değer verecek.&lt;/p&gt;
+
+&lt;p&gt;Optional olarak tanımlanmayan bir değişkeni nil olarak tanımlayamayız, biz fonksiyonumuzun Optional bir değer döndüreceğini belirtmeseydik nil olarak döndüremezdik, hata alırdık.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;swift&quot;&gt;if let location = positionFinding (&amp;quot;d&amp;quot;, &amp;quot;test-mavidurak&amp;quot;) {
+    println(&amp;quot;Aranan Harf \(location). karakterde.&amp;quot;)
+} else {
+    println(&amp;quot;Harf yok kardeşim (nil).&amp;quot;)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Burada da fonksiyonumuzu if - else yapısıyla kullanarak, fonksiyondan gelecek veriye göre çözüm üretiyoruz.&lt;/p&gt;
+
+&lt;p&gt;Uygulama geliştirirken çok yerde kullanacağınız bir kavram. Umarım faydalı olmuştur.&lt;/p&gt;
+
+&lt;p&gt;Görüşmek üzere.&lt;/p&gt;
+
+&lt;p&gt;Ömer Faruk Görmel &lt;a href=&quot;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#116;&amp;#111;:&amp;#103;&amp;#111;&amp;#114;&amp;#109;&amp;#101;&amp;#108;&amp;#111;&amp;#109;&amp;#101;&amp;#114;&amp;#102;&amp;#097;&amp;#114;&amp;#117;&amp;#107;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&quot;&gt;&amp;#103;&amp;#111;&amp;#114;&amp;#109;&amp;#101;&amp;#108;&amp;#111;&amp;#109;&amp;#101;&amp;#114;&amp;#102;&amp;#097;&amp;#114;&amp;#117;&amp;#107;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&lt;/a&gt; (&lt;a href=&quot;https://twitter.com/gormelof&quot;&gt;@gormelof&lt;/a&gt;)&lt;/p&gt;
+</description>
+        <pubDate>2014-10-20 10:10:00 +0300</pubDate>
+        <link>http://mavidurak.github.io/Swift/2014/10/20/swift-optionals-kavrami.html</link>
+        <guid isPermaLink="true">http://mavidurak.github.io/Swift/2014/10/20/swift-optionals-kavrami.html</guid>
+        
+        
+        <category>Swift</category>
+        
+      </item>
+    
+      <item>
+        <title>Mavi.js</title>
+        <description>&lt;h4 id=&quot;a-javascript-library-tale&quot;&gt;A JavaScript Library Tale&lt;/h4&gt;
+
+&lt;p&gt;Biz bilgisayarı bızdıklayanların öyle havalı hikayeleri olmadığı için üzgünüm. Belki daha romantik girişli yani ne biliyim belki serseriye aşık olan bi kızın hikayesini okumak isterdiniz. Bizim serserimiz genelde &lt;strong&gt;semicolon&lt;/strong&gt; bağımlı programlama dilleri oluyor.&lt;/p&gt;
+
+&lt;p&gt;Hikayemiz böyle yukarda bahsettiğim bir programlama dilinin hikayesi işte. Tripli mi tripli &lt;em&gt;JavaScript&lt;/em&gt;imizin. Öyle bir programalama dili ki adına milyonlarca satır kitap yazılıp raflara yerleştirilmiş binlerce kütüphaneye sahip olmuştur.&lt;/p&gt;
+
+&lt;p&gt;Biz de durur muyuz?!&lt;/p&gt;
+
+&lt;p&gt;Evet, &lt;a href=&quot;https://github.com/mavidurak&quot;&gt;mavidurak-io&lt;/a&gt; ekibi olarak biz de kendi kütüphanemizi oluşturuyoruz!&lt;/p&gt;
+
+&lt;p&gt;Bir aşk hikayesiyle yeşillendirmeyip hevesinizi kırdığım için özür dilerim. Siz de sürekli anlatmaktan bıktığınız hikayelerinizle bize gelin bir iki karalamayla onu kütüphanemize yerleştirelim.&lt;/p&gt;
+
+&lt;h5 id=&quot;belki-destanlar-ne-dersiniz&quot;&gt;Belki destanlaşır, ne dersiniz?&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/mavidurak/mavi/pulls&quot;&gt;benim de hikayem var!&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/mavidurak/mavi&quot;&gt;abi ben romantik şeyleri okumayı seviyorum ya :/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/mavidurak/mavi/blob/master/mavi.js&quot;&gt;peki kızın esas oğlana tepkisi neymiş?&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;@eryarslan Eray Arslan&lt;/p&gt;
+</description>
+        <pubDate>2014-10-20 03:09:27 +0300</pubDate>
+        <link>http://mavidurak.github.io/javascript/2014/10/20/mavi-javascript-library.html</link>
+        <guid isPermaLink="true">http://mavidurak.github.io/javascript/2014/10/20/mavi-javascript-library.html</guid>
+        
+        
+        <category>javascript</category>
+        
+      </item>
+    
+      <item>
+        <title>Express İçin Kendi Template Motorunuzu Geliştirin</title>
+        <description>&lt;p&gt;Merhabalar&lt;/p&gt;
+
+&lt;p&gt;Bu yazımda express uygulamalarımızda kullanmak üzere kendi template motorlarımızı nasıl yaratabileceğimizi anlatmaya çalışıyorum.&lt;/p&gt;
+
+&lt;p&gt;Node JS’in en popüler uygulama geliştirme çatısı olan express’de server-side render yani sunucu taraflı çıktı hazırlama işlemleri için template engine adı verilen şablon motorlarını kullanırız, örneğin en popülerleri &lt;b&gt;jade&lt;/b&gt; ve &lt;b&gt;ejs&lt;/b&gt; dir.&lt;/p&gt;
+
+&lt;p&gt;Peki eğer istersek bizim belirlediğimiz kurallarla çalışan kendi template motorlarımızı yaratmamız mümkün mü?&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Tabi ki mümkün&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;Express’de kullanmak üzere kendi template motorunu yaratmak için &lt;code&gt;app.engine(ext, callback)&lt;/code&gt; metodunu kullanabilirsin, bu metodun aldığı birinci parametre &lt;code&gt;ext&lt;/code&gt; &lt;b&gt;extension&lt;/b&gt; yani dosya uzantısını temsil eder, ikinci parametre de template motorunun dosyayı kabul ettikten sonra yapacağı işlemler için bir asenkron fonksiyondur, bu fonksiyona girilecek objeler &lt;b&gt;filePath&lt;/b&gt; adındaki dosya adresi ve  şablona basılacak dinamik değerleri içerecek olan &lt;b&gt;options&lt;/b&gt; objesidir.&lt;/p&gt;
+
+&lt;p&gt;Şimdi aşağıdaki kodla çok basit bi template motoru geliştirelim, dosya uzantımız “.ebe” olsun.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var fs = require('fs'); // dosya işlemleri yapacağımız için fs modülünü çağırmak zorundayız
+app.engine('ebe', function (filePath, options, callback) { // burada template incaynımızı tanımlıyoruz ^^
+  fs.readFile(filePath, function (err, content) {
+    if (err) throw new Error(err);
+    // burada çok basit bi render işlemi yapıyoruz ancak mantığı anlamana yetecektir
+    var rendered = content.toString().replace('#title#', '&amp;lt;title&amp;gt;'+ options.title +'&amp;lt;/title&amp;gt;')
+    .replace('#message#', '&amp;lt;h1&amp;gt;'+ options.message +'&amp;lt;/h1&amp;gt;');
+    return callback(null, rendered);
+  })
+});
+app.set('views', './views'); // burada views klasörümüzü kendimiz belirleyebiliriz
+app.set('view engine', 'ebe'); // dosya uzantımızı belirterek template motorumuzu express'e tanımlıyoruz&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Express uygulamamız artık &lt;b&gt;.ebe&lt;/b&gt; uzantılı dosyaları render edebilecek, hemen index.ebe adında bir dosya oluşturup &lt;b&gt;view&lt;/b&gt; klasörünün içine atalım ve içine şunları yazalım.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;#title#
+#message#&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Daha sonra express uygulamamızda şu rotayı tanımlıyoruz.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;app.get('/', function (req, res) {
+  res.render('index', { title: 'Ebe Template Engine', message: 'Web artık ebelere emanet!'});
+})&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Uygulamayı ayağa kaldırdıktan sonra “/” adresini ziyaret edip sonucun html’e render edilmiş halini görebilirsin.&lt;/p&gt;
+
+&lt;p&gt;Furkan BAŞARAN &lt;a href=&quot;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#116;&amp;#111;:&amp;#102;&amp;#114;&amp;#107;&amp;#110;&amp;#098;&amp;#097;&amp;#115;&amp;#097;&amp;#114;&amp;#097;&amp;#110;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&quot;&gt;&amp;#102;&amp;#114;&amp;#107;&amp;#110;&amp;#098;&amp;#097;&amp;#115;&amp;#097;&amp;#114;&amp;#097;&amp;#110;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&lt;/a&gt;
+@frknbasaran&lt;/p&gt;
+
+</description>
+        <pubDate>2014-10-20 00:50:00 +0300</pubDate>
+        <link>http://mavidurak.github.io/nodejs/2014/10/20/express-icin-kendi-template-motorunuzu-gelistirin.html</link>
+        <guid isPermaLink="true">http://mavidurak.github.io/nodejs/2014/10/20/express-icin-kendi-template-motorunuzu-gelistirin.html</guid>
+        
+        
+        <category>nodejs</category>
+        
+      </item>
+    
+      <item>
+        <title>Hızlı Başlangıçlar İçin Meteor.JS</title>
+        <description>&lt;p&gt;JavaScript’in son dönemde artan popülerliğinin de etkisiyle gün geçmiyor ki yeni bir JavaScript kütüphanesi/paketi ortaya çıkmasın. Her ne kadar JS back-end tarafında kendisini yeterince ispat etmiş sayılmasa da (henüz bunun için çok erken olduğunu düşünüyorum, şahsi görüşüm), &lt;strong&gt;Node.JS&lt;/strong&gt; ve Node.JS altyapısını kullanan sistemler yazılım dünyasında büyük değişiklikler yaratacak gibi gözüküyor. Ben de elimden geldiğince bu furyaya katılıp son gelişmeleri takip etmeye çalışıyorum. Bu bağlamda temel Node.JS’e ek olarak, &lt;a href=&quot;http://expressjs.com&quot;&gt;Express.JS&lt;/a&gt; ve &lt;a href=&quot;http://sailsjs.org&quot;&gt;Sails.JS&lt;/a&gt; framework’lerini de inceleme fırsatım olmuştu. Ancak beni bu tarafta asıl cezbeden &lt;a href=&quot;http://www.meteor.com&quot;&gt;Meteor.JS&lt;/a&gt; adındaki platform oldu.&lt;/p&gt;
+
+&lt;p&gt;Meteor.JS’yi incelediğimizde, bana göre en önemli özelliği &lt;em&gt;back-end&lt;/em&gt; ve &lt;em&gt;front-end&lt;/em&gt; tarafına aynı anda kod yazılabiliyor olmasıdır. Bu nedenle &lt;strong&gt;Full-Stack JavaScript Framework&lt;/strong&gt; olarak da anılıyor. İlk başta bu karışık gelse de, oldukça farklı bir çalışma yapısı var. Ama siz herşeyi kendiniz yapmayı seven bir geliştiriciyseniz muhtemelen kendisini pek sevmeyeceksiniz. Çünkü amacı; geliştiriciyi çok fazla uğraştırmadan, kısa sürede uygulama oluşturulabilmesi. Dilerseniz bundan sonraki bölümlerde biraz pratikte nasıl kullanılıyor bunu irdeleyelim.&lt;/p&gt;
+
+&lt;h3 id=&quot;kurulum&quot;&gt;Kurulum&lt;/h3&gt;
+
+&lt;p&gt;Çok basit bir kuluma sahip. Tek yapmanız gereken aşağıdaki kodu konsol üzerinde çalıştırmak ve Meteor’unuz kullanıma hazır.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;$ curl https://install.meteor.com/ | sh&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Bundan sonra hemen aşağıdaki komutla yeni bir proje oluşturabilirsiniz;&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;$ meteor create myapp&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Uygulamanızı çalıştırmak için tek yapmanız gereken uygulama klasörünüz içine girerek meteor ile uygulamanızı başlatmanız;&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;$ cd myapp
+$ meteor
+=&amp;gt; Meteor server running on: http://localhost:3000/&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Hepsi bu kadar! Artık uygulamanız &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:3000&lt;/a&gt; adresi üzerinden çalışıyor. Yukarıdaki komutlardan başka hiçbir şeye ihtiyacınız yok. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Meteor’u çalıştırmak için ayrıca web sunucusuna ya da veritabanı kurulumuna ihtiyacınız bulunmuyor.
+Tek yapmanız gereken tek bir komutla Meteor’u bilgisayarınıza kurmak. Meteor.JS kendi içinde 
+&lt;a href=&quot;https://github.com/slacy/minimongo&quot;&gt;minimongo&lt;/a&gt; adında bir veritabanı ile birlikte geliyor. &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;meteorun-7-prensibi&quot;&gt;Meteor’un 7 Prensibi&lt;/h3&gt;
+
+&lt;p&gt;Meteor.JS geliştiricileri bize 7 tane olmazsa olmaz prensip sunuyorlar;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;Data on the Wire&lt;/code&gt;: Asla ve asla isteklerde HTML döndermeyin. Siz sadece veri yollayın ve bırakın client bu verinin nasıl işlenileceğine (render) karar versin. &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;One Language&lt;/code&gt;: Hem client hem de server tarafında tek dil olarak JavaScript kullanın.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Database Everywhere&lt;/code&gt;: Veritabanına ulaşmak için hem server hem de client tarafında aynı API’yi kullanın.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Latency Compensation&lt;/code&gt;: İstemci tarafında sıfır gecikmeyi sağlamak için önyükleme ve model simülasyonu kullanın.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Full Stack Reactivity&lt;/code&gt;: Sürekli gerçek zamanlı kalın. Veritabanından şablonlara kadar olan tüm katmanlarda olay güdümlü olarak çalışın.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Embrace the Ecosystem&lt;/code&gt;: Meteor açık kaynaklı ve entegre olmasından ziyade, bugünkü araçları ve frameworkleri kullanır.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;Simplicity Equals Productivity&lt;/code&gt;: Basit bir şay üretebilmenin en kolay yolu onun gerçekten basit olmasıdır. Bu temiz ve klasik API’ler ile başarılabilir.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Bu prensipler içerisinde özellikle &lt;code&gt;Database Everywhere&lt;/code&gt; ve &lt;code&gt;Latency Compensation&lt;/code&gt; oldukça önemlidir. 
+Çünkü bu iki prensip nedeniyle gerçek zamanlı uygulamalar web üzerinden yapılabilmektedir. 
+Bir kullanıcı uygulamaya bağlandığında kendi tarayıcısı üzerinde de veritabanının bir simülasyonu oluşturulmaktadır.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;klasr-yaps&quot;&gt;Klasör Yapısı&lt;/h3&gt;
+
+&lt;p&gt;Yeni bir Meteor uygulaması oluşturduğunuzda &lt;strong&gt;html&lt;/strong&gt;, &lt;strong&gt;js&lt;/strong&gt; ve &lt;strong&gt;css&lt;/strong&gt; olmak üzere 3 farklı dosya ile çalışmaya başlarsınız. Tüm html tasarımlarınızı Template adı verdiğimiz .html dosyalarında tutarsınız. Aşağıda bir template örneği görülmektedir;&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&amp;lt;!-- in myapp.html --&amp;gt;
+&amp;lt;body&amp;gt;
+  &amp;lt;h1&amp;gt;Today's weather!&amp;lt;/h1&amp;gt;
+  
+  {{&amp;gt; forecast}}
+&amp;lt;/body&amp;gt;
+&amp;lt;template name=&amp;quot;forecast&amp;quot;&amp;gt;
+  
+  &amp;lt;div&amp;gt;It'll be {{prediction}} tonight&amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;JavaScript dosyalarının içerisine de ilgili template’e özel olarak olaylar yazılmaktadır. &lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;js&quot;&gt;// in client/myapp.js: reactive helper function
+if (Meteor.isClient) 
+{
+    Template.forecast.helpers({
+        prediction: function () {
+            return Session.get(&amp;quot;weather&amp;quot;);
+        }
+    });
+} elseif (Meteor.isServer) {
+    // server code
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Şimdi yukarıdaki örneği inceleyelim. (CSS dosyalarına şuan ihtiyacımız yok.) &lt;code&gt;myapp.html&lt;/code&gt; içerisinde body etiketleri arasında kalan bölümde &lt;strong&gt;forecast&lt;/strong&gt; şablonunun nerede görüntüleneceği belirleniyor. Yine aynı dosya içerisinde template etiketiyle başlayan bölümlerde &lt;strong&gt;forecast&lt;/strong&gt; şablonu tanımlanmış durumda. Uygulama başladığında &lt;strong&gt;forecast&lt;/strong&gt; şabonu içerisinde bulunan &lt;strong&gt;prediction&lt;/strong&gt; değeri javascript dosyası içerisinden dinamik olarak alınıyor. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Meteor bize dosya konumlandırmada sınırsız özgürlük sunmaktadır. &lt;code&gt;forecast&lt;/code&gt; isimli şablonu aynı dosyaya koymak zorunda değiliz. 
+Adı başka bir şey olan ve belkide başka bir dizinde bulunan bir dosya olabilirdi. 
+Meteor uygulamayı başlatırken tüm klasörlerdeki tüm dosyaları tarar ve hangi şablonun nerede olduğunu belirler. 
+Uygulama başladıktan sonra siz dilediğiniz dosyası dilediğiniz yere kaydedebilirsiniz. Yeterki şablon isimleri birbirleri ile tutarlı olsun.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;JavaScript dosyasını incelediğimizde &lt;strong&gt;isClient&lt;/strong&gt; ve &lt;strong&gt;isServer&lt;/strong&gt; kontrolleri dikkatinizi çekmiştir. Bu kontrollere göre hangi kodun sunucuda, hangi kodun istemcide çalıştığını belirtebiliyorsunuz. Neticede istemci tarafından e-posta gönderimi gerçekleştiremezsiniz ve bu tip kodları sunucu tarafında yazıyorsunuz. İstemci tarafındaki kodlara bakarsak, ilgili templatin &lt;strong&gt;helpers&lt;/strong&gt; olarak adlandırılan fonksiyonlarının tanımlandığını görmekteyiz. Buradaki &lt;strong&gt;prediction&lt;/strong&gt; şablon içerisinden çağırılır ve sonuç şablona aktarılır.&lt;/p&gt;
+
+&lt;h3 id=&quot;herey-mi-gzel&quot;&gt;Herşey Mi Güzel?&lt;/h3&gt;
+
+&lt;p&gt;Meteor yukarıdaki basit örnekte anlatıldığından çok daha fazlasını yapabiliyor elbette. Siz de internette çeşitli kaynaklarda gösterilen örnekleri inceleyebilirsiniz. Ancak ne yazık ki Meteor’un henüz bir &lt;strong&gt;stabil&lt;/strong&gt; sürümü bulunmuyor. Bu da yola çıkarken mutlaka düşünmeniz gereken bir durum. Henüz stabil olmadığı için de sürekli değişen bir yapısı bulunuyor. Dün yazdığınız kodların yarın çıkacak yeni sürümde çalışmayabilir. &lt;/p&gt;
+
+&lt;p&gt;Meteor ile çok geniş çaplı (birçok ekran ve tablodan oluşan) uygulamalar yapılabileceği bana pek mantıklı gelmiyor. Ancak basit bir startup fikriniz varsa ve bir an önce yayınlayıp kullanıcıların tepkilerini görmek istiyorsanız Meteor tam size göre. Sadece aşağıdaki iki komutla &lt;em&gt;Facebook’la Oturum Açma&lt;/em&gt; işlemini sisteminize entegre edebildiğinizi düşünen yeterli. :)&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;$ meteor add accounts-ui
+$ meteor add accounts-facebook&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&amp;lt;!-- in login.html --&amp;gt;
+&amp;lt;template name=&amp;quot;login&amp;quot;&amp;gt;
+  
+  {{&amp;gt; loginButtons}}
+&amp;lt;/template&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://ozziest.github.io&quot;&gt;Özgür Adem Işıklı&lt;/a&gt; (&lt;a href=&quot;https://twitter.com/iozguradem&quot;&gt;@iozguradem&lt;/a&gt;)&lt;/p&gt;
+
+</description>
+        <pubDate>2014-10-18 13:00:00 +0300</pubDate>
+        <link>http://mavidurak.github.io/javascript/meteorjs/nodejs/2014/10/18/hizli-baslangiclar-icin-meteor-js.html</link>
+        <guid isPermaLink="true">http://mavidurak.github.io/javascript/meteorjs/nodejs/2014/10/18/hizli-baslangiclar-icin-meteor-js.html</guid>
+        
+        
+        <category>javascript</category>
+        
+        <category>meteorjs</category>
+        
+        <category>nodejs</category>
+        
+      </item>
+    
+      <item>
+        <title>Passport.js ile Node JS'de Yetkilendirme Yönetimi</title>
+        <description>&lt;p&gt;Passport.js Node JS için geliştirilmiş authentication(yetkilendirme) modülüdür, bu modülü kullanarak destek veren tüm sosyal ağ hesaplarına erişebilir, web uygulamalarınızda oturum denetimini bu sosyal ağların aracılığıyla yönetebilirsiniz.
+  Bu modül tek bir işi yerine getirmek için geliştirilmiştir, yetkilendirme. Yazıda ilerledikçe göreceksiniz ki işinde oldukça iyi ve oldukça kullanışlı özelliklere sahip. Destek veren herhangi bir sosyal ağın API(Application Programming Interface)’nı kullanarak ziyaretçilerin web uygulamanıza giriş yapmanızı sağlamanız Passport.js ile çok kolaydır.&lt;/p&gt;
+
+&lt;p&gt;Modern web uygulamalarında yetkilendirme çok farklı şekillerde yapılabilir, geleneksel yöntemde kullanıcılar sisteme kullanıcı adı ve parolalarıyla giriş yaparlar. Ancak sosyal ağların yükselişiyle birlikte artık yetkilendirme işlemleri Facebook Twitter gibi popüler OAuth sağlayıcılarının single sign-in (tek bir oturum açma) trendine doğru kaymaya başladı. Çoğu zaman bu sosyal ağların altyapılarını kullanarak oturum açabilmek ve kullanıcıların bilgilerine erişebilmek için token denilen geçici anahtarlar kullanılır.
+  Her web uygulamasının farklı kullanıcı bilgilerine gereksinimi vardır ancak passportJs tüm bu gereksinimleri karşılayabilecek şekilde tasarlanmış oldukça kullanışlı bir modül.
+  PassportJs’de yetkilendirme mekanizmaları “Strategy” diye tanımlanır, her sosyal ağın mekanizması farklıdır ancak passportJs bağımlılıkları yok ederek modüler şekilde tasarlandığından tüm “Strategy” modülleri ayrı birer pakettir. Hangi sosyal ağ aracılıyla bilgilere erişmek isterseniz uygulamanıza onu eklersiniz olur biter.&lt;/p&gt;
+
+&lt;p&gt;Biraz sonra tek tek açıklamadan önce size ne kadar temiz bir kod yazımı sağladığını göstermek için basit bir örnek vermek istiyorum&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;app.post('/login', passport.authenticate('local', { successRedirect: '/',
+                                                  failureRedirect: '/login' }));&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;PassportJS’i node package manager üzerinden tek satırla yükleyebilir, uygulamanıza ekleyebilirsiniz.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;$ npm install passport&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;yetkilendirme&quot;&gt;Yetkilendirme&lt;/h3&gt;
+
+&lt;p&gt;Server’a gelen bir yetkilendirme yani oturum açma isteğini uygun şekilde karşılamak &lt;code&gt;passport.authenticate()&lt;/code&gt; yazmak kadar kolaydır. Methodun içine kendiniz için uygun olan “Strategy” i yazarsınız ve sistem tıkır tıkır işler.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;app.post('/login',
+  passport.authenticate('local'),
+  function(req, res) {
+    // Eğer bu fonksiyon devreye girdiyse, yetkilendirme başarılı demektir
+    // `req.user` objesi yetkilendirilmiş kullanıcının bilgilerini içerir
+    res.redirect('/users/' + req.user.username);
+  });&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Görüldüğü gibi yukarıdaki kodda stratejimizi &lt;code&gt;local&lt;/code&gt; olarak belirledik. Yukarıdaki senaryo yetkilendirme sırasında bir hata oluşmaması durumunda olacak güllük gülistanlık durumu gösteriyor, ancak biliyoruz ki hayat bu kadar kolay değil. İşlerin boka sarması durumunda yani diğer tabirle yetkilendirme sırasında bir hata oluştuğunda PassportJS varsayılan olarak &lt;code&gt;401 Unauthorized&lt;/code&gt; HTTP headerını döndürür. Eğer yetkilendirmede sorun çıkmazsa &lt;code&gt;req.user&lt;/code&gt; objesi tanımlanır ve işlemlerimizde kolayca kullanabiliriz, bu kısımla ilgili ayrıntıları konfigrasyon kısmında detaylı şekilde beraber görücez.&lt;/p&gt;
+
+&lt;h2 id=&quot;ynlendirmeler&quot;&gt;Yönlendirmeler&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Her yetkilendirme isteğinden sonra sonuca göre uygun bi yönlendirme mutlaka yapılır, tabi giriş isteği yaptıktan sonra ekrana bakıp bekleyen zombiler yaratmak istemiyorsanız.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;app.post('/login',
+passport.authenticate('local', { successRedirect: '/',
+                                 failureRedirect: '/login' }));&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Bu düzenlemeyle fonksiyonun varsayılan davranışını override ettik, yani ezdik kendi kuralımızı belirledik. Herhangi bir problem olmadan yetkilendirme tamamlanırsa kullanıcıyı anasayfaya yönlendiricez, ancak herhangi bi problem oluşur da yetkilendirme başarısız olursa kullanıcı login sayfasına tekrar geri gelecek.&lt;/p&gt;
+
+&lt;h2 id=&quot;flash-bildirimler&quot;&gt;Flash Bildirimler&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Yönlendirmelerle birlikte kullanıcılar için işleri anlamlı hale getirecek bildirimler de göndermeliyiz, o da şöyle.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;app.post('/login',
+passport.authenticate('local', { successRedirect: '/',
+                                 failureRedirect: '/login',
+                                 failureFlash: true })
+);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Muhtemelen sizin de dikkat ettiğiniz gibi kodumuza yeni bi parametre daha ekledik &lt;code&gt;failureFlash:true&lt;/code&gt;, bu tanımlamayla PassportJs yetkilendirme sırasında oluşacak hatayı kullanıcıya kendiliğinden gösterecek.
+  Bu çoğu zaman tercih edilen bi kullanımdır, çünkü hata doğrudan passportJs’den geldiğinden oluşan hatanın içeriğini kullanıcının da öğrenmesini sağlar.&lt;/p&gt;
+
+&lt;p&gt;Ancak alternatif bir yol olarak&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;passport.authenticate('local', { failureFlash: 'Invalid username or password.' });&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;şeklinde kendimiz de bir flash mesaj tanımlayabiliriz.&lt;/p&gt;
+
+&lt;p&gt;“Araman için illa hata yapmam mı lazım” ilkesinde de yola çıkarak kullanıcıya işlerin sadece kötü gittiğini değil sorunsuz tamamlandığını göstermek için de flash mesaj yollayabiliriz. Şöyle ki:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;passport.authenticate('local', { successFlash: 'Welcome!' });&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Burada hatırlatmam gereken küçük bi nokta var, flash mesajları kullanabilmek için &lt;code&gt;req.flash()&lt;/code&gt; methoduna ihtiyaç var, Express framework’ün 2x versiyonları bu methodu destekliyor ancak 3x versiyonlarda kaldırıldı o yüzden şu modülü projenize dahil etmeniz lazım
+  https://github.com/jaredhanson/connect-flash&lt;/p&gt;
+
+&lt;h2 id=&quot;session-devre-d-brakmak&quot;&gt;Session’ı Devre Dışı Bırakmak&lt;/h2&gt;
+
+&lt;p&gt;Başarılı bi şekilde yetkilendirme yapıldıktan sonra, sistem kalıcı bir session oluşturacaktır. Bu ziyaretçilerin web tarayıcılarıyla kullandığı web uygulamarında tercih edilen genel bi kullanımdır, ancak bazı özel durumlarda, session gerekli değildir.
+   Örnek verecek olursak; API sunucularından her istekte kullanıcı kimliği zaten temin edilir. Bu durumda bizim için session’ı devre dışı bırakmak mantıklı bi seçim olacaktır. Peki nasıl bırakırız, şöyle ki:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;app.get('/api/users/me',
+passport.authenticate('basic', { session: false }),
+function(req, res) {
+res.json({ id: req.user.id, username: req.user.username });
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;kendi-htiyacmza-gre-callback-oluturma&quot;&gt;Kendi İhtiyacımıza Göre Callback Oluşturma&lt;/h2&gt;
+
+&lt;p&gt;Yukarıdaki tüm senaryolar failure ya da success durumlarında uygulamanın nasıl davranacağını verdiğimiz parametrelerle yönetiyordu, ancak bazen kuralları bizim koymamız gerekir. Bizim geliştirdiğimiz uygulamada bizim sözümüz geçer hafız.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;app.get('/login', function(req, res, next) {
+passport.authenticate('local', function(err, user, info) {
+  if (err) { return next(err); }
+  if (!user) { return res.redirect('/login'); }
+  req.logIn(user, function(err) {
+    if (err) { return next(err); }
+    return res.redirect('/users/' + user.username);
+  });
+})(req, res, next);
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Yukarıdaki kodda &lt;code&gt;authenticate()&lt;/code&gt; methodunun router’ın altında olduğuna dikkat edin, bu şekilde kullanımamızın nedeni &lt;code&gt;authenticate()&lt;/code&gt; methodunun içinde &lt;code&gt;req&lt;/code&gt; ve &lt;code&gt;res&lt;/code&gt; nesnelerine erişmek istememiz.
+  Yetkilendirme işlemi sırasında bir hata oluştuğunda &lt;code&gt;user&lt;/code&gt; nesnesi &lt;code&gt;false&lt;/code&gt; ‘a eşit olur. Bir hata oluştuğunda &lt;code&gt;err&lt;/code&gt; nesnesi aracılığıyla otomatik olarak hata fırlatılır, aksi durumlarda &lt;code&gt;null&lt;/code&gt; a eşittir.&lt;/p&gt;
+
+&lt;h3 id=&quot;konfigrasyon&quot;&gt;Konfigrasyon&lt;/h3&gt;
+
+&lt;p&gt;PassportJS’de yetkilendirme için üç konfigrasyona ihtiyaç duyarız&lt;/p&gt;
+
+&lt;p&gt;1- Yetkilendirme Stratejileri
+  2- Uygulama Katmanları
+  3- Sesssionlar (Bu tercihe bağlı)&lt;/p&gt;
+
+&lt;h2 id=&quot;stratejiler-strategies&quot;&gt;Stratejiler (Strategies)&lt;/h2&gt;
+
+&lt;p&gt;PassportJs bağlantıları yetkilendirirken &lt;code&gt;Strategy&lt;/code&gt; denilen kuralları kullanır. Kullanıcı adı ve parolayı &lt;code&gt;OAuth&lt;/code&gt; ya da &lt;code&gt;OpenID&lt;/code&gt; aracılığıyla doğrular ve oturumu yönetir.
+  Passport’a bir doğrulama-yetkilendirme isteği yollamadan önce &lt;code&gt;Strategy&lt;/code&gt; denilen kurallar mutlaka tanımlanmalıdır.
+  Stratejiler ve onların konfigrasyonları &lt;code&gt;use()&lt;/code&gt; fonksiyonunu destekler, Kullanıcı adı ve şifreyle yapılan bir lokal doğrulama için şu koda bi göz atalım;&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;dorulama-yantlar-verify-callbacks&quot;&gt;Doğrulama Yanıtları (Verify Callbacks)&lt;/h2&gt;
+
+&lt;p&gt;Her ne kadar Türkçe kaynak oluşsun diye uğraşıyor olsak da bazı terimlerin ingilizcelerini duymanız sizin için daha yararlı olcaktır, aksi halde bildiğiniz terimleri duyduğunuz dahi ingilizcesini bilmediğinizden olaya fransız kalmanız kaçınılmaz olacaktır, bu yüzden elimden geldiğince Türkçe’ye çevirmeye çalışsam da özgün tabirleri ingilizce olarak da yazıyorum.&lt;/p&gt;
+
+&lt;p&gt;Yukarıdaki örnek kodumuz önemli bi konsepti içeriyor, Stratejilerde durumlara göre geri dönüşleri tanımlamamız gerekir. Flash Bildirimleri başlığını hatırlayın, doğrulamanın amacı gönderilen kimlik bilgilerine sahip kullanıcı bulup yetkilendirmeyi yapmaktır. &lt;/p&gt;
+
+&lt;p&gt;Kimlik bilgileri geçerliyse ve Passport tarafından onaylandıysa (ki belirlediğimiz stratejiye uygunsa passport tarafından valid olarak tanımlanacak yani onaylanacaktır) passportJS kullanıcıyı doğruladığını belirtmek için &lt;code&gt;done&lt;/code&gt; methodunu çağıracaktır.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;return done(null, user);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Eğer bilgiler geçerli değilse mesela parola yanlışsa &lt;code&gt;done&lt;/code&gt; methodu &lt;code&gt;false&lt;/code&gt; parametresiyle çağrılacaktır.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;return done(null, false);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Bu gibi durumlarda opsiyonel mesajlar da eklenerek flash bildirimler gösterilebilir ve kullanıcılar yeniden denemeye yönlendirilir&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;return done(null, false, { message: 'Incorrect password.' });&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Son olarak eğer daha derin bi hata varsa mesela database bağlantısı yoksa işid Sakarya’ya geldiyse ya da bulunduğunuz konuma yaklaşan devasa bi meteor varsa falan bilindik node tarzı &lt;code&gt;err&lt;/code&gt; fırlatılır siz de bunu yakalayıp döndürürsünüz.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;return done(err);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;katmanlar&quot;&gt;Katmanlar&lt;/h2&gt;
+
+&lt;p&gt;Express framework ile web uygulamaları geliştirirken ki çoğu zaman uygulamalarımızı bu çatı altında geliştiririz, passportJs’in ihtiyaç duyduğu bazı konfigrasyonlar vardır, &lt;code&gt;passport.initialize()&lt;/code&gt; belirtimi yapılmalıdır, eğer uygulamanızda session kullanıyosanız bunun yanında &lt;code&gt;passport.session()&lt;/code&gt; da deklare edilmek zorundadır.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;app.configure(function() {
+  app.use(express.static('public'));
+  app.use(express.cookieParser());
+  app.use(express.bodyParser());
+  app.use(express.session({ secret: 'keyboard cat' }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(app.router);
+});&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;kullanc-ad--parola-araclyla-giri&quot;&gt;Kullanıcı Adı &amp;amp; Parola Aracılığıyla Giriş&lt;/h3&gt;
+
+&lt;p&gt;En çok tercih edilen yöntemle beraber bir örnek yapıp yazımı sonlandırmak istiyorum&lt;/p&gt;
+
+&lt;p&gt;Bu uygulama için &lt;code&gt;passport-local&lt;/code&gt; modülüne ihtiyacımız var, npm denilen canımız ciğerimiz paket yöneticisi aracılığıyla tabi ki çok kolay.&lt;/p&gt;
+
+&lt;h2 id=&quot;ykleme&quot;&gt;Yükleme&lt;/h2&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;$ npm install passport-local&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;konfigrasyon-1&quot;&gt;Konfigrasyon&lt;/h2&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var passport = require('passport')
+, LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(
+function(username, password, done) {
+User.findOne({ username: username }, function(err, user) {
+  if (err) { return done(err); }
+  if (!user) {
+    return done(null, false, { message: 'Incorrect username.' });
+  }
+  if (!user.validPassword(password)) {
+    return done(null, false, { message: 'Incorrect password.' });
+  }
+  return done(null, user);
+});
+}
+));&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Local yetkilendirme için formumuzdan gelecek username ve password verilerine uygun olarak callbacklerimizi tanımladık.&lt;/p&gt;
+
+&lt;h2 id=&quot;form&quot;&gt;Form&lt;/h2&gt;
+
+&lt;p&gt;Şimdi formu oluşturalım&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&amp;lt;form action=&amp;quot;/login&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;
+&amp;lt;div&amp;gt;
+  &amp;lt;label&amp;gt;Username:&amp;lt;/label&amp;gt;
+  &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;username&amp;quot;/&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div&amp;gt;
+  &amp;lt;label&amp;gt;Password:&amp;lt;/label&amp;gt;
+  &amp;lt;input type=&amp;quot;password&amp;quot; name=&amp;quot;password&amp;quot;/&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div&amp;gt;
+  &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;Log In&amp;quot;/&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/form&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;ynlendirme-routing&quot;&gt;Yönlendirme (Routing)&lt;/h2&gt;
+
+&lt;p&gt;formdan gelen post isteğini yakalayıp passport ile konuşturmak için gerekli kodlarımızı yazıyoruz&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;app.post('/login',
+passport.authenticate('local', { successRedirect: '/',
+                             failureRedirect: '/login',
+                             failureFlash: true })
+);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;failureFlash&lt;/code&gt; parametresinin true olmasına dikkat etmişsinizdir, kullanıcılar için Flash Bildirimler gönderiyoruz. &lt;/p&gt;
+
+&lt;h2 id=&quot;parametreler&quot;&gt;Parametreler&lt;/h2&gt;
+
+&lt;p&gt;Varsayılan olarak &lt;code&gt;LocalStrategy&lt;/code&gt; de formdan gelen kullanıcı adı &lt;code&gt;username&lt;/code&gt; ve &lt;code&gt;password&lt;/code&gt; olarak tanımlıdır, ben değişiklik yapmak istiyorum dersen şu şekilde yapabilirsin diyerek bu gereksiz bilgiyle yazıma son veriyorum.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;passport.use(new LocalStrategy({
+usernameField: 'email',
+passwordField: 'passwd'
+},
+function(username, password, done) {
+// ...
+}
+));&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Oldukça kullanışlı bi modül olan PassportJS’i her geliştiriciye tavsiye ederim, eski projelerimde kullanmamış olsam da bundan sonraki her projemde kesinlikle tercih edeceğim bir modül. 
+Okuduysanız yazının linkini paylaşmanız teşekkür yerine geçecektir. Ayrıca sizler de blogda kendi yazılarınızı yayınlayabilirsiniz. Şimdiden teşekkürler.&lt;/p&gt;
+
+&lt;p&gt;Furkan BAŞARAN &lt;a href=&quot;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#116;&amp;#111;:&amp;#102;&amp;#114;&amp;#107;&amp;#110;&amp;#098;&amp;#097;&amp;#115;&amp;#097;&amp;#114;&amp;#097;&amp;#110;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&quot;&gt;&amp;#102;&amp;#114;&amp;#107;&amp;#110;&amp;#098;&amp;#097;&amp;#115;&amp;#097;&amp;#114;&amp;#097;&amp;#110;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&lt;/a&gt;
+@frknbasaran&lt;/p&gt;
+
+</description>
+        <pubDate>2014-10-02 00:50:00 +0300</pubDate>
+        <link>http://mavidurak.github.io/nodejs/2014/10/02/passport-js-ile-node-js-de-yetkilendirme-yonetimi.html</link>
+        <guid isPermaLink="true">http://mavidurak.github.io/nodejs/2014/10/02/passport-js-ile-node-js-de-yetkilendirme-yonetimi.html</guid>
+        
+        
+        <category>nodejs</category>
+        
+      </item>
+    
+      <item>
+        <title>Siz de Blog Yazısı Yayınlayın</title>
+        <description>&lt;p&gt;Mavidurak-IO’nun hedeflerinden biri de kollektif bir blog oluşturmaktır. Bu nedenle sizin de Mavidurak-IO üzerinde blog yazısı oluşturarak paylaşmanızı destekler. Sizin seçeceğiniz ana dalı bilişim olan bir konu üzerinde blog yazısı hazırlayarak, Mavidurak-IO blogunda yayınlayabilirsiniz.&lt;/p&gt;
+
+&lt;h3 id=&quot;nasl-birlikte-allr&quot;&gt;Nasıl Birlikte Çalışılır?&lt;/h3&gt;
+
+&lt;p&gt;Yayınlama işlemi blogumuz GitHub üzerinde konuşlandığından, GitHub kullanılarak yapılmaktadır. Bunun için öncelikle bir &lt;a href=&quot;http://github.com&quot;&gt;GitHub Hesabı&lt;/a&gt;‘nız olmalıdır. &lt;/p&gt;
+
+&lt;p&gt;GitHub hesabınızla oturum açtıktan sonra, blogumuzun bulunduğu repoyu &lt;strong&gt;fork&lt;/strong&gt;lamanız gerekmektedir. Bunun için &lt;a href=&quot;https://github.com/mavidurak/mavidurak.github.io&quot;&gt;repomuza&lt;/a&gt; giderek, sağ tarafta bulunan &lt;strong&gt;Fork&lt;/strong&gt; butonuna basmanız gerekmektedir. Bu işlemden sonra sizin hesabınız üzerinde blogumuzun bir kopyası oluşacaktır. &lt;/p&gt;
+
+&lt;p&gt;Daha sonra GitHub üzerinde oluşturduğunuz bu yeni depoyu makinenize almalısınız:&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;git clone git@github.com:kullanici_adiniz/mavidurak.github.io.git&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Kendi kopyanız üzerinde çalıştığınız esnada, diğer değişiklikleri de takip etmek için deposunuzda uzak başvuru oluşturmanız gerekmektedir;&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;git remote add mavidurak git://github.com/mavidurak/mavidurak.github.io.git
+git fetch mavidurak&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Bu işlemden sonra birlikte çalışmaya hazırız demektir. &lt;/p&gt;
+
+&lt;h3 id=&quot;blog-yazs-oluturma&quot;&gt;Blog Yazısı Oluşturma&lt;/h3&gt;
+
+&lt;p&gt;Blog sistemimiz &lt;code&gt;Jenkyll&lt;/code&gt; temeli üzerine inşaa edilmiştir. Kurulum aşamalarını &lt;a href=&quot;http://aristona.github.io/jekyll-ve-github-pages-kullanarak-kendi-blogumuzu-olusturmak/&quot;&gt;bu makaleyi&lt;/a&gt; okuyarak öğrenebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Blog yazılarınız depo içerisindeki &lt;code&gt;_posts&lt;/code&gt; klasörü altında listelenmektedir. Daha önce yazılmış blog yazılarını inceleyerek isimlendirme hakkında bilgi sahibi olabilirsiniz. &lt;/p&gt;
+
+&lt;p&gt;Yeni bir blog yazısı oluşturduğunuzda, aşağıdaki gibi temel bilgilerin dosyasınız başında olması gerekmektedir.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;text&quot;&gt;---
+layout: post
+title:  &amp;quot;Blog Yazınızın Başlığı&amp;quot;
+date:   2014-08-19 13:09:27
+categories: kategori diğer php java
+---&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Yazınızı test etmek için aşağıdaki komutu kullanabilirsiniz. Komutu uyguladıktan sonra &lt;code&gt;http://localhost:4000&lt;/code&gt; adresinden blogu görüntüleyebilirsiniz.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;$ jenkyll serve&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Yazınızı oluştururken &lt;a href=&quot;https://help.github.com/articles/markdown-basics&quot;&gt;Markdown&lt;/a&gt; formatını kullanmanız gerekmektedir. &lt;/p&gt;
+
+&lt;h3 id=&quot;yaznz-yaynlamak&quot;&gt;Yazınızı Yayınlamak&lt;/h3&gt;
+
+&lt;p&gt;Yazınızı tamamladıktan sonra aşağıdaki gibi değişiklikleri kendi reponuza gönderebilirsiniz.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;$ git add .
+$ git commit -m &amp;quot;Örnek blog yazısı eklendi.&amp;quot;
+$ git push origin master&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Bu işlemden sonra depoları birleştirmek için kendi proje sayfasınıza girerek &lt;code&gt;Pull Request&lt;/code&gt; butonuna tıklamanız yeterlidir. &lt;/p&gt;
+</description>
+        <pubDate>2014-08-19 16:09:27 +0300</pubDate>
+        <link>http://mavidurak.github.io/mavidurak/2014/08/19/siz-de-blog-yazisi-yayinlayin.html</link>
+        <guid isPermaLink="true">http://mavidurak.github.io/mavidurak/2014/08/19/siz-de-blog-yazisi-yayinlayin.html</guid>
+        
+        
+        <category>mavidurak</category>
+        
+      </item>
+    
+      <item>
+        <title>Mavidurak-IO Deklerasyonu</title>
+        <description>&lt;p&gt;Mavidurak-IO ne için var, ne yapmak istiyor ve nasıl yapmak istiyor sorularına vereceğimiz cevaplar bu başlık altında toplanacaktır. Önerilerinizi ve düzenlemeleriniz GitHub üzerinde bulunan &lt;a href=&quot;https://github.com/mavidurak/declaration&quot;&gt;repomuza&lt;/a&gt; pull-request ile gönderebilirsiniz.&lt;/p&gt;
+
+&lt;h3 id=&quot;ama-kural-ve-hedefler&quot;&gt;Amaç, Kural ve Hedefler&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Yazılım değil, geliştirici üretmek.&lt;/li&gt;
+  &lt;li&gt;Tanıtım ve eğitim amaçlı basit seminerler düzenlemek.&lt;/li&gt;
+  &lt;li&gt;Workshop çalışmalarına katılacak küçük grupları mülakat ile belirlemek.&lt;/li&gt;
+  &lt;li&gt;Amatör ruhu kaybetmemek.&lt;/li&gt;
+  &lt;li&gt;GitHub’sız geliştirici kabul etmemek.&lt;/li&gt;
+  &lt;li&gt;Öğrenmeyi öğrenmek ve hayat boyu öğrenmek felsefesini yaygınlaştırmak.&lt;/li&gt;
+  &lt;li&gt;Oyun oynamamak, oyun yazmak.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;workshop-ncesinde-alnmas-gereken-eitimler&quot;&gt;Workshop Öncesinde Alınması Gereken Eğitimler&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Soru Sormak ve Araştırma&lt;/li&gt;
+  &lt;li&gt;Yazılım Standartları ve SOLID&lt;/li&gt;
+  &lt;li&gt;Dökümantasyon&lt;/li&gt;
+  &lt;li&gt;Versiyonlama&lt;/li&gt;
+  &lt;li&gt;Standart Oluşturma&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ameleler&quot;&gt;Ameleler&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/frknbasaran&quot;&gt;frknbasaran&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/gormelof&quot;&gt;gormelof&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/onuraltunsoy&quot;&gt;onuraltunsoy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ozziest&quot;&gt;ozziest&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/co3moz&quot;&gt;co3moz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>2014-08-19 16:09:27 +0300</pubDate>
+        <link>http://mavidurak.github.io/mavidurak/2014/08/19/mavidurak-io-deklerasyonu.html</link>
+        <guid isPermaLink="true">http://mavidurak.github.io/mavidurak/2014/08/19/mavidurak-io-deklerasyonu.html</guid>
+        
+        
+        <category>mavidurak</category>
+        
+      </item>
+    
+      <item>
+        <title>Mavidurak-IO First Commit!</title>
+        <description>&lt;p&gt;Merhabalar,&lt;/p&gt;
+
+&lt;p&gt;Oldukça heyecanlıyız. Ops! Kim olduğumuzu söylemeyi unuttum. Biz kim miyiz? Geçici ya da sürekli olarak Sakarya‘da yaşayan, Sakarya Üniversitesi‘nde okuyan bilişim teknolojileri meraklılarıyız. Sabah geç kalmamızın sebebi, bir önceki gece yazdığımız kodlar olan geliştiricileriz. Sadece yazılım da değil, bilgisayarların ve akıllı cihazların girdiği her yere el atmak isteyen, yerine duramayan ve çok konuşan geveze insanlarız.&lt;/p&gt;
+
+&lt;p&gt;Oldukça heyecanlıyız çünkü; bir araya gelerek bildiklerimizi hem kendimizle hem de bize katılmak isteyen herkesle paylaşmak istiyoruz. Dünyanın çok hızlı ilerlediğini biliyoruz. Okunacak, öğrenilecek ve yapılacak çok şey var. Gelişim yolunda Son Samuray değil, 300 Spartalı olmak istiyoruz. Bu nedenle Mavidurak-IO‘yu kurmak üzereyiz. Fakat bir kaç nerd‘e daha(200 küsür kadar) ihtiyaç var.&lt;/p&gt;
+
+&lt;p&gt;Haydi! Sen de aramıza katıl. Bu oluşuma destek ver ve fikirlerimize fikir kat.&lt;/p&gt;
+
+&lt;p&gt;Yapılacak çok iş var.&lt;/p&gt;
+</description>
+        <pubDate>2014-08-12 16:09:27 +0300</pubDate>
+        <link>http://mavidurak.github.io/mavidurak/2014/08/12/mavidurak-io-first-commit.html</link>
+        <guid isPermaLink="true">http://mavidurak.github.io/mavidurak/2014/08/12/mavidurak-io-first-commit.html</guid>
+        
+        
+        <category>mavidurak</category>
+        
+      </item>
+    
+  </channel>
+</rss>
