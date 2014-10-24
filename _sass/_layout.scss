@@ -40,14 +40,17 @@
     .page-link {
         color: $text-color;
         line-height: $base-line-height;
+        padding: 5px;
+        border-radius: 5px;
 
         // Gaps between nav items, but not on the first one
         &:not(:first-child) {
             margin-left: 20px;
         }
         &:hover {
-            background-color: $text-color;
+            background-color: $brand-color;
             color: $white;
+            text-decoration: none;
         }
     }
 
