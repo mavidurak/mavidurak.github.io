@@ -255,4 +255,9 @@ a.rss-button {
     background-repeat: no-repeat;
     color: #fe6529;
     text-decoration: none;
+    padding: 5px;
+    &:hover {
+        background-color: #fe6529;
+        color: $white;
+    }
 }
