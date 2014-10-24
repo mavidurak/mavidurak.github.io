@@ -12,20 +12,7 @@ layout: default
         <span class="post-meta">
             {% assign m = page.date | date: "%-m" %}
             {{ page.date | date: "%-d" }}
-            {% case m %}
-              {% when '1' %}Ocak
-              {% when '2' %}Subat
-              {% when '3' %}Mart
-              {% when '4' %}Nisan
-              {% when '5' %}Mayis
-              {% when '6' %}Haziran
-              {% when '7' %}Temmuz
-              {% when '8' %}Agustos
-              {% when '9' %}Eylul
-              {% when '10' %}Ekim
-              {% when '11' %}Kasim
-              {% when '12' %}Aralik
-            {% endcase %}
+
             {{ page.date | date: "%Y" }}
         </span>
         <h2>
