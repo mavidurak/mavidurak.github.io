@@ -5,7 +5,25 @@ layout: default
 
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+    <p class="post-meta">
+    {% assign m = post.date | date: "%-m" %}
+    {{ post.date | date: "%-d" }}
+    {% case m %}
+      {% when '1' %}Ocak
+      {% when '2' %}Şubat
+      {% when '3' %}Mart
+      {% when '4' %}Nisan
+      {% when '5' %}Mayıs
+      {% when '6' %}Haziran
+      {% when '7' %}Temmuz
+      {% when '8' %}Ağustos
+      {% when '9' %}Eylül
+      {% when '10' %}Ekim
+      {% when '11' %}Kasım
+      {% when '12' %}Aralık
+    {% endcase %}
+    {{ post.date | date: "%Y" }}
+    {% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
   </header>
 
   <article class="post-content">
