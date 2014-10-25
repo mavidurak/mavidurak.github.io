@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Mavidurak-IO Deklerasyonu"
+title:  "Mavidurak-IO Deklarasyonu"
 date:   2014-08-19 13:09:27
 categories: mavidurak
 ---

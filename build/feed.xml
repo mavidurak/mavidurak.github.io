@@ -6,8 +6,8 @@
 </description>
     <link>http://mavidurak.github.io/</link>
     <atom:link href="http://mavidurak.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>2014-10-25 14:20:03 +0300</pubDate>
-    <lastBuildDate>2014-10-25 14:20:03 +0300</lastBuildDate>
+    <pubDate>2014-10-25 14:26:48 +0300</pubDate>
+    <lastBuildDate>2014-10-25 14:26:48 +0300</lastBuildDate>
     <generator>Jekyll v</generator>
     
       <item>
@@ -941,7 +941,7 @@ $ git push origin master&lt;/code&gt;&lt;/pre&gt;
       </item>
     
       <item>
-        <title>Mavidurak-IO Deklerasyonu</title>
+        <title>Mavidurak-IO Deklarasyonu</title>
         <description>&lt;p&gt;Mavidurak-IO ne için var, ne yapmak istiyor ve nasıl yapmak istiyor sorularına vereceğimiz cevaplar bu başlık altında toplanacaktır. Önerilerinizi ve düzenlemeleriniz GitHub üzerinde bulunan &lt;a href=&quot;https://github.com/mavidurak/declaration&quot;&gt;repomuza&lt;/a&gt; pull-request ile gönderebilirsiniz.&lt;/p&gt;
 
 &lt;h3 id=&quot;ama-kural-ve-hedefler&quot;&gt;Amaç, Kural ve Hedefler&lt;/h3&gt;
