@@ -71,7 +71,98 @@
   </header>
 
   <article class="post-content">
-    
+    <p>Merhaba bugün 2014 model bir dil (Swift) ile gelen, çokta aşina olmadığımız bir kavrama değineceğim.</p>
+
+<p>Apple’ ın desteği ile çıkan Swift yeni olmasının getirdiği bir çok avantaja sahip. Bunlardan bir tanesi, programlamada eksikliği hissedilen durumlara çözüm üreterek gelmesidir. Lafı daha fazla uzatmadan Optional kavramına giriş yapalım, buyrun.</p>
+
+<p>Optional, türkçede ki karşılığı opsiyonel, isteğe bağlı, standart olmayan anlamına gelmektedir. Ben yine burada yazarken Optional olarak kullanacağım.</p>
+
+<h2 id="problem">Problem?</h2>
+
+<p>Düşünün bir fonksiyonunuz var, sonucu ise gelen değere göre değişecek (bazen bir değer verip, bazende bir değer vermeme durumu var). Apple’ ın daha önce uygulama geliştirmek için kullandığı Objective - C dilinde bu durum obje veya nil (boş değer) döndürerek çözülür. Ancak bu durum sadece objeler için geçerlidir. Obje dışında ki veri türleri için <code>NSNotFound</code> gibi özel bir değer döndürülür. Bu gibi durumlarda geriye dönecek değer bilinmelidir, yoksa çok ciddi güvenlik problemleri oluşabilir veya Runtime (Çalışma zamanı) hatası alabiliriz.  </p>
+
+<h2 id="optional-kavram">Optional Kavramı</h2>
+
+<p>Yukarıda da bahsettik bu dilin yeni olmasının avantajı daha önce eksikliği hissedilmiş konulara çözüm getirmesiydi, Optional da bunlardan biri. Program yazarken sonucu net olmayan durumlarla karşılaşabiliriz, ailenin yeni üyesi (Swift), belirsizlikleri ortadan kaldırmak için tüm veri türlerini kapsayan, <code>Optional</code>’ ı beraberinde getirdi.</p>
+
+<p>Hemen bir tane Optional tanımlayalım.</p>
+
+<div>
+  <pre><code class="swift">var optionalValue : Int?</code></pre>
+</div>
+
+<p><code>optionalValue</code> adında Integer bir Optional tanımladık, dikkat ederseniz normal bir değişken tanımlamadan farkı, veri tipinin sonuna <code>?</code> gelmesidir.</p>
+
+<p>Optional olarak bir değişken tanımladınız ve program öyle bir yere geldi ki sonucun ne olacağı belli, <code>?</code> işareti ile sonuca ulaşabilirsin.</p>
+
+<p>Madem o kadar eminsin buyur.</p>
+
+<div>
+  <pre><code class="swift">var possibleString : String? = &quot;Merhaba&quot;
+
+println(possibleString!) // Ünlem işarei ile sonuca direkt ulaştık ve yazdırdık.</code></pre>
+</div>
+
+<p>Swift bize her ne kadar doğrudan erişim sunsa da uzmanlar böyle bir kullanıma sıcak bakmıyorlar. Peki önerilen ne? Şöyle ki; biz bu Optional değişkenimizi if - else yapısıyla entegre bir şekilde kullanabiliyoruz ve tavsiye edilende bu şekilde.</p>
+
+<div>
+  <pre><code class="swift">if possibleString {
+
+println(&quot;possibleString değeri : \(possibleString!)&quot;)
+
+} else {
+
+println(&quot;possibleString değeri nil&quot;)
+
+}</code></pre>
+</div>
+
+<p><code>possibleString</code> değeri varsa ekrana yazacaktır, eğer yoksa da <code>nil</code>’ dir. Sağlıklı olan budur.</p>
+
+<p>Biz bunu neden yaptık? Belirsizlikleri ortadan kaldırmış olduk, burada çok fark etmeyebilir ancak büyük çaplı projelerde fark eder, kod satırlarımız kısalır ve dökümantasyonu yazarken ciddi anlamda işimizi kolaylaştırır, standartlar bellidir.</p>
+
+<p>Son olarak küçük bir uygulama yapıp bitirelim.</p>
+
+<p>Bir metin için aradığımız karakterin yerini gösteren bir uygulama olsun.</p>
+
+<p>Harfin yerini döndüren bir fonksiyon yazalım.</p>
+
+<div>
+  <pre><code class="swift">func positionFinding (letter: Character, str: String) -&gt; Int? {
+
+    var location = 0
+    for l in str {
+        var location++
+        if l == letter {
+            return location
+        }
+    }
+    return nil
+}</code></pre>
+</div>
+
+<p>Fonksiyonumuz bu kadar, harfi ve metni parametre olarak alıyoruz, konumumu tutacak <code>location</code> adında bir değişken tanımladık ve çok aşina olmadığımız for döngüsüyle metnin harflerini tek tek kontrol kontrol ediyoruz.</p>
+
+<p>Dikkat ederseniz fonksiyon dönüş tipini Optional Integer olarak belirledik, yani bu fonksiyon bize Integer bir değerde döndürebilir veya hiç bir şey döndürmez (nil), bu fonksiyon bize ya harfin yerini verecek ya da boş bir değer verecek.</p>
+
+<p>Optional olarak tanımlanmayan bir değişkeni nil olarak tanımlayamayız, biz fonksiyonumuzun Optional bir değer döndüreceğini belirtmeseydik nil olarak döndüremezdik, hata alırdık.</p>
+
+<div>
+  <pre><code class="swift">if let location = positionFinding (&quot;d&quot;, &quot;test-mavidurak&quot;) {
+    println(&quot;Aranan Harf \(location). karakterde.&quot;)
+} else {
+    println(&quot;Harf yok kardeşim (nil).&quot;)
+}</code></pre>
+</div>
+
+<p>Burada da fonksiyonumuzu if - else yapısıyla kullanarak, fonksiyondan gelecek veriye göre çözüm üretiyoruz.</p>
+
+<p>Uygulama geliştirirken çok yerde kullanacağınız bir kavram. Umarım faydalı olmuştur.</p>
+
+<p>Görüşmek üzere.</p>
+
+<p>Ömer Faruk Görmel <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#103;&#111;&#114;&#109;&#101;&#108;&#111;&#109;&#101;&#114;&#102;&#097;&#114;&#117;&#107;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#103;&#111;&#114;&#109;&#101;&#108;&#111;&#109;&#101;&#114;&#102;&#097;&#114;&#117;&#107;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a> (<a href="https://twitter.com/gormelof">@gormelof</a>)</p>
+
 
     <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
         <a class="a2a_button_facebook"></a>
