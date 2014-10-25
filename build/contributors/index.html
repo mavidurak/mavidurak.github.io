@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="B1nGWtHUFSp_F__6iggXUO2ykFFAyQ5biqd8C_7aKIM" />
-    <title>Express İçin Kendi Template Motorunuzu Geliştirin</title>
+    <title>Katkıda Bulunanlar</title>
     <meta name="description" content="Mavidurak-IO Sakarya'da yaşayan ya da Sakarya'da öğrenim  gören geliştiricilerin oluşturduğu topluluktur.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://mavidurak.github.io/nodejs/2014/10/20/express-icin-kendi-template-motorunuzu-gelistirin.html">
+    <link rel="canonical" href="http://mavidurak.github.io/contributors/">
 </head>
 
 
@@ -61,102 +61,23 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Express İçin Kendi Template Motorunuzu Geliştirin</h1>
-    <p class="post-meta">
-    
-    
-    
-    
-    </p>
+    <h1 class="post-title">Katkıda Bulunanlar</h1>
   </header>
 
   <article class="post-content">
-    <p>Merhabalar</p>
+    <p>Kolektif Mavi’ye katkıda bulunmak çok kolay! Bunu daha önce <a href="http://mavidurak.github.io/mavidurak/2014/08/19/siz-de-blog-yazisi-yayinlayin.html">şurada</a> anlatmıştık. Aşağıda şimdiye kadar bu kolektif blogu çeşitli katkılarıyla destekleyenlere yer verdik. Umuyoruz ki bu liste uzar gider…</p>
 
-<p>Bu yazımda express uygulamalarımızda kullanmak üzere kendi template motorlarımızı nasıl yaratabileceğimizi anlatmaya çalışıyorum.</p>
+<ul>
+  <li><a href="https://twitter.com/iozguradem">Özgür Adem Işıklı</a></li>
+  <li><a href="https://twitter.com/frknbasaran">Furkan Başaran</a></li>
+  <li><a href="https://twitter.com/okanvurdu">Okan Vurdu</a></li>
+  <li><a href="https://twitter.com/doganderya59">Doğan Derya</a></li>
+  <li><a href="https://twitter.com/gormelof">Ömer Faruk Görmel</a></li>
+  <li><a href="https://twitter.com/oray_28">Onur Altunsoy</a></li>
+  <li><a href="https://twitter.com/FeCassie">Fatih Erdoğan</a></li>
+</ul>
 
-<p>Node JS’in en popüler uygulama geliştirme çatısı olan express’de server-side render yani sunucu taraflı çıktı hazırlama işlemleri için template engine adı verilen şablon motorlarını kullanırız, örneğin en popülerleri <b>jade</b> ve <b>ejs</b> dir.</p>
-
-<p>Peki eğer istersek bizim belirlediğimiz kurallarla çalışan kendi template motorlarımızı yaratmamız mümkün mü?</p>
-
-<p><b>Tabi ki mümkün</b></p>
-
-<p>Express’de kullanmak üzere kendi template motorunu yaratmak için <code>app.engine(ext, callback)</code> metodunu kullanabilirsin, bu metodun aldığı birinci parametre <code>ext</code> <b>extension</b> yani dosya uzantısını temsil eder, ikinci parametre de template motorunun dosyayı kabul ettikten sonra yapacağı işlemler için bir asenkron fonksiyondur, bu fonksiyona girilecek objeler <b>filePath</b> adındaki dosya adresi ve  şablona basılacak dinamik değerleri içerecek olan <b>options</b> objesidir.</p>
-
-<p>Şimdi aşağıdaki kodla çok basit bi template motoru geliştirelim, dosya uzantımız “.ebe” olsun.</p>
-
-<div>
-  <pre><code class="javascript">var fs = require('fs'); // dosya işlemleri yapacağımız için fs modülünü çağırmak zorundayız
-app.engine('ebe', function (filePath, options, callback) { // burada template incaynımızı tanımlıyoruz ^^
-  fs.readFile(filePath, function (err, content) {
-    if (err) throw new Error(err);
-    // burada çok basit bi render işlemi yapıyoruz ancak mantığı anlamana yetecektir
-    var rendered = content.toString().replace('#title#', '&lt;title&gt;'+ options.title +'&lt;/title&gt;')
-    .replace('#message#', '&lt;h1&gt;'+ options.message +'&lt;/h1&gt;');
-    return callback(null, rendered);
-  })
-});
-app.set('views', './views'); // burada views klasörümüzü kendimiz belirleyebiliriz
-app.set('view engine', 'ebe'); // dosya uzantımızı belirterek template motorumuzu express'e tanımlıyoruz</code></pre>
-</div>
-
-<p>Express uygulamamız artık <b>.ebe</b> uzantılı dosyaları render edebilecek, hemen index.ebe adında bir dosya oluşturup <b>view</b> klasörünün içine atalım ve içine şunları yazalım.</p>
-
-<div>
-  <pre><code class="javascript">#title#
-#message#</code></pre>
-</div>
-
-<p>Daha sonra express uygulamamızda şu rotayı tanımlıyoruz.</p>
-
-<div>
-  <pre><code class="javascript">app.get('/', function (req, res) {
-  res.render('index', { title: 'Ebe Template Engine', message: 'Web artık ebelere emanet!'});
-})</code></pre>
-</div>
-
-<p>Uygulamayı ayağa kaldırdıktan sonra “/” adresini ziyaret edip sonucun html’e render edilmiş halini görebilirsin.</p>
-
-<p>Furkan BAŞARAN <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#102;&#114;&#107;&#110;&#098;&#097;&#115;&#097;&#114;&#097;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#102;&#114;&#107;&#110;&#098;&#097;&#115;&#097;&#114;&#097;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a>
-@frknbasaran</p>
-
-
-
-    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-        <a class="a2a_button_facebook"></a>
-        <a class="a2a_button_twitter"></a>
-        <a class="a2a_button_google_plus"></a>
-        <a class="a2a_button_linkedin"></a>
-    </div>
   </article>
-
-    <div id="disqus_thread"></div>
-
-    <script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'mavidurakio'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-33233667-6', 'auto');
-  ga('send', 'pageview');
-
-</script>
 
 </div>
 

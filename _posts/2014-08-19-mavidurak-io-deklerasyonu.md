@@ -24,11 +24,3 @@ Mavidurak-IO ne için var, ne yapmak istiyor ve nasıl yapmak istiyor soruların
 * Dökümantasyon
 * Versiyonlama
 * Standart Oluşturma
-
-### Ameleler
-
-* [frknbasaran](https://github.com/frknbasaran)
-* [gormelof](https://github.com/gormelof)
-* [onuraltunsoy](https://github.com/onuraltunsoy)
-* [ozziest](https://github.com/ozziest)
-* [co3moz](https://github.com/co3moz)
