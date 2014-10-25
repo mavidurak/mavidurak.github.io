@@ -24,7 +24,7 @@
     float: left;
     font-family: "Raleway";
     font-weight: 800;
-    color: $white;
+    color: #fff;
 }
 
 .site-nav {
@@ -46,7 +46,7 @@
             margin-left: 20px;
         }
         &:hover {
-            background-color: $white;
+            background-color: #fff;
             color: $brand-color;
             text-decoration: none;
         }
