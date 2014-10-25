@@ -11,7 +11,8 @@
     min-height: 56px;
 
     // Positioning context for the mobile navigation icon
-    position: relative;
+    position: fixed;
+    width: 100%;
     background-color: $brand-color;
     color: $white;
 }
