@@ -71,66 +71,7 @@
   </header>
 
   <article class="post-content">
-    <p>Mavidurak-IO’nun hedeflerinden biri de kollektif bir blog oluşturmaktır. Bu nedenle sizin de Mavidurak-IO üzerinde blog yazısı oluşturarak paylaşmanızı destekler. Sizin seçeceğiniz ana dalı bilişim olan bir konu üzerinde blog yazısı hazırlayarak, Mavidurak-IO blogunda yayınlayabilirsiniz.</p>
-
-<h3 id="nasl-birlikte-allr">Nasıl Birlikte Çalışılır?</h3>
-
-<p>Yayınlama işlemi blogumuz GitHub üzerinde konuşlandığından, GitHub kullanılarak yapılmaktadır. Bunun için öncelikle bir <a href="http://github.com">GitHub Hesabı</a>‘nız olmalıdır. </p>
-
-<p>GitHub hesabınızla oturum açtıktan sonra, blogumuzun bulunduğu repoyu <strong>fork</strong>lamanız gerekmektedir. Bunun için <a href="https://github.com/mavidurak/mavidurak.github.io">repomuza</a> giderek, sağ tarafta bulunan <strong>Fork</strong> butonuna basmanız gerekmektedir. Bu işlemden sonra sizin hesabınız üzerinde blogumuzun bir kopyası oluşacaktır. </p>
-
-<p>Daha sonra GitHub üzerinde oluşturduğunuz bu yeni depoyu makinenize almalısınız:</p>
-
-<div>
-  <pre><code class="bash">git clone git@github.com:kullanici_adiniz/mavidurak.github.io.git</code></pre>
-</div>
-
-<p>Kendi kopyanız üzerinde çalıştığınız esnada, diğer değişiklikleri de takip etmek için deposunuzda uzak başvuru oluşturmanız gerekmektedir;</p>
-
-<div>
-  <pre><code class="bash">git remote add mavidurak git://github.com/mavidurak/mavidurak.github.io.git
-git fetch mavidurak</code></pre>
-</div>
-
-<p>Bu işlemden sonra birlikte çalışmaya hazırız demektir. </p>
-
-<h3 id="blog-yazs-oluturma">Blog Yazısı Oluşturma</h3>
-
-<p>Blog sistemimiz <code>Jenkyll</code> temeli üzerine inşaa edilmiştir. Kurulum aşamalarını <a href="http://aristona.github.io/jekyll-ve-github-pages-kullanarak-kendi-blogumuzu-olusturmak/">bu makaleyi</a> okuyarak öğrenebilirsiniz.</p>
-
-<p>Blog yazılarınız depo içerisindeki <code>_posts</code> klasörü altında listelenmektedir. Daha önce yazılmış blog yazılarını inceleyerek isimlendirme hakkında bilgi sahibi olabilirsiniz. </p>
-
-<p>Yeni bir blog yazısı oluşturduğunuzda, aşağıdaki gibi temel bilgilerin dosyasınız başında olması gerekmektedir.</p>
-
-<div>
-  <pre><code class="text">---
-layout: post
-title:  &quot;Blog Yazınızın Başlığı&quot;
-date:   2014-08-19 13:09:27
-categories: kategori diğer php java
----</code></pre>
-</div>
-
-<p>Yazınızı test etmek için aşağıdaki komutu kullanabilirsiniz. Komutu uyguladıktan sonra <code>http://localhost:4000</code> adresinden blogu görüntüleyebilirsiniz.</p>
-
-<div>
-  <pre><code class="bash">$ jenkyll serve</code></pre>
-</div>
-
-<p>Yazınızı oluştururken <a href="https://help.github.com/articles/markdown-basics">Markdown</a> formatını kullanmanız gerekmektedir. </p>
-
-<h3 id="yaznz-yaynlamak">Yazınızı Yayınlamak</h3>
-
-<p>Yazınızı tamamladıktan sonra aşağıdaki gibi değişiklikleri kendi reponuza gönderebilirsiniz.</p>
-
-<div>
-  <pre><code class="bash">$ git add .
-$ git commit -m &quot;Örnek blog yazısı eklendi.&quot;
-$ git push origin master</code></pre>
-</div>
-
-<p>Bu işlemden sonra depoları birleştirmek için kendi proje sayfasınıza girerek <code>Pull Request</code> butonuna tıklamanız yeterlidir. </p>
-
+    
 
     <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
         <a class="a2a_button_facebook"></a>
