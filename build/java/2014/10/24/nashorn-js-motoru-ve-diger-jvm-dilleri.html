@@ -134,7 +134,7 @@ ScriptEngine engine = ScriptEngineFactory.getEngine(&quot;jruby&quot;);
 ScriptEngine engine = ScriptEngineFactory.getEngine(&quot;jython&quot;);</code></pre>
 </div>
 
-<h2 id="nashorn">NASHORN</h2>
+<h2 id="nashorn">Nashorn</h2>
 
 <p>Nashorn, Java 8 için özel olarak sıfırdan geliştirilen bir JavaScript motorudur.En buyuk avantajı jvm  ortamında  javascript dilini kullanmaya  olanak tanır.Aslında JVM içinde javascript çalışması okadar da yeni değil 1998 yılında  çıkarılan Rhino motoru  kullanılıyordu fakat  diğer js mootorlarına  göreçok yavaştı. Nashorn, Rhino JavaScript motoruna göre 5 kat daha fazla performans sunmaktadır.</p>
 
@@ -142,8 +142,8 @@ ScriptEngine engine = ScriptEngineFactory.getEngine(&quot;jython&quot;);</code><
 
 <p>JVM dillerinden Java Scripting API destekleyenler, ScriptEngine eval metodu ile kod bloklarını koşturma imkanı elde etmektedir. Bu sayede ortak arayüz bileşenleri üzerinden Java harici diller JVM üzerinde koşturulabilmektedir.</p>
 
-<p>js de diziler dinemiktir  eleman eklendiğinde  devamlı  elaman eklenebilir. nashorn tip dönüşümü açısından  sadece  dizilere  izin veriyor.
-## NASHORN’U NERDE KULLANABİLİRİZ
+<p>JS’de diziler dinamiktir. Bir eleman eklendiğinde devamlı olarakelaman eklenebilir. Nashorn tip dönüşümü açısından sadece  dizilere  izin vermektedir.
+## Kullanım Alanları
 -konsolda(jjs)
 -masaüstü ve  javascript
 -java fx projelerinde
@@ -159,18 +159,16 @@ String sonuc=(String)engine.eval(topla(3,5);); //topla isimli JavaScript fonksiy
 System.out.println(sonuc); // topla fonksiyonu Nashorn ile koşturuluyor, ve sonucu elde ediliyor.sonuc=8</code></pre>
 </div>
 
-<h2 id="jjsjava-javascrpt-shell">JJS(JAVA JAVASCRİPT SHELL)</h2>
+<h2 id="jjsjava-javascript-shell">JJS(Java Javascript Shell)</h2>
 <p>nashornun  bir komut aracı ( shell)i var . java8 bilgisayarınızda yüklü ise hemen cmd yi açıp JJS yazıp  javascript kodlarınızı  yazıp çalıştıabilir veya cmd den  dosyanızın oldugu bölüme kadar  gelin ve  jjs yi çalıştırın daha sonra load(“dosyanızın_adı.js”); komutuu girersk çalıştırın. jjs  de  console.log  diye ekrana  çıktı veremeyiz tabiki  onun  yerine  print(); kullanacağız</p>
 
-<h2 id="avatarjs">AVATAR.JS</h2>
+<h2 id="avatarjs">Avatar.JS</h2>
 
-<p>oracle  tarafından geliştirilen javascript dilidir .Nashorn js motoru içinde çalıştırılabilir.avatar js yi kullanabilmek için minimum java 8  gerekir
-open jdk  sitesinden bulunabilir.avatarjs  nodejs ye benzetilebilir. nashorn ile  avatar.js ile  kullanabiliriz
-js ile yazılmış kompanentleri bileşenleri kullanabiliyoruz.
-Bir node.js  geliştiricisi avatar.js ile javanın framework’üne , teknolojisine erişmek  isterse  avatar.js kullanabilir ve  REST kullanmaya ,websocket uygulamaarı geliştirebilir
-https://avatar.java.net avatar js ye burdan ulaşabilirsiniz.</p>
+<p>Oracle  tarafından geliştirilen javascript dilidir. Nashorn JS motoru içinde çalıştırılabilir. Avatar.js’yi kullanabilmek için minimum Java 8  sürümü gerekmektedir. Open JDK  <a href="https://avatar.java.net">sitesinden</a> indirilebilir. Avatar.js,Node.js’ye benzetilebilir. Nashorn ile  Avatar.js’yi birlikte kullanabiliriz.</p>
 
-<h3 id="engne--versyonlari--ve---nashorn--takma-adlari">ENGİNE  VERSİYONLARI  VE   NASHORN  TAKMA ADLARI</h3>
+<p>Bir Node.js  geliştiricisi, Avatar.js ile Java’nın framework’üne ya da teknolojisine erişmek  isterse,  Avatar.js kullanabilir. </p>
+
+<h3 id="engine-versiyonlar-ve-nashorn-takma-adlar">Engine Versiyonları ve Nashorn Takma Adları</h3>
 <div>
   <pre><code class="java">public  static  void main(String  args[])throws FileNotFoundException,ScriptException{
 ScriptEngineManager  mgr= new ScriptEngineManager();
@@ -185,7 +183,7 @@ for(ScriptEngineFactory  factory : mgr.getEngineFactories()) {
 }</code></pre>
 </div>
 
-<h2 id="nvocable-arayz">İNVOCABLE ARAYÜZÜ</h2>
+<h2 id="invocable-arayz">Invocable Arayüzü</h2>
 <div>
   <pre><code class="java">public  static  void  main(String [] args )throws ScriptException,NoSuchMethodException{
 // invocable arayüzü java tarafından  javascript fonksiyonarını koşturmak için  bulunan  opsiyonel  bir arayüzdürs
@@ -209,7 +207,7 @@ System.out.println(inv.invokeFunction(&quot;calculate&quot;,5,4));
 20.0</code></pre>
 </div>
 
-<h2 id="eval-metodu-le-rnek">EVAL METODU İLE ÖRNEK</h2>
+<h2 id="eval-metodu-rnei">Eval Metodu Örneği</h2>
 <div>
   <pre><code class="java">public  static  void  main(String [] args )throws ScriptException{
 ScriptEngine engine = new ScriptEngineManager().getEngineByName(&quot;nashorn&quot;);
@@ -222,7 +220,7 @@ engine.eval(&quot;print(JSON.stringify(person));&quot;);
 }</code></pre>
 </div>
 
-<h2 id="java-arraylst--sinifini-kullanma">JAVA ARRAYLİST  SINIFINI KULLANMA</h2>
+<h2 id="java-arraylist-snfn-kullanma">Java Arraylist Sınıfını Kullanma</h2>
 
 <div>
   <pre><code class="javascript">var  arrayList= java.util.ArrayList;
@@ -231,7 +229,7 @@ arrayListType.add('onur');
 print(arrayListType.size());</code></pre>
 </div>
 
-<h3 id="js-nesnelern-json-trnden-yazma">JS NESNELERİNİ JSON TÜRÜNDEN YAZMA</h3>
+<h3 id="js-nesnelerini-json-olarak-yazma">JS Nesnelerini JSON Olarak Yazma</h3>
 <div>
   <pre><code class="javascript">var  person ={};
 person.name=&quot;onur&quot;;
@@ -243,7 +241,7 @@ print (JSON.stringify(person));
 print(person.fullName());</code></pre>
 </div>
 
-<h3 id="java-nin--thread-sinifini-js--nde-kullanma">JAVA NIN  THREAD SINIFINI JS  İÇİNDE KULLANMA</h3>
+<h3 id="javann-thread-snfn-javascript-inde-kullanma">Java’nın Thread Sınıfını JavaScript İçinde Kullanma</h3>
 <div>
   <pre><code class="javascript">var Thread = Java.type(&quot;java.lang.Thread&quot;);
 var MyThread = Java.extend(Thread, {
@@ -256,7 +254,7 @@ th.start();
 th.join();</code></pre>
 </div>
 
-<h3 id="javanin-hashmap-sinifini-kullanma">JAVANIN HASHMAP SINIFINI KULLANMA</h3>
+<h3 id="javann-hashmap-snfn-kullanma">Java’nın Hashmap Sınıfını Kullanma</h3>
 
 <div>
   <pre><code class="javascript">var HashMap = java.util.HashMap;
@@ -269,7 +267,7 @@ for (var  key  in map) print(&quot;key  &quot;+key);
 for each(var value in map) print(&quot;value  &quot;+value);</code></pre>
 </div>
 
-<p>SONUÇ:</p>
+<p>Sonuç:</p>
 <div>
   <pre><code class="html">phone  grey
 key  apple
@@ -280,7 +278,7 @@ value  black
 value  grey</code></pre>
 </div>
 
-<h2 id="java-strng--sinifi-kullanma">JAVA STRİNG  SINIFI KULLANMA</h2>
+<h2 id="string-snfn-kullanma">String Sınıfını Kullanma</h2>
 
 <div>
   <pre><code class="javascript">var StrArray = Java.type(&quot;java.lang.String&quot;);
@@ -344,7 +342,7 @@ StrArray[0]=&quot;ömer&quot;;</code></pre>
     <div class="footer-col-wrapper">
       <div class="footer-col  footer-col-1">
         <ul class="contact-list">
-          <li>Kolektif Mavi</li>
+          <li>MaviDurak.IO Blogu</li>
           <li><a href="mailto:mavidurak.io@gmail.com">mavidurak.io@gmail.com</a></li>
         </ul>
       </div>

@@ -6,8 +6,8 @@
 </description>
     <link>http://mavidurak.github.io/</link>
     <atom:link href="http://mavidurak.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>2014-10-25 13:37:52 +0300</pubDate>
-    <lastBuildDate>2014-10-25 13:37:52 +0300</lastBuildDate>
+    <pubDate>2014-10-25 13:45:34 +0300</pubDate>
+    <lastBuildDate>2014-10-25 13:45:34 +0300</lastBuildDate>
     <generator>Jekyll v</generator>
     
       <item>
@@ -75,7 +75,7 @@ ScriptEngine engine = ScriptEngineFactory.getEngine(&amp;quot;jruby&amp;quot;);
 ScriptEngine engine = ScriptEngineFactory.getEngine(&amp;quot;jython&amp;quot;);&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;nashorn&quot;&gt;NASHORN&lt;/h2&gt;
+&lt;h2 id=&quot;nashorn&quot;&gt;Nashorn&lt;/h2&gt;
 
 &lt;p&gt;Nashorn, Java 8 için özel olarak sıfırdan geliştirilen bir JavaScript motorudur.En buyuk avantajı jvm  ortamında  javascript dilini kullanmaya  olanak tanır.Aslında JVM içinde javascript çalışması okadar da yeni değil 1998 yılında  çıkarılan Rhino motoru  kullanılıyordu fakat  diğer js mootorlarına  göreçok yavaştı. Nashorn, Rhino JavaScript motoruna göre 5 kat daha fazla performans sunmaktadır.&lt;/p&gt;
 
@@ -83,8 +83,8 @@ ScriptEngine engine = ScriptEngineFactory.getEngine(&amp;quot;jython&amp;quot;);
 
 &lt;p&gt;JVM dillerinden Java Scripting API destekleyenler, ScriptEngine eval metodu ile kod bloklarını koşturma imkanı elde etmektedir. Bu sayede ortak arayüz bileşenleri üzerinden Java harici diller JVM üzerinde koşturulabilmektedir.&lt;/p&gt;
 
-&lt;p&gt;js de diziler dinemiktir  eleman eklendiğinde  devamlı  elaman eklenebilir. nashorn tip dönüşümü açısından  sadece  dizilere  izin veriyor.
-## NASHORN’U NERDE KULLANABİLİRİZ
+&lt;p&gt;JS’de diziler dinamiktir. Bir eleman eklendiğinde devamlı olarakelaman eklenebilir. Nashorn tip dönüşümü açısından sadece  dizilere  izin vermektedir.
+## Kullanım Alanları
 -konsolda(jjs)
 -masaüstü ve  javascript
 -java fx projelerinde
@@ -100,18 +100,16 @@ String sonuc=(String)engine.eval(topla(3,5);); //topla isimli JavaScript fonksiy
 System.out.println(sonuc); // topla fonksiyonu Nashorn ile koşturuluyor, ve sonucu elde ediliyor.sonuc=8&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;jjsjava-javascrpt-shell&quot;&gt;JJS(JAVA JAVASCRİPT SHELL)&lt;/h2&gt;
+&lt;h2 id=&quot;jjsjava-javascript-shell&quot;&gt;JJS(Java Javascript Shell)&lt;/h2&gt;
 &lt;p&gt;nashornun  bir komut aracı ( shell)i var . java8 bilgisayarınızda yüklü ise hemen cmd yi açıp JJS yazıp  javascript kodlarınızı  yazıp çalıştıabilir veya cmd den  dosyanızın oldugu bölüme kadar  gelin ve  jjs yi çalıştırın daha sonra load(“dosyanızın_adı.js”); komutuu girersk çalıştırın. jjs  de  console.log  diye ekrana  çıktı veremeyiz tabiki  onun  yerine  print(); kullanacağız&lt;/p&gt;
 
-&lt;h2 id=&quot;avatarjs&quot;&gt;AVATAR.JS&lt;/h2&gt;
+&lt;h2 id=&quot;avatarjs&quot;&gt;Avatar.JS&lt;/h2&gt;
 
-&lt;p&gt;oracle  tarafından geliştirilen javascript dilidir .Nashorn js motoru içinde çalıştırılabilir.avatar js yi kullanabilmek için minimum java 8  gerekir
-open jdk  sitesinden bulunabilir.avatarjs  nodejs ye benzetilebilir. nashorn ile  avatar.js ile  kullanabiliriz
-js ile yazılmış kompanentleri bileşenleri kullanabiliyoruz.
-Bir node.js  geliştiricisi avatar.js ile javanın framework’üne , teknolojisine erişmek  isterse  avatar.js kullanabilir ve  REST kullanmaya ,websocket uygulamaarı geliştirebilir
-https://avatar.java.net avatar js ye burdan ulaşabilirsiniz.&lt;/p&gt;
+&lt;p&gt;Oracle  tarafından geliştirilen javascript dilidir. Nashorn JS motoru içinde çalıştırılabilir. Avatar.js’yi kullanabilmek için minimum Java 8  sürümü gerekmektedir. Open JDK  &lt;a href=&quot;https://avatar.java.net&quot;&gt;sitesinden&lt;/a&gt; indirilebilir. Avatar.js,Node.js’ye benzetilebilir. Nashorn ile  Avatar.js’yi birlikte kullanabiliriz.&lt;/p&gt;
 
-&lt;h3 id=&quot;engne--versyonlari--ve---nashorn--takma-adlari&quot;&gt;ENGİNE  VERSİYONLARI  VE   NASHORN  TAKMA ADLARI&lt;/h3&gt;
+&lt;p&gt;Bir Node.js  geliştiricisi, Avatar.js ile Java’nın framework’üne ya da teknolojisine erişmek  isterse,  Avatar.js kullanabilir. &lt;/p&gt;
+
+&lt;h3 id=&quot;engine-versiyonlar-ve-nashorn-takma-adlar&quot;&gt;Engine Versiyonları ve Nashorn Takma Adları&lt;/h3&gt;
 &lt;div&gt;
   &lt;pre&gt;&lt;code class=&quot;java&quot;&gt;public  static  void main(String  args[])throws FileNotFoundException,ScriptException{
 ScriptEngineManager  mgr= new ScriptEngineManager();
@@ -126,7 +124,7 @@ for(ScriptEngineFactory  factory : mgr.getEngineFactories()) {
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;nvocable-arayz&quot;&gt;İNVOCABLE ARAYÜZÜ&lt;/h2&gt;
+&lt;h2 id=&quot;invocable-arayz&quot;&gt;Invocable Arayüzü&lt;/h2&gt;
 &lt;div&gt;
   &lt;pre&gt;&lt;code class=&quot;java&quot;&gt;public  static  void  main(String [] args )throws ScriptException,NoSuchMethodException{
 // invocable arayüzü java tarafından  javascript fonksiyonarını koşturmak için  bulunan  opsiyonel  bir arayüzdürs
@@ -150,7 +148,7 @@ System.out.println(inv.invokeFunction(&amp;quot;calculate&amp;quot;,5,4));
 20.0&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;eval-metodu-le-rnek&quot;&gt;EVAL METODU İLE ÖRNEK&lt;/h2&gt;
+&lt;h2 id=&quot;eval-metodu-rnei&quot;&gt;Eval Metodu Örneği&lt;/h2&gt;
 &lt;div&gt;
   &lt;pre&gt;&lt;code class=&quot;java&quot;&gt;public  static  void  main(String [] args )throws ScriptException{
 ScriptEngine engine = new ScriptEngineManager().getEngineByName(&amp;quot;nashorn&amp;quot;);
@@ -163,7 +161,7 @@ engine.eval(&amp;quot;print(JSON.stringify(person));&amp;quot;);
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;java-arraylst--sinifini-kullanma&quot;&gt;JAVA ARRAYLİST  SINIFINI KULLANMA&lt;/h2&gt;
+&lt;h2 id=&quot;java-arraylist-snfn-kullanma&quot;&gt;Java Arraylist Sınıfını Kullanma&lt;/h2&gt;
 
 &lt;div&gt;
   &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var  arrayList= java.util.ArrayList;
@@ -172,7 +170,7 @@ arrayListType.add('onur');
 print(arrayListType.size());&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;js-nesnelern-json-trnden-yazma&quot;&gt;JS NESNELERİNİ JSON TÜRÜNDEN YAZMA&lt;/h3&gt;
+&lt;h3 id=&quot;js-nesnelerini-json-olarak-yazma&quot;&gt;JS Nesnelerini JSON Olarak Yazma&lt;/h3&gt;
 &lt;div&gt;
   &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var  person ={};
 person.name=&amp;quot;onur&amp;quot;;
@@ -184,7 +182,7 @@ print (JSON.stringify(person));
 print(person.fullName());&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;java-nin--thread-sinifini-js--nde-kullanma&quot;&gt;JAVA NIN  THREAD SINIFINI JS  İÇİNDE KULLANMA&lt;/h3&gt;
+&lt;h3 id=&quot;javann-thread-snfn-javascript-inde-kullanma&quot;&gt;Java’nın Thread Sınıfını JavaScript İçinde Kullanma&lt;/h3&gt;
 &lt;div&gt;
   &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var Thread = Java.type(&amp;quot;java.lang.Thread&amp;quot;);
 var MyThread = Java.extend(Thread, {
@@ -197,7 +195,7 @@ th.start();
 th.join();&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;javanin-hashmap-sinifini-kullanma&quot;&gt;JAVANIN HASHMAP SINIFINI KULLANMA&lt;/h3&gt;
+&lt;h3 id=&quot;javann-hashmap-snfn-kullanma&quot;&gt;Java’nın Hashmap Sınıfını Kullanma&lt;/h3&gt;
 
 &lt;div&gt;
   &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var HashMap = java.util.HashMap;
@@ -210,7 +208,7 @@ for (var  key  in map) print(&amp;quot;key  &amp;quot;+key);
 for each(var value in map) print(&amp;quot;value  &amp;quot;+value);&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;SONUÇ:&lt;/p&gt;
+&lt;p&gt;Sonuç:&lt;/p&gt;
 &lt;div&gt;
   &lt;pre&gt;&lt;code class=&quot;html&quot;&gt;phone  grey
 key  apple
@@ -221,7 +219,7 @@ value  black
 value  grey&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;java-strng--sinifi-kullanma&quot;&gt;JAVA STRİNG  SINIFI KULLANMA&lt;/h2&gt;
+&lt;h2 id=&quot;string-snfn-kullanma&quot;&gt;String Sınıfını Kullanma&lt;/h2&gt;
 
 &lt;div&gt;
   &lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var StrArray = Java.type(&amp;quot;java.lang.String&amp;quot;);
