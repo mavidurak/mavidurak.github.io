@@ -39,9 +39,9 @@
         line-height: $base-line-height;
         padding: 5px;
         border-radius: 5px;
-        -webkit-transition: background-color ease 1s;
-        -moz-transition: background-color ease 1s;
-        transition: background-color ease 1s;
+        -webkit-transition: background-color ease .5s;
+        -moz-transition: background-color ease .5s;
+        transition: background-color ease .5s;
 
         // Gaps between nav items, but not on the first one
         &:not(:first-child) {
@@ -259,7 +259,7 @@ a.rss-button {
     text-decoration: none;
     -webkit-transition: padding ease 1s;
     -moz-transition: padding ease 1s;
-    transition: padding ease 1s;
+    transition: padding ease .2s;
     &:hover {
         background-color: #fe6529;
         color: $white;
