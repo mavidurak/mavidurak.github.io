@@ -73,7 +73,7 @@ Nashorn JavaScript motoru ecmascript 5.1 i destekler ecmascript  js dilinin stan
 
 JVM dillerinden Java Scripting API destekleyenler, ScriptEngine eval metodu ile kod bloklarını koşturma imkanı elde etmektedir. Bu sayede ortak arayüz bileşenleri üzerinden Java harici diller JVM üzerinde koşturulabilmektedir.
 
-js de diziler dinemiktir  eleman eklendiğinde  devamlı  elaman eklenebilir. nashorn tip dönüşümü açısından  sadece  dizilere  izin veriyor.
+JS'de diziler dinamiktir. Bir eleman eklendiğinde devamlı olarakelaman eklenebilir. Nashorn tip dönüşümü açısından sadece  dizilere  izin vermektedir.
 ## Kullanım Alanları
 -konsolda(jjs)
 -masaüstü ve  javascript
@@ -95,11 +95,9 @@ nashornun  bir komut aracı ( shell)i var . java8 bilgisayarınızda yüklü ise
 
 ## Avatar.JS
 
-Oracle  tarafından geliştirilen javascript dilidir .Nashorn js motoru içinde çalıştırılabilir.avatar js yi kullanabilmek için minimum java 8  gerekir
-open jdk  sitesinden bulunabilir.avatarjs  nodejs ye benzetilebilir. nashorn ile  avatar.js ile  kullanabiliriz
-js ile yazılmış kompanentleri bileşenleri kullanabiliyoruz.
-Bir node.js  geliştiricisi avatar.js ile javanın framework'üne , teknolojisine erişmek  isterse  avatar.js kullanabilir ve  REST kullanmaya ,websocket uygulamaarı geliştirebilir
-https://avatar.java.net avatar js ye burdan ulaşabilirsiniz.
+Oracle  tarafından geliştirilen javascript dilidir. Nashorn JS motoru içinde çalıştırılabilir. Avatar.js'yi kullanabilmek için minimum Java 8  sürümü gerekmektedir. Open JDK  [sitesinden](https://avatar.java.net) indirilebilir. Avatar.js,Node.js'ye benzetilebilir. Nashorn ile  Avatar.js'yi birlikte kullanabiliriz.
+
+Bir Node.js  geliştiricisi, Avatar.js ile Java'nın framework'üne ya da teknolojisine erişmek  isterse,  Avatar.js kullanabilir. 
 
 ###  Engine Versiyonları ve Nashorn Takma Adları
 {% highlight java %}
