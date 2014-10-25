@@ -12,7 +12,8 @@
 
     // Positioning context for the mobile navigation icon
     position: relative;
-    background-color: #fafafa;
+    background-color: $brand-color;
+    color: $white;
 }
 
 .site-title {
@@ -256,11 +257,11 @@ a.rss-button {
     padding-left: 28px;
     border-radius: 5px;
     background-repeat: no-repeat;
-    color: #fe6529;
+    color: $white;
     text-decoration: none;
     &:hover {
-        background-color: #fe6529;
-        color: $white;
+        background-color: $white;
+        color: $brand-color;
     }
 }
 
