@@ -65,7 +65,7 @@ ScriptEngine engine = ScriptEngineFactory.getEngine("jruby");
 ScriptEngine engine = ScriptEngineFactory.getEngine("jython");
 {% endhighlight %}
 
-##NASHORN
+## Nashorn
 
 Nashorn, Java 8 için özel olarak sıfırdan geliştirilen bir JavaScript motorudur.En buyuk avantajı jvm  ortamında  javascript dilini kullanmaya  olanak tanır.Aslında JVM içinde javascript çalışması okadar da yeni değil 1998 yılında  çıkarılan Rhino motoru  kullanılıyordu fakat  diğer js mootorlarına  göreçok yavaştı. Nashorn, Rhino JavaScript motoruna göre 5 kat daha fazla performans sunmaktadır.
 
@@ -73,8 +73,8 @@ Nashorn JavaScript motoru ecmascript 5.1 i destekler ecmascript  js dilinin stan
 
 JVM dillerinden Java Scripting API destekleyenler, ScriptEngine eval metodu ile kod bloklarını koşturma imkanı elde etmektedir. Bu sayede ortak arayüz bileşenleri üzerinden Java harici diller JVM üzerinde koşturulabilmektedir.
 
-js de diziler dinemiktir  eleman eklendiğinde  devamlı  elaman eklenebilir. nashorn tip dönüşümü açısından  sadece  dizilere  izin veriyor.
-## NASHORN'U NERDE KULLANABİLİRİZ
+JS'de diziler dinamiktir. Bir eleman eklendiğinde devamlı olarakelaman eklenebilir. Nashorn tip dönüşümü açısından sadece  dizilere  izin vermektedir.
+## Kullanım Alanları
 -konsolda(jjs)
 -masaüstü ve  javascript
 -java fx projelerinde
@@ -90,18 +90,16 @@ String sonuc=(String)engine.eval(topla(3,5);); //topla isimli JavaScript fonksiy
 System.out.println(sonuc); // topla fonksiyonu Nashorn ile koşturuluyor, ve sonucu elde ediliyor.sonuc=8
 {% endhighlight %}
 
-##JJS(JAVA JAVASCRİPT SHELL)
+## JJS(Java Javascript Shell)
 nashornun  bir komut aracı ( shell)i var . java8 bilgisayarınızda yüklü ise hemen cmd yi açıp JJS yazıp  javascript kodlarınızı  yazıp çalıştıabilir veya cmd den  dosyanızın oldugu bölüme kadar  gelin ve  jjs yi çalıştırın daha sonra load("dosyanızın_adı.js"); komutuu girersk çalıştırın. jjs  de  console.log  diye ekrana  çıktı veremeyiz tabiki  onun  yerine  print(); kullanacağız
 
-##AVATAR.JS
+## Avatar.JS
 
-oracle  tarafından geliştirilen javascript dilidir .Nashorn js motoru içinde çalıştırılabilir.avatar js yi kullanabilmek için minimum java 8  gerekir
-open jdk  sitesinden bulunabilir.avatarjs  nodejs ye benzetilebilir. nashorn ile  avatar.js ile  kullanabiliriz
-js ile yazılmış kompanentleri bileşenleri kullanabiliyoruz.
-Bir node.js  geliştiricisi avatar.js ile javanın framework'üne , teknolojisine erişmek  isterse  avatar.js kullanabilir ve  REST kullanmaya ,websocket uygulamaarı geliştirebilir
-https://avatar.java.net avatar js ye burdan ulaşabilirsiniz.
+Oracle  tarafından geliştirilen javascript dilidir. Nashorn JS motoru içinde çalıştırılabilir. Avatar.js'yi kullanabilmek için minimum Java 8  sürümü gerekmektedir. Open JDK  [sitesinden](https://avatar.java.net) indirilebilir. Avatar.js,Node.js'ye benzetilebilir. Nashorn ile  Avatar.js'yi birlikte kullanabiliriz.
 
-###  ENGİNE  VERSİYONLARI  VE   NASHORN  TAKMA ADLARI
+Bir Node.js  geliştiricisi, Avatar.js ile Java'nın framework'üne ya da teknolojisine erişmek  isterse,  Avatar.js kullanabilir. 
+
+###  Engine Versiyonları ve Nashorn Takma Adları
 {% highlight java %}
 public  static  void main(String  args[])throws FileNotFoundException,ScriptException{
 ScriptEngineManager  mgr= new ScriptEngineManager();
@@ -116,7 +114,7 @@ for(ScriptEngineFactory  factory : mgr.getEngineFactories()) {
 }
 {% endhighlight  %}
 
-## İNVOCABLE ARAYÜZÜ
+## Invocable Arayüzü
 {% highlight java %}
 public  static  void  main(String [] args )throws ScriptException,NoSuchMethodException{
 // invocable arayüzü java tarafından  javascript fonksiyonarını koşturmak için  bulunan  opsiyonel  bir arayüzdürs
@@ -140,7 +138,7 @@ onur::: altunsoy::: 24
 20.0
 {% endhighlight  %}
 
-##EVAL METODU İLE ÖRNEK
+## Eval Metodu Örneği
 {% highlight java %}
 public  static  void  main(String [] args )throws ScriptException{
 ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
@@ -153,7 +151,7 @@ engine.eval("print(JSON.stringify(person));");
 }
 {% endhighlight %}
 
-##JAVA ARRAYLİST  SINIFINI KULLANMA
+## Java Arraylist Sınıfını Kullanma
 
 {% highlight javascript %}
 var  arrayList= java.util.ArrayList;
@@ -162,7 +160,7 @@ arrayListType.add('onur');
 print(arrayListType.size());
 {% endhighlight %}
 
-###JS NESNELERİNİ JSON TÜRÜNDEN YAZMA
+### JS Nesnelerini JSON Olarak Yazma
 {% highlight javascript %}
 var  person ={};
 person.name="onur";
@@ -174,7 +172,7 @@ print (JSON.stringify(person));
 print(person.fullName());
 {% endhighlight %}
 
-###JAVA NIN  THREAD SINIFINI JS  İÇİNDE KULLANMA
+### Java'nın Thread Sınıfını JavaScript İçinde Kullanma
 {% highlight javascript %}
 var Thread = Java.type("java.lang.Thread");
 var MyThread = Java.extend(Thread, {
@@ -187,7 +185,7 @@ th.start();
 th.join();
 {% endhighlight %}
 
-###  JAVANIN HASHMAP SINIFINI KULLANMA
+### Java'nın Hashmap Sınıfını Kullanma
 
 {% highlight javascript %}
 var HashMap = java.util.HashMap;
@@ -200,7 +198,7 @@ for (var  key  in map) print("key  "+key);
 for each(var value in map) print("value  "+value);
 {% endhighlight  %}
 
-SONUÇ:
+Sonuç:
 {% highlight html %}
 phone  grey
 key  apple
@@ -211,7 +209,7 @@ value  black
 value  grey
 {% endhighlight %}
 
-##JAVA STRİNG  SINIFI KULLANMA
+## String Sınıfını Kullanma
 
 {% highlight javascript %}
 var StrArray = Java.type("java.lang.String");
