@@ -12,7 +12,7 @@
 
     // Positioning context for the mobile navigation icon
     position: relative;
-    background-color: $brand-color;
+    background-color: $brand;
     color: $white;
 }
 
@@ -25,9 +25,8 @@
     font-family: "Raleway";
     font-weight: 800;
 
-    &,
-    &:visited {
-        color: $grey-color-dark;
+    &{
+        color: $white;
     }
 }
 
@@ -40,7 +39,7 @@
     }
 
     .page-link {
-        color: $text-color;
+        color: $white;
         line-height: $base-line-height;
         padding: 5px;
         border-radius: 5px;
@@ -50,8 +49,8 @@
             margin-left: 20px;
         }
         &:hover {
-            background-color: $brand-color;
-            color: $white;
+            background-color: $white;
+            color: $brand-color;
             text-decoration: none;
         }
     }
@@ -257,11 +256,11 @@ a.rss-button {
     padding-left: 28px;
     border-radius: 5px;
     background-repeat: no-repeat;
-    color: $white;
+    color: #fe6529;
     text-decoration: none;
     &:hover {
-        background-color: $white;
-        color: $brand-color;
+        background-color: #fe6529;
+        color: $white;
     }
 }
 
