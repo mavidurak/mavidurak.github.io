@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Swift - Optionals Kavramı"
-summary: "Test"
 date:   2014-10-20 10:10
 categories: Swift
 ---

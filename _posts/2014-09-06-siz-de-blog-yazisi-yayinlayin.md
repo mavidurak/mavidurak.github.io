@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Siz de Blog Yazısı Yayınlayın"
-summary: "Test"
 date:   2014-08-19 13:09:27
 categories: mavidurak
 ---
