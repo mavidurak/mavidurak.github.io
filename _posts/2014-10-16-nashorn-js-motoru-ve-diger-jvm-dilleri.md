@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Nashorn JS  Motoru ve Diğer JVM Dilleri"
+summary: "Test"
 date:   2014-10-24 00:59
 categories: java
 ---

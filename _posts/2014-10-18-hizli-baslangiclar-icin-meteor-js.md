@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Hızlı Başlangıçlar İçin Meteor.JS"
+summary: "Test"
 date:   2014-10-18 13:00
 categories: javascript meteorjs nodejs 
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Mavi.js"
+summary: "Test"
 date:   2014-10-20 00:09:27
 categories: javascript
 ---
