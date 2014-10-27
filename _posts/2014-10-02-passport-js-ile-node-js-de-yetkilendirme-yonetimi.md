@@ -3,6 +3,7 @@ layout: post
 title:  "Passport.js ile Node JS'de Yetkilendirme Yönetimi"
 date:   2014-10-02 00:50
 categories: nodejs
+keywords: nodejs javascript oauth login authentication passportjs
 ---
 
   Passport.js Node JS için geliştirilmiş authentication(yetkilendirme) modülüdür, bu modülü kullanarak destek veren tüm sosyal ağ hesaplarına erişebilir, web uygulamalarınızda oturum denetimini bu sosyal ağların aracılığıyla yönetebilirsiniz.
