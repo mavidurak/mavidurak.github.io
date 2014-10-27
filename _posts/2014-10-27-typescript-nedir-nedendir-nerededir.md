@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ameleler için Typescript"
+title: "Typescript nedir? nedendir? nerededir?"
 date: 2014-10-27 14:31
 categories: javascript
 ---
@@ -49,7 +49,7 @@ Temel gereksinimler tamamlandıktan sonra üzerinde çalışacağımız proje i�
 
 yapımızı oluşturduktan sonra, build.json'a derleme aşamalarını göstermemiz gerekmektedir. Build-chain'in nasıl çalıştığını burada anlatmayacağım, npm'nin sitesine build-chain yazarak gerekli dökümanı bulabilirsiniz. build.json'u aşağıdaki gibi dolduruyoruz.
 
-{% endhighlight %}json
+{% highlight json %}
 {
 	"default": [
 		"build-chain clear compile execute"	
@@ -75,7 +75,7 @@ Doldurma işlemini tamamladıktan sonra, proje klasörüne komut satırında ula
 
 Şimdi yazdıysanız muhtemelen aşağıdaki gibi bir hata alırsınız.
 
-{% endhighlight %}
+{% highlight bash %}
 ------------------------------------------------------
 build-chain-error  'tsc temp/src/App.ts --module commonjs --target ES5 --out build/app.js --removeComments'
 ------------------------------------------------------
@@ -270,7 +270,7 @@ Eğer markayı private yapmak istersek aşağıdaki gibi bir yol izleyebiliriz;
 
 Devam edersek geleceğimiz yer constructor adında bir yapı olacaktır. Bir sınıfın yapıcı fonksiyonunu constructor ile yaparız. Yukardaki Araba.ts'teki gibi constructorun parametre kısmına marka, model, uretim ve renk bilgilerini yazdık. Bunları `new Araba("Ford", "Focus", 2009, Renk.Mavi);` dediğimizde kullanmaktayız. Aynı C++'daki gibi.. Sınıflarda fonksiyon tanımlarken;
 
-{% endhighlight %}
+{% highlight javascript %}
 fonksiyon_adi(parametre : tip) : tip {
 	içerik
 }
@@ -341,7 +341,7 @@ Hadi kodlarımızı inceleyelim. Öncelikle `IHayvan.ts` teki gibi interface olu
 
 IHayvan'ı kullanmak için `Hayvan.ts` adında bir dosya oluşturup Hayvan sınıfını burada tanımladık. Tanımlarken `class Hayvan implements IHayvan` şeklinde bir ifade kullandık. Implements tahmin ettiğiniz gibi bir sınıfa, bir interface'i göstermeye yarar tıpkı javadaki gibi. Hayvan içerisine interface'deki gereklilikleri koymadan derleseydik derleme aşamasında aşağıdaki gibi bir hata alırdık. 
 
-{% endhighlight %}
+{% highlight bash %}
 ------------------------------------------------------
 build-chain-error  'tsc temp/src/App.ts --module commonjs --target ES5 --out build/app.js --removeComments'
 ------------------------------------------------------
@@ -390,7 +390,7 @@ class App {
 
 Kodların çıktısı 
 
-{% endhighlight %}
+{% highlight bash %}
 undefined
 { Top: 1 }
 {% endhighlight %}
@@ -515,7 +515,7 @@ class App {
 
 Ekrana yazılan değer;
 
-{% endhighlight %}
+{% highlight bash %}
 kanka su mesaj varya kanka
 {% endhighlight %}
 
