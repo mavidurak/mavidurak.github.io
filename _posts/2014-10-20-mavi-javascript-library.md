@@ -3,6 +3,7 @@ layout: post
 title:  "Mavi.js"
 date:   2014-10-20 00:09:27
 categories: javascript
+keywords: mavi js javascript library mavidurakio
 ---
 
 #### A JavaScript Library Tale
