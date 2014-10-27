@@ -39,7 +39,7 @@ Derleme, test ve çalıştırma gibi faktörleri projemizde güzelce sıraya ba�
 
 	npm install -g build-chain
 	
-Build-chain tarafımdan yazılmış bir process executor'dur. GNU derleyicisiyle (Windows'ta MinGW) uğraştıysanız makefile'i bilirsiniz. Bu ufak yazılım tıpkı makefile gibi projemizi hazırlamaya yarar.. [Bu](https://github.com/co3moz/build-chain) adresten örneklere bakabilirsiniz.
+Build-chain tarafımdan yazılmış bir process executor'dur. GNU derleyicisiyle (Windows'ta MinGW) uğraştıysanız makefile'i bilirsiniz. Bu ufak yazılım tıpkı makefile gibi projemizi hazırlamaya yarar.. [https://github.com/co3moz/build-chain](https://github.com/co3moz/build-chain) adresten örneklere bakabilirsiniz.
 
 Temel gereksinimler tamamlandıktan sonra üzerinde çalışacağımız proje için bir klasör açıyoruz, klasör içerisinde standart çalışma yapımızı yerleştiriyoruz bunlar;
 
@@ -71,7 +71,7 @@ yapımızı oluşturduktan sonra, build.json'a derleme aşamalarını göstermem
 
 Doldurma işlemini tamamladıktan sonra, proje klasörüne komut satırında ulaşıyoruz ve build-chain yazıyoruz. Bu build.json'da belirttiğimiz default derleme processini çalıştıracaktır. Default process'tede compile ve execute'i çağırdık. Önce Programımızı derleyecek ve daha sonrada derleme başarılıysa çalıştıracak. 
 
->`Not:` Derleme mekanizmasını ilerki zamanlarda değiştirdim. Değiştirdiğim şekilde bu yazıyıda güncelledim. App.ts dosyasını yaratmadan önce [şu linkten](https://github.com/co3moz/typescript-example) compile.js'i yükleyip build.json'un bulunduğu dizine atmanız gerekmektedir. Bu compile.js kodunuzdaki referansların daha güzel bir biçimde yazılmasına olanak sağlar. Sınıfları yazarken göreceksiniz.
+>`Not:` Derleme mekanizmasını ilerki zamanlarda değiştirdim. Değiştirdiğim şekilde bu yazıyıda güncelledim. App.ts dosyasını yaratmadan önce şu linkten [https://github.com/co3moz/typescript-example](https://github.com/co3moz/typescript-example) compile.js'i yükleyip build.json'un bulunduğu dizine atmanız gerekmektedir. Bu compile.js kodunuzdaki referansların daha güzel bir biçimde yazılmasına olanak sağlar. Sınıfları yazarken göreceksiniz.
 
 Şimdi yazdıysanız muhtemelen aşağıdaki gibi bir hata alırsınız.
 
