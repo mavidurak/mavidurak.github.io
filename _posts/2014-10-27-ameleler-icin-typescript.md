@@ -71,7 +71,7 @@ yapımızı oluşturduktan sonra, build.json'a derleme aşamalarını göstermem
 
 Doldurma işlemini tamamladıktan sonra, proje klasörüne komut satırında ulaşıyoruz ve build-chain yazıyoruz. Bu build.json'da belirttiğimiz default derleme processini çalıştıracaktır. Default process'tede compile ve execute'i çağırdık. Önce Programımızı derleyecek ve daha sonrada derleme başarılıysa çalıştıracak. 
 
->`Not:` Derleme mekanizmasını ilerki zamanlarda değiştirdim. Değiştirdiğim şekilde bu yazıyıda güncelledim. App.ts dosyasını yaratmadan önce şu linkten http://google.com compile.js'i yükleyip build.json'un bulunduğu dizine atmanız gerekmektedir. Bu compile.js kodunuzdaki referansların daha güzel bir biçimde yazılmasına olanak sağlar. Sınıfları yazarken göreceksiniz.
+>`Not:` Derleme mekanizmasını ilerki zamanlarda değiştirdim. Değiştirdiğim şekilde bu yazıyıda güncelledim. App.ts dosyasını yaratmadan önce şu linkten https://github.com/co3moz/typescript-example compile.js'i yükleyip build.json'un bulunduğu dizine atmanız gerekmektedir. Bu compile.js kodunuzdaki referansların daha güzel bir biçimde yazılmasına olanak sağlar. Sınıfları yazarken göreceksiniz.
 
 Şimdi yazdıysanız muhtemelen aşağıdaki gibi bir hata alırsınız.
 
