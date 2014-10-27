@@ -39,7 +39,7 @@ Derleme, test ve çalıştırma gibi faktörleri projemizde güzelce sıraya ba�
 
 	npm install -g build-chain
 	
-Build-chain tarafımdan yazılmış bir process executor'dur. GNU derleyicisiyle (Windows'ta MinGW) uğraştıysanız makefile'i bilirsiniz. Bu ufak yazılım tıpkı makefile gibi projemizi hazırlamaya yarar..
+Build-chain tarafımdan yazılmış bir process executor'dur. GNU derleyicisiyle (Windows'ta MinGW) uğraştıysanız makefile'i bilirsiniz. Bu ufak yazılım tıpkı makefile gibi projemizi hazırlamaya yarar.. https://github.com/co3moz/build-chain adresinden örneklere bakabilirsiniz.
 
 Temel gereksinimler tamamlandıktan sonra üzerinde çalışacağımız proje için bir klasör açıyoruz, klasör içerisinde standart çalışma yapımızı yerleştiriyoruz bunlar;
 
@@ -97,14 +97,14 @@ class App {
 }
 {% endhighlight %}
 
-##### Boolean
+#### Boolean
 Tıpkı C#'daki bool ve Java'daki Boolean gibi çalışıyor. true veya false değerini alabiliyor. Örnek değişkeni aşağıda bulabilirsiniz.
 
 {% highlight javascript %}
 var esyaGeldimi : boolean = true;
 {% endhighlight %}
 	
-##### Number
+#### Number
 Bildiğiniz gibi javascript'te sayılar kendiliğinden hem double hemde int gibi davranıyor. Bu yüzden sayıyı ifade ederken ikisinden karma olan numberi kullanıyoruz. Örnek değişkeni aşağıda bulabilirsiniz.
 
 {% highlight javascript %}
@@ -112,7 +112,7 @@ var esyaSayisi : number = 23;
 var esyaBoyutu : number = 2.3;
 {% endhighlight %}
 
-##### String
+#### String
 Yazıları ifade ederken kullanacağımız primitive tip ise String olacaktır. Değişkenin değerini ayarlarken ister tek tırnak ('), ister çift tırnak (") kullanın derleyici bunu sorun etmeyecektir.
 
 {% highlight javascript %}
@@ -120,7 +120,7 @@ var esyaAdi : string = "Karyola";
 esyaAdi = 'Yatak';
 {% endhighlight %}
 	
-##### Diziler
+#### Diziler
 Dizileri ifade ederken tipin yanına [] koyuyoruz yada Array&lt;tip&gt; şeklinde de tanımlayabiliriz. Eğer dizinin eklenen elemanı belirlenen tipte değilse tsc derleme hatası verecektir.
 
 {% highlight javascript %}
@@ -131,7 +131,7 @@ console.log(esyaListesi[1]); // "Televizyon"
 console.log(esyaSayisi[1]); // "2"
 {% endhighlight %}
 
-##### Enum
+#### Enum
 Enum, tıpkı C deki gibi bir ifadeyi sayısal olarak tutmaya yarar. Enum'u bir sınıfın dışında tanımlamayı unutmamalısınız. Kullanımını aşağıda görebilirsiniz.
 
 {% highlight javascript %}
@@ -167,7 +167,7 @@ if(araba & Bilgi.Buyuk) {
 }
 {% endhighlight %}
 
-##### Any
+#### Any
 Bir tipe bağlı olmadan süper türde bir değişken oluştururken kullanıyoruz.. Typescript'e statik tiplerle çalışmak için geçtik. O yüzden any gibi dinamik tip'i önermiyoruz. Mümkün oldukça kullanmayın..
 
 {% highlight javascript %}
@@ -180,7 +180,7 @@ mesaj = new Sinif(); // sorun yok
 var superDizi : any[] = [1, 2, true, "Super"]; // gene sorun yok vay be
 {% endhighlight %}
 
-##### Void
+#### Void
 Any'in tersi gibidir. Hiçbir tipi kabul etmez. Fonksiyonlarda return döndürülmeyecekse kullanılabilir.
 {% highlight javascript %}
 function mesajYaz(mesaj : string) : void {
@@ -193,7 +193,7 @@ mesajYaz("Selam");
 ### Sınıflar
 Primitive tipleri tamamladıktan sonra ilk sınıfımızı yazalım ve bunu main methodu içerisinde kullanalım;
 
-##### Renk.ts
+#### Renk.ts
 {% highlight javascript %}
 enum Renk {
 	Mavi,
@@ -204,7 +204,7 @@ enum Renk {
 }
 {% endhighlight %}
 
-##### Araba.ts
+#### Araba.ts
 {% highlight javascript %}
 ref "Renk";
 
@@ -225,7 +225,7 @@ class Araba {
 }
 {% endhighlight %}
 
-##### Toyota.ts
+#### Toyota.ts
 {% highlight javascript %}
 ref "Araba";
 
@@ -236,7 +236,7 @@ class Toyota extends Araba {
 }
 {% endhighlight %}
 
-##### App.ts
+#### App.ts
 {% highlight javascript %}
 ref "Araba";
 ref "Toyota";
@@ -286,7 +286,7 @@ App.ts'e gelirsek App sınıfını görüyoruz ve bunun içinde static olan main
 
 Sınıfları öğrendik, peki oop'un diğer bir parçası olan interface'leri typescript üzerinde nasıl yapacağız. Bildiğiniz üzere interfaceler dışarıdan erişilebilir elemanların olması gerektiğini sınıfa belirten kod parçacıklarıdır. Örneğin insan interfacesi'nden bir sınıf tanımlarsak, bu sınıfta insana ait özelliklerin mutlaka `dışarıdan erişilebilir` bir biçimde tanımlanması gerekmektedir. Buradaki dışarıdan erişilebilme zorunluluğunuda örneklerle açıklayacağız..
 
-##### IHayvan.ts
+#### IHayvan.ts
 {% highlight javascript %}
 interface IHayvan {
 	isim:string;
@@ -296,7 +296,7 @@ interface IHayvan {
 {% endhighlight %}
 
 
-##### Hayvan.ts
+#### Hayvan.ts
 {% highlight javascript %}
 ref "IHayvan";
 
@@ -318,7 +318,7 @@ class Hayvan implements IHayvan {
 {% endhighlight %}
 
 
-##### App.ts
+#### App.ts
 {% highlight javascript %}
 ref "IHayvan";
 ref "Hayvan";
@@ -358,7 +358,7 @@ App sınıfında da Hayvan sınıfından bir değişken ürettik ve parametresin
 Ek olarak daha önce bahsetmediğim bir özelliği fark ettim. Eğer değişkenlerin sağına "?" eklerseniz nullable özellik alır. Bu sayede interface'lerde olması zorunlu olmayan, ama istendiğinde konulabilen değişkenleri tanımlayabiliriz.
 
 
-##### IKutu.ts
+#### IKutu.ts
 {% highlight javascript %}
 interface IKutu {
 	hacim:number;
@@ -366,7 +366,7 @@ interface IKutu {
 }
 {% endhighlight %}
 
-##### App.ts
+#### App.ts
 {% highlight javascript %}
 ref "IKutu";
 	
@@ -399,14 +399,14 @@ bosKutu'yu tanımlarken javascript'teki obje oluşturmayı kullandık. Typescrip
 
 Interface'leri kullanarak daha fantazik şeyler yapabiliriz. Örneğin fonksiyon yapısını tutmasını sağlayarak Filtre gibi işlerde fonksiyonların parametrelerine başka fonksiyonları gönderebiliriz. Javascript'te olmasına rağmen bunu typescript'te yapmaya kalktığımızda farklı yapılar kullanmamız gerekiyor. Örneğin C#'ta delegate kullanıyorduk..
 
-##### IVoid.ts
+#### IVoid.ts
 {% highlight javascript %}
 interface IVoid {
 	():void;
 }
 {% endhighlight %}
 
-##### Test.ts
+#### Test.ts
 {% highlight javascript %}
 ref "IVoid";
 
@@ -420,7 +420,7 @@ class Test {
 }
 {% endhighlight %}
 
-##### App.ts
+#### App.ts
 {% highlight javascript %}
 ref "IVoid";
 ref "Test";
@@ -489,7 +489,7 @@ Farklı işler yapan ama aynı isimde sınıflar oluşturmanız gerektiğini dü
 
 Çözüm tabiki başlık! "modules".. Modules diyip jeneriği anlatmayacaz demi akü. Neyse arkadaşlar devam edersek. Tıpkı C#'daki isim uzayı gibi typescript'tede uzaylar vardır. Bu uzaylar module olarak adlandırılıyor. Moduleleri tanımlarken aşağıdaki gibi bir yol izliyoruz.
 
-##### Siniflarim.ts
+#### Siniflarim.ts
 {% highlight javascript %}
 module Siniflarim {
 	var mesaj:string = "kanka su mesaj varya kanka";
@@ -502,7 +502,7 @@ module Siniflarim {
 }
 {% endhighlight %}
 
-##### App.ts
+#### App.ts
 {% highlight javascript %}
 ref "Siniflarim"
 
@@ -547,7 +547,7 @@ diyip alabiliyoruz ancak şöyle bir durum var; typescript bunu tanımıyor. Tan
 ## Generics
 Arkadaşlar Jeneriğe bu yazıda sadece örnek vereceğim. Diğer devam yazımızda jenerikle ilgili daha detaylı bir inceleme yapacağız..
 
-##### Jenerik.ts
+#### Jenerik.ts
 {% highlight javascript %}
 class Jenerik<T> {
 	private value:T;
@@ -567,7 +567,7 @@ class Jenerik<T> {
 }
 {% endhighlight %}
 
-##### App.ts
+#### App.ts
 {% highlight javascript %}
 ref "Jenerik";
 
