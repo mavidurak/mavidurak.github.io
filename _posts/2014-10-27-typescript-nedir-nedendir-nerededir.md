@@ -39,7 +39,7 @@ Derleme, test ve çalıştırma gibi faktörleri projemizde güzelce sıraya ba�
 
 	npm install -g build-chain
 	
-Build-chain tarafımdan yazılmış bir process executor'dur. GNU derleyicisiyle (Windows'ta MinGW) uğraştıysanız makefile'i bilirsiniz. Bu ufak yazılım tıpkı makefile gibi projemizi hazırlamaya yarar.. [https://github.com/co3moz/build-chain](https://github.com/co3moz/build-chain) adresten örneklere bakabilirsiniz.
+Build-chain tarafımdan yazılmış bir process executor'dur. GNU derleyicisiyle (Windows'ta MinGW) uğraştıysanız makefile'i bilirsiniz. Bu ufak yazılım tıpkı makefile gibi projemizi hazırlamaya yarar.. [https://github.com/co3moz/build-chain](https://github.com/co3moz/build-chain) adresinden örneklere bakabilirsiniz.
 
 Temel gereksinimler tamamlandıktan sonra üzerinde çalışacağımız proje için bir klasör açıyoruz, klasör içerisinde standart çalışma yapımızı yerleştiriyoruz bunlar;
 
