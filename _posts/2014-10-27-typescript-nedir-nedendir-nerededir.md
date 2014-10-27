@@ -272,7 +272,7 @@ Devam edersek geleceğimiz yer constructor adında bir yapı olacaktır. Bir sı
 
 {% highlight javascript %}
 fonksiyon_adi(parametre : tip) : tip {
-	içerik
+	// içerik
 }
 {% endhighlight %}
 
