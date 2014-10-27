@@ -3,6 +3,7 @@ layout: post
 title:  "Hızlı Başlangıçlar İçin Meteor.JS"
 date:   2014-10-18 13:00
 categories: javascript meteorjs nodejs 
+keywords: meteorjs javascript js nodejs single-page application meteor
 ---
 
 JavaScript'in son dönemde artan popülerliğinin de etkisiyle gün geçmiyor ki yeni bir JavaScript kütüphanesi/paketi ortaya çıkmasın. Her ne kadar JS back-end tarafında kendisini yeterince ispat etmiş sayılmasa da (henüz bunun için çok erken olduğunu düşünüyorum, şahsi görüşüm), **Node.JS** ve Node.JS altyapısını kullanan sistemler yazılım dünyasında büyük değişiklikler yaratacak gibi gözüküyor. Ben de elimden geldiğince bu furyaya katılıp son gelişmeleri takip etmeye çalışıyorum. Bu bağlamda temel Node.JS'e ek olarak, [Express.JS](http://expressjs.com) ve [Sails.JS](http://sailsjs.org) framework'lerini de inceleme fırsatım olmuştu. Ancak beni bu tarafta asıl cezbeden [Meteor.JS](http://www.meteor.com) adındaki platform oldu.
