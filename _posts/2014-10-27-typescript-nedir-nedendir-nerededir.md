@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Typescript nedir? nedendir? nerededir?"
+title: "Typescript Nedir? Nedendir? Nerededir?"
 date: 2014-10-27 14:31
 categories: javascript
 ---
