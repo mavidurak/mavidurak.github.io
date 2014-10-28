@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="B1nGWtHUFSp_F__6iggXUO2ykFFAyQ5biqd8C_7aKIM" />
+    <title>Typescript Nedir? Nedendir? Nerededir?</title>
+    <meta name="description" content="Mavidurak-IO Sakarya'da yaşayan ya da Sakarya'da öğrenim  gören geliştiricilerin oluşturduğu topluluktur.
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://mavidurak.github.io/javascript/2014/10/27/typescript-nedir-nedendir-nerededir.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/" style="color: #fff">Kolektif Mavi</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about/">Hakkında</a>
+          
+        
+          
+          <a class="page-link" href="/contributors/">Katkıda Bulunanlar</a>
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Typescript Nedir? Nedendir? Nerededir?</h1>
+    <p class="post-meta">
+    
+    
+    
+    
+    </p>
+  </header>
+
+  <article class="post-content">
+    <h1 id="typescript">Typescript</h1>
+
+<p>Merhabalar,</p>
+
+<p>Bu yazımızda javascript’in daha güvenilir hali olan typescript’i inceleyeceğiz. Öncelikle typescript tip desteğini, javascript’e katarak yazılım geliştiricileri için daha güvenli ve anlaşılabilir yazılımlar geliştirmeyi amaçlamıştır. Geliştiricisi Microsoft olan typescript diliyle; sınıflar, arayüzler yapabilir, oluşturacağınız değişkenlerin bu sınıflara kesinlik dahilinde erişilebilmesini sağlayabilirsiniz.</p>
+
+<blockquote>
+  <p>Yazıya devam etmeden önce mutlaka nodejs ile uğraşmış olmanız, javascripten haberdar olmanız gerekmektedir. Eğer haberdar olmadan gelirseniz bu yazı size giderek ağırlaşarak yük olmaya başlar. Ayrıca ek olarak oop bilgiside extend, implement olsun sınıflar, arayüzler olsun bir takım temellerin olması gerekmektedir. Fazla uzun olmasın diye yazıda bu tür bilgilere yer verilmemiştir. </p>
+</blockquote>
+
+<h2 id="nasl-yani">Nasıl yani?</h2>
+<p>Şöyleki normal javascript kodumuzda bir fonksiyonun bir parametresinin kesinlikle string olmasını sağlamak için ekstra kontroller yapmamız gerekiyordu. Olası bir programlama hatasıyla bu kontrollerin unutulma gibi bir şansı vardır. Bu kontrollerin varlığını denetleyen bir yapı olmadığından hatanın kaynağını çalışma anında çöküş ile anlamaktayız. Bu yazılımcı için berbat bir şey çünkü kodladıktan sonra kendi kendine çökmeler görmeye başlayınca insan yaptığı işten nefret etmeye başlıyor. Bu işin profesyonel boyutuna inersek kodların anlaşılabilir olmasınıda zorlaştırıyor. Projeyi geliştiren birden fazla insan varsa muhtemelen birinin yaptığını diğeri anlamayacaktır.</p>
+
+<p>Typescript ile proje geliştirirseniz statik tipli çalışmaya başlarsınız. Statik tipli çalışmak, popüler diller olan C#, C++ ve Java’daki gibi sınıf oluşturup belirli katmanlar ve kurallar çerçevesinde değişkenleri kontrol etmek demektir. Javascript’teki parametresine string kabul edecek fonksiyonu typescriptte aşağıdaki gibi kolaylıkla tanımlayabiliriz. </p>
+
+<div>
+  <pre><code class="javascript">function ekranaYaz(yazi : string) {
+	console.log(yazi);
+}</code></pre>
+</div>
+
+<p>Eğer programcı fonksiyonu ekranaYaz(5); şeklinde kullanırsa, typescript’te derleme aşamasında aşağıdaki gibi bir hatayla karşılaşacaktır.</p>
+
+<pre><code>Could not apply type 'string' to argument 1 which is of type 'number'.
+</code></pre>
+
+<p>Bu şu anlama gelir. Bu fonksiyonda parametre kısmında 1. argüman yazı olmalıydı, oysa verilen sayıdır. Gördüğünüz gibi sadece “: string” yazarak kontrolü yapmış olduk. Umarım typescripte başlarken yeterince bilgiyi size ulaştırdım.</p>
+
+<h2 id="balarken">Başlarken</h2>
+<p>Typescript ile programlamaya başlarken ortamımızı hazırlamamız gerekmekte. Yukarda farkettiyseniz typescript ile yazılmış bir kodu, derlememiz gerekmektedir. Derleme sonrasında kod javascripte dönüşmekte. Bu işlemi yapmak için npm paket yöneticisinden typescript paketini global olarak kurmamız gerekiyor. Global kurmamızın nedeni; paketin içerisinde çalıştırılabilir dosyaların tanımlandığı ve bu yüzdende paket yöneticisinin bunları proje klasörümüze kurmak yerine daha üst bir klasör konumuna kurarak, çalıştırılabilir dosyalara erişmeyi mümkün kıldırmasıdır. Konsol ekranını açarak aşağıdaki kodu giriyoruz. Tabiki bu işlem öncesinde nodejs ile çalışacağımızı unutmamak gerekiyor. Bu yüzden npm’in çalışabilmesi için nodejs’in kurulu olması gerekmektedir. </p>
+
+<pre><code>npm install -g typescript
+</code></pre>
+
+<p>Derleme, test ve çalıştırma gibi faktörleri projemizde güzelce sıraya bağlamamız gerektiğinden typescript yanında build-chain adındaki paketide global olarak kuruyoruz.</p>
+
+<pre><code>npm install -g build-chain
+</code></pre>
+
+<p>Build-chain tarafımdan yazılmış bir process executor’dur. GNU derleyicisiyle (Windows’ta MinGW) uğraştıysanız makefile’i bilirsiniz. Bu ufak yazılım tıpkı makefile gibi projemizi hazırlamaya yarar.. <a href="https://github.com/co3moz/build-chain">https://github.com/co3moz/build-chain</a> adresinden örneklere bakabilirsiniz.</p>
+
+<p>Temel gereksinimler tamamlandıktan sonra üzerinde çalışacağımız proje için bir klasör açıyoruz, klasör içerisinde standart çalışma yapımızı yerleştiriyoruz bunlar;</p>
+
+<ul>
+  <li>src klasörü: Derlenecek dosyaların bulunduğu klasör</li>
+  <li>build klasörü: Derleme sonrasında dosyaların aktarılacağı klasör</li>
+  <li>build.json dosyası: Build-chain yazılımının okuyacağı derleme şematiklerinin bulunduğu dosya</li>
+</ul>
+
+<p>yapımızı oluşturduktan sonra, build.json’a derleme aşamalarını göstermemiz gerekmektedir. Build-chain’in nasıl çalıştığını burada anlatmayacağım, npm’nin sitesine build-chain yazarak gerekli dökümanı bulabilirsiniz. build.json’u aşağıdaki gibi dolduruyoruz.</p>
+
+<div>
+  <pre><code class="json">{
+	&quot;default&quot;: [
+		&quot;build-chain clear compile execute&quot;	
+	],
+	&quot;clear&quot;: [
+		&quot;del build\\app.js&quot;	
+	],
+	&quot;compile&quot;: [
+		&quot;node compile src .ts&quot;,
+		&quot;tsc temp/src/App.ts --module commonjs --target ES5 --out build/app.js --removeComments&quot;,
+		&quot;echo App.main(process.argv.slice(2)); &gt;&gt; build/app.js&quot;,
+		&quot;rmdir temp /s /q&quot;
+	],
+	&quot;execute&quot; : [
+		&quot;node build/app.js&quot;
+	]
+}</code></pre>
+</div>
+
+<p>Doldurma işlemini tamamladıktan sonra, proje klasörüne komut satırında ulaşıyoruz ve build-chain yazıyoruz. Bu build.json’da belirttiğimiz default derleme processini çalıştıracaktır. Default process’tede compile ve execute’i çağırdık. Önce Programımızı derleyecek ve daha sonrada derleme başarılıysa çalıştıracak. </p>
+
+<blockquote>
+  <p><code>Not:</code> Derleme mekanizmasını ilerki zamanlarda değiştirdim. Değiştirdiğim şekilde bu yazıyıda güncelledim. App.ts dosyasını yaratmadan önce şu linkten <a href="https://github.com/co3moz/typescript-example">https://github.com/co3moz/typescript-example</a> compile.js’i yükleyip build.json’un bulunduğu dizine atmanız gerekmektedir. Bu compile.js kodunuzdaki referansların daha güzel bir biçimde yazılmasına olanak sağlar. Sınıfları yazarken göreceksiniz.</p>
+</blockquote>
+
+<p>Şimdi yazdıysanız muhtemelen aşağıdaki gibi bir hata alırsınız.</p>
+
+<div>
+  <pre><code class="bash">------------------------------------------------------
+build-chain-error  'tsc temp/src/App.ts --module commonjs --target ES5 --out build/app.js --removeComments'
+------------------------------------------------------
+ error TS5007: Cannot resolve referenced file: 'temp/src/App.ts'.
+------------------------------------------------------</code></pre>
+</div>
+
+<p>src klasörünün içerisinde herhangi bir derlenecek dosya yok bu yüzden böyle bir hata vermekte. src içerisine “App.ts” adında bir dosya oluşturuyoruz. Dosyayı oluşturduktan sonra artık bu bölümü bitirmiş bulunacağız.</p>
+
+<h2 id="lk-snfm">İlk sınıfım</h2>
+<p>Gerekli olan tüm adımları tamamladınız ve artık typescript kodlamaya hazırsınız. Kodlamaya app.ts dosyasını açarak başlıyoruz. Sınıflar üzerinde çalışmadan önce typescript’teki var olan tiplerden bahsedeceğiz. Tahmin edersenizki bunlara primitive types deniyor. Kodları denemeden önce mutlaka aşağıdaki yapıyı oluşturun. Build.json içerisinde otomatik olarak derlenecek dosyaları listeleyen ve bunları tsc’e derleten bir sistem var. Derleme sonrasında App.main() fonksiyonu çağırılmakta. Eğer App sınıfında static bir main fonksiyonu/methodu oluşturmazsanız hata ile karşılaşırsınız.</p>
+
+<div>
+  <pre><code class="javascript">class App {
+	static main(args : string[]) {
+		console.log(&quot;Selam canlar&quot;);
+		// Derlenecek kodu buraya yazın
+	}
+}</code></pre>
+</div>
+
+<h4 id="boolean">Boolean</h4>
+<p>Tıpkı C#’daki bool ve Java’daki Boolean gibi çalışıyor. true veya false değerini alabiliyor. Örnek değişkeni aşağıda bulabilirsiniz.</p>
+
+<div>
+  <pre><code class="javascript">var esyaGeldimi : boolean = true;</code></pre>
+</div>
+
+<h4 id="number">Number</h4>
+<p>Bildiğiniz gibi javascript’te sayılar kendiliğinden hem double hemde int gibi davranıyor. Bu yüzden sayıyı ifade ederken ikisinden karma olan numberi kullanıyoruz. Örnek değişkeni aşağıda bulabilirsiniz.</p>
+
+<div>
+  <pre><code class="javascript">var esyaSayisi : number = 23;
+var esyaBoyutu : number = 2.3;</code></pre>
+</div>
+
+<h4 id="string">String</h4>
+<p>Yazıları ifade ederken kullanacağımız primitive tip ise String olacaktır. Değişkenin değerini ayarlarken ister tek tırnak (‘), ister çift tırnak (“) kullanın derleyici bunu sorun etmeyecektir.</p>
+
+<div>
+  <pre><code class="javascript">var esyaAdi : string = &quot;Karyola&quot;;
+esyaAdi = 'Yatak';</code></pre>
+</div>
+
+<h4 id="diziler">Diziler</h4>
+<p>Dizileri ifade ederken tipin yanına [] koyuyoruz yada Array&lt;tip&gt; şeklinde de tanımlayabiliriz. Eğer dizinin eklenen elemanı belirlenen tipte değilse tsc derleme hatası verecektir.</p>
+
+<div>
+  <pre><code class="javascript">var esyaListesi : string[] = [&quot;Yatak&quot;, &quot;Televizyon&quot;, &quot;Kumanda&quot;];
+var esyaSayisi : Array&lt;number&gt; = [1, 2, 2];
+
+console.log(esyaListesi[1]); // &quot;Televizyon&quot;
+console.log(esyaSayisi[1]); // &quot;2&quot;</code></pre>
+</div>
+
+<h4 id="enum">Enum</h4>
+<p>Enum, tıpkı C deki gibi bir ifadeyi sayısal olarak tutmaya yarar. Enum’u bir sınıfın dışında tanımlamayı unutmamalısınız. Kullanımını aşağıda görebilirsiniz.</p>
+
+<div>
+  <pre><code class="javascript">enum ParaBirimi {
+	TL,
+	EURO,
+	DOLLAR,
+	YEN
+}
+
+var para : ParaBirimi = ParaBirimi.TL;
+console.log(para); // 0
+console.log(ParaBirimi[0]); // TL
+if(para == ParaBirimi.EURO) {
+	console.log(&quot;avrocu seni&quot;);
+}</code></pre>
+</div>
+
+<div>
+  <pre><code class="javascript">enum Bilgi {
+	Hizli = 1,
+	Agir = 2,
+	Buyuk = 4,
+	Tatli = 8
+}
+
+var araba : Bilgi = Bilgi.Hizli | Bilgi.Agir;
+
+if(araba &amp; Bilgi.Buyuk) {
+	console.log(&quot;Araba buyuk&quot;);
+} else {
+	console.log(&quot;Araba kucuk&quot;);
+}</code></pre>
+</div>
+
+<h4 id="any">Any</h4>
+<p>Bir tipe bağlı olmadan süper türde bir değişken oluştururken kullanıyoruz.. Typescript’e statik tiplerle çalışmak için geçtik. O yüzden any gibi dinamik tip’i önermiyoruz. Mümkün oldukça kullanmayın..</p>
+
+<div>
+  <pre><code class="javascript">var mesaj : any;
+mesaj = 1; // sorun yok
+mesaj = true; // sorun yok
+mesaj = &quot;selam&quot;; // sorun yok
+mesaj = new Sinif(); // sorun yok
+
+var superDizi : any[] = [1, 2, true, &quot;Super&quot;]; // gene sorun yok vay be</code></pre>
+</div>
+
+<h4 id="void">Void</h4>
+<p>Any’in tersi gibidir. Hiçbir tipi kabul etmez. Fonksiyonlarda return döndürülmeyecekse kullanılabilir.</p>
+<div>
+  <pre><code class="javascript">function mesajYaz(mesaj : string) : void {
+	console.log(mesaj);
+}
+
+mesajYaz(&quot;Selam&quot;);</code></pre>
+</div>
+
+<h3 id="snflar">Sınıflar</h3>
+<p>Primitive tipleri tamamladıktan sonra ilk sınıfımızı yazalım ve bunu main methodu içerisinde kullanalım;</p>
+
+<h4 id="renkts">Renk.ts</h4>
+<div>
+  <pre><code class="javascript">enum Renk {
+	Mavi,
+	Kirmizi,
+	Yesil,
+	Beyaz,
+	Siyah
+}</code></pre>
+</div>
+
+<h4 id="arabats">Araba.ts</h4>
+<div>
+  <pre><code class="javascript">ref &quot;Renk&quot;;
+
+class Araba {
+	marka : string;
+	model : string;
+	uretim : number; 
+	renk : Renk;
+	
+	constructor(marka:string, model:string, uretim:number, renk:Renk) {
+		this.marka = marka;
+		this.model = model;
+		this.uretim = uretim;
+		this.renk = renk;
+		
+		console.log(&quot;Araç üretildi!, Üretilen araç: &quot;, this);
+	}
+}</code></pre>
+</div>
+
+<h4 id="toyotats">Toyota.ts</h4>
+<div>
+  <pre><code class="javascript">ref &quot;Araba&quot;;
+
+class Toyota extends Araba {
+	constructor(model:string, uretim:number, renk:Renk) {
+		super(&quot;Toyota&quot;, model, uretim, renk);
+	}
+}</code></pre>
+</div>
+
+<h4 id="appts">App.ts</h4>
+<div>
+  <pre><code class="javascript">ref &quot;Araba&quot;;
+ref &quot;Toyota&quot;;
+
+class App {
+	static main(args:string[]) {
+		var toyota = new Toyota(&quot;Corolla&quot;, 2014, Renk.Siyah);
+		var ford = new Araba(&quot;Ford&quot;, &quot;Focus&quot;, 2009, Renk.Mavi);
+	}
+}</code></pre>
+</div>
+
+<p>Kodlarımızı çalıştırırsak konsolda alacağımız sonuç;</p>
+
+<pre><code>Araç üretildi!, Üretilen araç:  { marka: 'Toyota', model: 'Corolla', uretim: 2014, renk: 4 }
+Araç üretildi!, Üretilen araç:  { marka: 'Ford', model: 'Focus', uretim: 2009, renk: 0 }
+</code></pre>
+
+<p>Sonuçları değerlendirdikten sonra kodumuzu incelemeye başlayalım. Sınıfları oluştururken <code>class [sınıf adı]</code> şeklinde oluşturuyoruz. Her sınıf için ayrı dosya oluşturmamız gerektiğini unutmayalım. Mümkün oldukça alışkanlık yaparsanız iyi olur.</p>
+
+<p>Kodların en başlarında <code>ref "****"</code> şeklinde yapılar var. Bu yapılar başka bir dosyayı yüklemenize olanak sağlıyor. Örneğin Araba.ts içerisindeki Araba sınıfında Renk tipi kullanılmakta. Renk tipide Renk.ts içerisinde enum Renk şeklinde tanımlanmış. Bunu Araba.ts içerisinde kullanabilmemiz için ref “Renk”; yazmamız gerekiyor. build.json içerisinde çağırdığımız compile.js bunu typescriptin anlayabileceği hale getiriyor. Typescript’te kodunuzu derlerken Araba içerisinde Renk çağrıldığını anlıyor ve önce Renk’i derliyor. </p>
+
+<blockquote>
+  <p>İsterseniz ref yerine reference veya include kullanabilirsiniz. Ayrıca “ yerine &lt; ve &gt; kullanabilirsiniz; reference&lt;Araba&gt;; veya include “Toyota”;</p>
+</blockquote>
+
+<p>Sınıfları oluşturduktan sonra <code>marka : string;</code> gibi ifadeler yazdık. Bu ifadeler sınıfın marka adında bir değişkene sahip olacağını gösterir. Bu değişkene sınıflar içerisinde this.marka şeklinde ulaşabiliriz. Ayrıca App.main’de var toyota’da oluşturduğumuz Toyota nesnesinin marka değişkenine; <code>toyota.marka</code> şeklinde erişebiliriz. Diğer popüler dillerden farklı olarak eğer başına erişim belirleyici(public, private..) yazmazsak default olarak public değer alacaktır.</p>
+
+<p>Eğer markayı private yapmak istersek aşağıdaki gibi bir yol izleyebiliriz;</p>
+
+<pre><code>private marka : string;
+</code></pre>
+
+<blockquote>
+  <p>Typescript’e protected desteği gelmiştir. Ancak halen development aşamasında olduğundan aktif olarak kullanmamaktayız.</p>
+</blockquote>
+
+<p>Devam edersek geleceğimiz yer constructor adında bir yapı olacaktır. Bir sınıfın yapıcı fonksiyonunu constructor ile yaparız. Yukardaki Araba.ts’teki gibi constructorun parametre kısmına marka, model, uretim ve renk bilgilerini yazdık. Bunları <code>new Araba("Ford", "Focus", 2009, Renk.Mavi);</code> dediğimizde kullanmaktayız. Aynı C++’daki gibi.. Sınıflarda fonksiyon tanımlarken;</p>
+
+<div>
+  <pre><code class="javascript">fonksiyon_adi(parametre : tip) : tip {
+	// içerik
+}</code></pre>
+</div>
+
+<p>şeklinde tanımlamaktayız. tıpkı değişkenlerdeki gibi erişim belirleyicilerini fonksiyon_adindan önce yazabiliriz. </p>
+
+<p>Toyota sınıfına bakarsak <code>class Toyota extends Araba</code> şeklinde bir ifade görürüz. Burada Toyota sınıfının Araba sınıfından kalıtılarak oluşturulduğunu belirtiyoruz. OOP Bilgilerimizi hatırlarsak Araba sınıfından Toyota sınıfına kalıtım aldığımızda, Araba sınıfının tüm üye değişkenlerini Toyota sınıfınada aktarmış olmaktayız. Şuanda Protected tagı bulunmadığından Araba sınıfının üye değişkenine, Toyota sınıfından erişmek istiyorsak public erişim belirleyicinin üye değişkeninde kullanılması gerekmektedir. İlerki sürümlerde protected geleceği için böyle bir zorunluluğa ihtiyaç olmayacaktır.</p>
+
+<p>App.ts’e gelirsek App sınıfını görüyoruz ve bunun içinde static olan main methodu var. Main methodunu static yapmamızın nedeni App.main şeklinde erişebilmek içindir. Derleme sistemimiz tamamlandıktan sonra derlenen dosyanın sonuna otomatik olarak App.main’i çağıran bir kod ekledik. static nedir bilmiyorsanız oop bilgilerinizi tazelemenizi öneririm.</p>
+
+<h2 id="interface">Interface</h2>
+
+<p>Sınıfları öğrendik, peki oop’un diğer bir parçası olan interface’leri typescript üzerinde nasıl yapacağız. Bildiğiniz üzere interfaceler dışarıdan erişilebilir elemanların olması gerektiğini sınıfa belirten kod parçacıklarıdır. Örneğin insan interfacesi’nden bir sınıf tanımlarsak, bu sınıfta insana ait özelliklerin mutlaka <code>dışarıdan erişilebilir</code> bir biçimde tanımlanması gerekmektedir. Buradaki dışarıdan erişilebilme zorunluluğunuda örneklerle açıklayacağız..</p>
+
+<h4 id="ihayvants">IHayvan.ts</h4>
+<div>
+  <pre><code class="javascript">interface IHayvan {
+	isim:string;
+	yuru():void;
+	yemekye():void;
+}</code></pre>
+</div>
+
+<h4 id="hayvants">Hayvan.ts</h4>
+<div>
+  <pre><code class="javascript">ref &quot;IHayvan&quot;;
+
+class Hayvan implements IHayvan {
+	isim:string;
+	
+	constructor(isim:string) {
+		this.isim = isim;
+	}
+	
+	yemekye():void {
+		console.log(this.isim + &quot; yemek yedi&quot;);
+	}
+	
+	yuru():void {
+		console.log(this.isim + &quot; azcik yurudu&quot;);
+	}
+}</code></pre>
+</div>
+
+<h4 id="appts-1">App.ts</h4>
+<div>
+  <pre><code class="javascript">ref &quot;IHayvan&quot;;
+ref &quot;Hayvan&quot;;
+	
+class App {
+	static main(args:string[]) {
+		var at:IHayvan = new Hayvan(&quot;At&quot;);
+		at.yuru();
+		at.yemekye();
+	}
+}</code></pre>
+</div>
+
+<p>Kodlarımızı çalıştırırsak konsolda alacağımız sonuç;</p>
+
+<pre><code>At azcik yurudu
+At yemek yedi
+</code></pre>
+
+<p>Hadi kodlarımızı inceleyelim. Öncelikle <code>IHayvan.ts</code> teki gibi interface oluşturduk. Interface oluştururken <code>interface [interface adı]</code> yazıyoruz. Oluşturulan interface’e isim adında ve string tipinde bir değişken koyduk ayrıca 2 tane yemekye ve yuru adinda void döndüren fonksiyon tanımladık.</p>
+
+<p>IHayvan’ı kullanmak için <code>Hayvan.ts</code> adında bir dosya oluşturup Hayvan sınıfını burada tanımladık. Tanımlarken <code>class Hayvan implements IHayvan</code> şeklinde bir ifade kullandık. Implements tahmin ettiğiniz gibi bir sınıfa, bir interface’i göstermeye yarar tıpkı javadaki gibi. Hayvan içerisine interface’deki gereklilikleri koymadan derleseydik derleme aşamasında aşağıdaki gibi bir hata alırdık. </p>
+
+<div>
+  <pre><code class="bash">------------------------------------------------------
+build-chain-error  'tsc temp/src/App.ts --module commonjs --target ES5 --out build/app.js --removeComments'
+------------------------------------------------------
+src/Hayvan.ts(3,7): error TS2137: Class Hayvan declares interface IHayvan but does not implement it:
+
+Type 'Hayvan' is missing property 'isim' from type 'IHayvan'.
+------------------------------------------------------</code></pre>
+</div>
+
+<p>Türkçe karşılığı: “Ayvan tipinde IAyvandan gelen ‘isim’ özelliği yok”. Yani Hayvan sınıfına isim adında bir değişken koymadığımız için hata verdi. isimi yuru’u ve yemekye’i tanımladıktan sonrada hata vermeyecektir. </p>
+
+<p>App sınıfında da Hayvan sınıfından bir değişken ürettik ve parametresine “At” verdik. <code>at.yuru()</code> dediğimizde sınıfa gitti ve yuru fonksiyonunu çalıştırdı. Burada değişkenin tipine IHayvan verdik. Hayvan sınıfı IHayvan sınıfından türetildiğinden IHayvan tipindeki bir değişkene Hayvan sınıfını gönderebiliriz.</p>
+
+<p>Ek olarak daha önce bahsetmediğim bir özelliği fark ettim. Eğer değişkenlerin sağına “?” eklerseniz nullable özellik alır. Bu sayede interface’lerde olması zorunlu olmayan, ama istendiğinde konulabilen değişkenleri tanımlayabiliriz.</p>
+
+<h4 id="ikututs">IKutu.ts</h4>
+<div>
+  <pre><code class="javascript">interface IKutu {
+	hacim:number;
+	icerik?:any;
+}</code></pre>
+</div>
+
+<h4 id="appts-2">App.ts</h4>
+<div>
+  <pre><code class="javascript">ref &quot;IKutu&quot;;
+	
+class App {
+	static main(args:string[]) {
+		var bosKutu : IKutu = {
+			hacim: 50
+		};
+		
+		var doluKutu : IKutu = {
+			hacim: 50,
+			icerik: {
+				Top:1	
+			}
+		};
+		console.log(bosKutu.icerik);
+		console.log(doluKutu.icerik);
+	}
+}</code></pre>
+</div>
+
+<p>Kodların çıktısı </p>
+
+<div>
+  <pre><code class="bash">undefined
+{ Top: 1 }</code></pre>
+</div>
+
+<p>bosKutu’yu tanımlarken javascript’teki obje oluşturmayı kullandık. Typescript buna izin vermekte. Eğer ?’i içeriğe koymasaydık derleme aşamasında bosKutu için icerik girilmesini isteyecekti. Derleme hatayla sonuçlanacaktı..</p>
+
+<p>Interface’leri kullanarak daha fantazik şeyler yapabiliriz. Örneğin fonksiyon yapısını tutmasını sağlayarak Filtre gibi işlerde fonksiyonların parametrelerine başka fonksiyonları gönderebiliriz. Javascript’te olmasına rağmen bunu typescript’te yapmaya kalktığımızda farklı yapılar kullanmamız gerekiyor. Örneğin C#’ta delegate kullanıyorduk..</p>
+
+<h4 id="ivoidts">IVoid.ts</h4>
+<div>
+  <pre><code class="javascript">interface IVoid {
+	():void;
+}</code></pre>
+</div>
+
+<h4 id="testts">Test.ts</h4>
+<div>
+  <pre><code class="javascript">ref &quot;IVoid&quot;;
+
+class Test {
+	sayHello(callback:IVoid) {
+		setTimeout(() =&gt; {
+			console.log(&quot;HELLOO!&quot;);
+			callback();
+		}, 1000);
+	}
+}</code></pre>
+</div>
+
+<h4 id="appts-3">App.ts</h4>
+<div>
+  <pre><code class="javascript">ref &quot;IVoid&quot;;
+ref &quot;Test&quot;;
+
+var selamCak:IVoid = function() {
+	console.log(&quot;Selam Cak&quot;);
+}
+
+function eskiTarz():IVoid {
+	console.log(&quot;Eski Tarz&quot;);
+	return;
+}
+
+class App {
+	static staticFonk():IVoid {
+		console.log(&quot;Static Fonk&quot;);
+		return;
+	}
+
+	static main(args:string[]) {
+		var test = new Test();
+		test.sayHello(() =&gt; {
+			console.log(&quot;Lambda expression panpa&quot;);			  
+		});
+
+		test.sayHello(App.staticFonk);
+		test.sayHello(eskiTarz);
+		test.sayHello(selamCak);
+	}
+}</code></pre>
+</div>
+
+<p>Şimdi arkadaşlar şu IVoid diye birşey yaptık. Aslında bunu yapmaya gerek yoktu yani tip olarak IVoid yazmak yerine <code>()=&gt;void</code> de yazabilirdik ama bu gerçekçi olursak pek okunabilir bir halde değil. O yüzden böyle yapmak yerine interface yaptık. </p>
+
+<p>IVoid.ts’teki Inteface’ye bakarsak <code>():void;</code> diye birşey yazdık. Burada sanki ismi yazılmamış fonksiyon yazdık ve dönüş tipine void verdik. Typescript otomatik olarak bunu anlıyor ve IVoid’in bir fonksiyon olması gerektiğini kurguluyor. Sanırım bu şerefsizin daha çok özelliği var ilerki zamanlarda hepsini deneriz. Mesela içeri number parametresi alan ve boolean döndüren bir fonksiyon yapalım. Amacımız filtrelemek olsun.</p>
+
+<div>
+  <pre><code class="javascript">interface IFiltre {
+	(x:number):boolean;
+}
+
+function KontrolEt(callback:IFiltre) {
+	var result = callback(2);
+	if(result) {
+		console.log(&quot;kanka bu sayı bize uyar&quot;);
+	} else {
+		console.log(&quot;Valla hafız uza buradan&quot;);
+	}
+}
+
+KontrolEt((x:number) =&gt; {
+	if(x&gt;5) return true;
+	return false;
+});</code></pre>
+</div>
+
+<p>Bu şekilde bir sistemin, belirli bir kontrol mekanizmasını sistem dışarısından yapabilirsiniz. Açıkçası C#’da Multi-Threading’te olsada, Javada hiç kullanmadım bunu. Javascript async işleri çok başarılı yaptığından dolayı buradada kullanma gereği görüyoruz.</p>
+
+<p>Şimdi IVoidli olana geri dönersek naptık orada Test.ts diye bir dosya oluşturduk. Onun içindede sayHello diye bir üye fonksiyonu yaptık. Parametresine IVoid tipinde bir fonksiyon alacağını söyledik. setTimeout ilede 1 saniye gecikmeyle fonksiyonumuzu çağırmadan önce Ekrana “Hello” yazdırdık. </p>
+
+<p>App.ts içerisindede Test sınıfımızın üretip, sayHello üye fonksiyonunu çağırdık. Çağırabileceğiniz tüm yolları belirttimki nasıl yapacağınız konusunda bir fikir sahibi olasınız.</p>
+
+<h2 id="modules">Modules</h2>
+
+<p>Farklı işler yapan ama aynı isimde sınıflar oluşturmanız gerektiğini düşünün. C# olsaydı şipşak namespaceyle hallederdiniz, yada javayla package oluşturarak işi bitirirdiniz. Ancak şuan typescriptteyiz napcaz !!!</p>
+
+<p>Çözüm tabiki başlık! “modules”.. Modules diyip jeneriği anlatmayacaz demi akü. Neyse arkadaşlar devam edersek. Tıpkı C#’daki isim uzayı gibi typescript’tede uzaylar vardır. Bu uzaylar module olarak adlandırılıyor. Moduleleri tanımlarken aşağıdaki gibi bir yol izliyoruz.</p>
+
+<h4 id="siniflarimts">Siniflarim.ts</h4>
+<div>
+  <pre><code class="javascript">module Siniflarim {
+	var mesaj:string = &quot;kanka su mesaj varya kanka&quot;;
+	
+	export class A {
+		constructor() {
+			console.log(mesaj);	
+		}
+	}
+}</code></pre>
+</div>
+
+<h4 id="appts-4">App.ts</h4>
+<div>
+  <pre><code class="javascript">ref &quot;Siniflarim&quot;
+
+class App {
+	static main(args:string[]) {
+		var a = new Siniflarim.A();
+	}
+}</code></pre>
+</div>
+
+<p>Ekrana yazılan değer;</p>
+
+<div>
+  <pre><code class="bash">kanka su mesaj varya kanka</code></pre>
+</div>
+
+<p>Siniflarim.ts içerisinde module tanımlasını <code>module [module adı]</code> şeklinde yaptık. daha sonra içerisine var mesaj diyerek bir string tanımladık. Sınıfta farklı olarak başına <code>export</code> ekledik. Export ekleyerek sınıfları, arayüzleri dışardan erişilebilir kılabilirsiniz. Aksi halde erişim mümkün olmayacaktır.</p>
+
+<p>App.ts’tede A’sınıfından nesne üretirken <code>Siniflarim.A()</code> yazdık. Modül içerisinde tanımlanan sınıflara interface’lere erişirken modül adını yazmayı unutmuyoruz. Tabiki dışarıdan erişirken..</p>
+
+<p>Ayrıca arkadaşlar sınıflarım modülü genişletmek isterseniz tıpkı C#’taki gibi gene module Siniflarim yazıp kodlarınızı yazmak ve onları yüklemek. Örneğin SiniflarimExtra.ts diye dosya açıp içine bunları yazın</p>
+
+<div>
+  <pre><code class="javascript">module Siniflarim {
+	var mesaj:string = &quot;Bir elin sesi var, iki elin nesi var? Yoksa böyle değil miydi?&quot;;
+	export class B {
+		constructor() {
+			console.log(mesaj);	
+		}
+	}
+}</code></pre>
+</div>
+
+<p>App.ts’e SiniflarimExtra referansını ekleyip new Siniflarim.B() şeklinde nesneyi değiştirin. Sonuçları incelerseniz mesaj’ın 2 farklı yerde olduğunu ve her modulu acıp kapattığımda private etkiyi yaşayacağınızı söyleyebilirim. Çok terim konuştum ben bile anlamadım yav :D Kısacası modülü ayırırsanız sadece exportlara erişebilirsiniz okey…</p>
+
+<p>Modulesle ilgili son bilgi olarak şunu vereyim. nodejs ile çalıştığımızdan express gibi kütüphaneleri kullanmak isteyeceğiz bunları</p>
+
+<pre><code>import express = require('express');
+</code></pre>
+
+<p>diyip alabiliyoruz ancak şöyle bir durum var; typescript bunu tanımıyor. Tanıması için declare dosyası diye özel bir dosya yazıyoruz. Sanırım express için hazır vardı bu.. Bu declare dosyaları sınıfları baştan oluşturmuyor sadece expressi kullanarak proje geliştirirken typescript derleyicisinin sistemi tanımasını sağlıyor. Bu sayede daha güvenli bir şekilde kütüphaneleri kullanıyorsunuz…</p>
+
+<h2 id="generics">Generics</h2>
+<p>Arkadaşlar Jeneriğe bu yazıda sadece örnek vereceğim. Diğer devam yazımızda jenerikle ilgili daha detaylı bir inceleme yapacağız..</p>
+
+<h4 id="jenerikts">Jenerik.ts</h4>
+<div>
+  <pre><code class="javascript">class Jenerik&lt;T&gt; {
+	private value:T;
+	
+	constructor(value:T) {
+		this.setValue(value);
+	}
+
+	getValue() : T {
+		return this.value;	
+	}
+
+	setValue(value:T) {
+		this.value = value;	
+	}
+
+}</code></pre>
+</div>
+
+<h4 id="appts-5">App.ts</h4>
+<div>
+  <pre><code class="javascript">ref &quot;Jenerik&quot;;
+
+class App {
+	static main(args:string[]) {
+		var jenerik : Jenerik&lt;number&gt; = new Jenerik&lt;number&gt;(5);
+		console.log(jenerik.getValue());
+		
+		jenerik.setValue(123);
+		console.log(jenerik.getValue());
+		
+		var jenerik2 : Jenerik&lt;string&gt; = new Jenerik&lt;string&gt;(&quot;selam&quot;);
+		console.log(jenerik2.getValue());
+		
+		jenerik2.setValue(&quot;yeah&quot;);
+		console.log(jenerik2.getValue());	
+	}
+}</code></pre>
+</div>
+
+<h2 id="blm-sonu">Bölüm sonu</h2>
+<p>Evet arkadaşlar bu bölümün sonuna geldik. Bir sonraki typescript ile ilgili yazımızı en kısa sürede sahnelerde göreceksiniz. Takip etmeye devam edin. kib bay sg kardeşler</p>
+
+<p>Doğan Derya @co3moz <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#100;&#111;&#103;&#097;&#110;&#100;&#101;&#114;&#121;&#097;&#053;&#057;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#100;&#111;&#103;&#097;&#110;&#100;&#101;&#114;&#121;&#097;&#053;&#057;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a></p>
+
+
+    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_button_facebook"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_google_plus"></a>
+        <a class="a2a_button_linkedin"></a>
+    </div>
+  </article>
+
+    <div id="disqus_thread"></div>
+
+    <script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'mavidurakio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-33233667-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Kolektif Mavi</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>MaviDurak.IO Blogu</li>
+          <li><a href="mailto:mavidurak.io@gmail.com">mavidurak.io@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/mavidurak">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">mavidurak</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/mavidurakio">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">mavidurakio</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Mavidurak-IO Sakarya'da yaşayan ya da Sakarya'da öğrenim  gören geliştiricilerin oluşturduğu topluluktur.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-33233667-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+
+</html>

@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="B1nGWtHUFSp_F__6iggXUO2ykFFAyQ5biqd8C_7aKIM" />
-    <title>Mavidurak-IO First Commit!</title>
+    <title>Express nedir? Express ile Node.js projesi nasıl oluşturulur?</title>
     <meta name="description" content="Mavidurak-IO Sakarya'da yaşayan ya da Sakarya'da öğrenim  gören geliştiricilerin oluşturduğu topluluktur.
 ">
 
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="canonical" href="http://mavidurak.github.io/mavidurak/2014/08/12/mavidurak-io-first-commit.html">
+    <link rel="canonical" href="http://mavidurak.github.io/nodejs/2014/10/27/Express-nedir-Express-ile-nodejs-projesi-nas%C4%B1l-olusturulur%3F.html">
 </head>
 
 
@@ -61,25 +61,54 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Mavidurak-IO First Commit!</h1>
+    <h1 class="post-title">Express nedir? Express ile Node.js projesi nasıl oluşturulur?</h1>
     <p class="post-meta">
     
     
     
     
-     • Test</p>
+    </p>
   </header>
 
   <article class="post-content">
-    <p>Merhabalar,</p>
+    <p>Merhabalar, bu yazımda sizlere express.js modulünden bahsedeceğim. </p>
 
-<p>Oldukça heyecanlıyız. Ops! Kim olduğumuzu söylemeyi unuttum. Biz kim miyiz? Geçici ya da sürekli olarak Sakarya‘da yaşayan, Sakarya Üniversitesi‘nde okuyan bilişim teknolojileri meraklılarıyız. Sabah geç kalmamızın sebebi, bir önceki gece yazdığımız kodlar olan geliştiricileriz. Sadece yazılım da değil, bilgisayarların ve akıllı cihazların girdiği her yere el atmak isteyen, yerine duramayan ve çok konuşan geveze insanlarız.</p>
+<h3 id="expressjs-nedir">Express.js nedir?</h3>
 
-<p>Oldukça heyecanlıyız çünkü; bir araya gelerek bildiklerimizi hem kendimizle hem de bize katılmak isteyen herkesle paylaşmak istiyoruz. Dünyanın çok hızlı ilerlediğini biliyoruz. Okunacak, öğrenilecek ve yapılacak çok şey var. Gelişim yolunda Son Samuray değil, 300 Spartalı olmak istiyoruz. Bu nedenle Mavidurak-IO‘yu kurmak üzereyiz. Fakat bir kaç nerd‘e daha(200 küsür kadar) ihtiyaç var.</p>
+<p>Express, Nodejs ile hızlı ve düzenli proje gerçekleştirebilmemizi sağlayan web framework’üdür. Kurulumu da oldukça basittir.</p>
 
-<p>Haydi! Sen de aramıza katıl. Bu oluşuma destek ver ve fikirlerimize fikir kat.</p>
+<p>Express’i <a href="https://www.npmjs.org/">NPM</a> ile yüklemek için komut satırına aşağıdaki komutu yazmamız yeterlidir. NPM yüklü değilse, öncelikle NPM’nin kurulumunu gerçekleştirmeniz gerekir.</p>
 
-<p>Yapılacak çok iş var.</p>
+<div>
+  <pre><code class="bash">$ sudo npm install -g express</code></pre>
+</div>
+
+<p>Sorunsuz bir şekilde yükleme gerçekleştiyse, artık Express ile proje oluşturabiliriz.
+Komut satırından proje oluşturmak istediğimiz dizine gelelim ve aşağıdaki kodu yazalım.</p>
+
+<div>
+  <pre><code class="bash">$ express -c styl proje_adi</code></pre>
+</div>
+
+<p>Proje dosyalarını başka bir yazımda açıklayacağım. Şimdilik sadece projeyi ayağa kaldıracağız. Bunun için package.json dosyasındaki bağımlılıkların yüklenmesi gerekmektedir. Eğer yüklenmesini istediğiniz bir kütüphane varsa bu dosya içerisine yazmanız yeterlidir. Aşağıdaki komutu girerek yüklüyoruz.</p>
+
+<div>
+  <pre><code class="bash">$ sudo npm install</code></pre>
+</div>
+
+<p>Son olarak aşağıdaki komutla projeyi çalıştırıyoruz;</p>
+
+<div>
+  <pre><code class="bash">$ npm start</code></pre>
+</div>
+
+<p>Tarayıcımızdan http://localhost:3000’e girerek sonucu görebiliriz.</p>
+
+<p>Okuduğunuz için teşekkür ederim.</p>
+
+<p>Benimle aşağıdaki bağlantılardan iletişime geçebilirsiniz.</p>
+
+<p>Kadir Yaka yakakadir@gmail.com www.kadiryaka.com @kadiryaka</p>
 
     <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
         <a class="a2a_button_facebook"></a>
