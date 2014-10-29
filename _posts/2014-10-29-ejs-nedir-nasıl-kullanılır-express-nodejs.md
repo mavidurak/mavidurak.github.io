@@ -72,4 +72,7 @@ Okuduğunuz için teşekkür ederim.
 
 Benimle aşağıdaki bağlantılardan iletişime geçebilirsiniz.
 
-[GitHub Account](www.github.com/kadiryaka) [Web Site](www.kadiryaka.com) [Mail](yakakadir@gmail.com) [Linkedin](https://www.linkedin.com/pub/kadir-yaka/7a/ba1/39) 
+[GitHub Account](www.github.com/kadiryaka)
+[Web Site](www.kadiryaka.com) 
+[Mail](yakakadir@gmail.com) 
+[Linkedin](https://www.linkedin.com/pub/kadir-yaka/7a/ba1/39) 
