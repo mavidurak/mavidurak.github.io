@@ -42,7 +42,8 @@ Yeni bir blog yazısı oluşturduğunuzda, aşağıdaki gibi temel bilgilerin do
 layout: post
 title:  "Blog Yazınızın Başlığı"
 date:   2014-08-19 13:09:27
-categories: kategori diğer php java
+categories: php
+keywords: php class oop
 ---
 {% endhighlight %}
 
