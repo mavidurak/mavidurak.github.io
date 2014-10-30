@@ -8,6 +8,8 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://mavidurak.github.io" # the base hostname & protocol for your site
 twitter_username: mavidurakio
 github_username:  mavidurak
+paginate: 7
 
 # Build settings
 markdown: kramdown
+
