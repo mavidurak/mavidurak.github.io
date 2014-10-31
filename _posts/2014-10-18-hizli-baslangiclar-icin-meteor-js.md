@@ -102,6 +102,9 @@ JavaScript dosyasını incelediğimizde **isClient** ve **isServer** kontrolleri
 
 Meteor yukarıdaki basit örnekte anlatıldığından çok daha fazlasını yapabiliyor elbette. Siz de internette çeşitli kaynaklarda gösterilen örnekleri inceleyebilirsiniz. Ancak ne yazık ki Meteor'un henüz bir **stabil** sürümü bulunmuyor. Bu da yola çıkarken mutlaka düşünmeniz gereken bir durum. Henüz stabil olmadığı için de sürekli değişen bir yapısı bulunuyor. Dün yazdığınız kodların yarın çıkacak yeni sürümde çalışmayabilir. 
 
+> ÖNEMLİ!
+> Ben bu yazıyı yazdıktan bir süre sonra Meteor.JS'in stabil sürümü yayınlandı. Dolayısıyla üstteki paragrafı dikkate almayınız. 
+
 Meteor ile çok geniş çaplı (birçok ekran ve tablodan oluşan) uygulamalar yapılabileceği bana pek mantıklı gelmiyor. Ancak basit bir startup fikriniz varsa ve bir an önce yayınlayıp kullanıcıların tepkilerini görmek istiyorsanız Meteor tam size göre. Sadece aşağıdaki iki komutla *Facebook'la Oturum Açma* işlemini sisteminize entegre edebildiğinizi düşünen yeterli. :)
 
 {% highlight bash %}
