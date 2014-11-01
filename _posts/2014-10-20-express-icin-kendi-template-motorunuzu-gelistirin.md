@@ -60,6 +60,14 @@ Uygulamayı ayağa kaldırdıktan sonra "/" adresini ziyaret edip sonucun html'e
 		<ul style="margin: 0;">
 			<li><h1>Furkan Başaran</h1></li>
 			<li><span>Web geliştirici</span></li>
+			<li>
+				<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+			        <a class="a2a_button_facebook" href="https://www.facebook.com/frknbasaran?fref=ts"></a>
+			        <a class="a2a_button_twitter" href="https://twitter.com/frknbasaran"></a>
+			        <a class="a2a_button_google_plus" href="https://plus.google.com/+FurkanBA%C5%9EARAN/about"></a>
+			        <a class="a2a_button_linkedin" href="https://www.linkedin.com/pub/furkan-ba%C5%9Faran/73/731/b3b"></a>
+			    </div>
+			</li>
 		</ul>
 	</div>
 </div>

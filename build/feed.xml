@@ -6,8 +6,8 @@
 </description>
     <link>http://mavidurak.github.io/</link>
     <atom:link href="http://mavidurak.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>2014-11-01 15:43:00 +0200</pubDate>
-    <lastBuildDate>2014-11-01 15:43:00 +0200</lastBuildDate>
+    <pubDate>2014-11-01 15:48:07 +0200</pubDate>
+    <lastBuildDate>2014-11-01 15:48:07 +0200</lastBuildDate>
     <generator>Jekyll v</generator>
     
       <item>
@@ -1178,6 +1178,14 @@ app.set('view engine', 'ebe'); // dosya uzantımızı belirterek template motoru
 		&lt;ul style=&quot;margin: 0;&quot;&gt;
 			&lt;li&gt;&lt;h1&gt;Furkan Başaran&lt;/h1&gt;&lt;/li&gt;
 			&lt;li&gt;&lt;span&gt;Web geliştirici&lt;/span&gt;&lt;/li&gt;
+			&lt;li&gt;
+				&lt;div class=&quot;a2a_kit a2a_kit_size_32 a2a_default_style&quot;&gt;
+			        &lt;a class=&quot;a2a_button_facebook&quot; href=&quot;https://www.facebook.com/frknbasaran?fref=ts&quot;&gt;&lt;/a&gt;
+			        &lt;a class=&quot;a2a_button_twitter&quot; href=&quot;https://twitter.com/frknbasaran&quot;&gt;&lt;/a&gt;
+			        &lt;a class=&quot;a2a_button_google_plus&quot; href=&quot;https://plus.google.com/+FurkanBA%C5%9EARAN/about&quot;&gt;&lt;/a&gt;
+			        &lt;a class=&quot;a2a_button_linkedin&quot; href=&quot;https://www.linkedin.com/pub/furkan-ba%C5%9Faran/73/731/b3b&quot;&gt;&lt;/a&gt;
+			    &lt;/div&gt;
+			&lt;/li&gt;
 		&lt;/ul&gt;
 	&lt;/div&gt;
 &lt;/div&gt;
