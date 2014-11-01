@@ -278,7 +278,11 @@ span.posts-title {
 
 .author-box {
     display: block;
-    background-color: rgba(62,90,91,.3);
+    background-color: #fafafa;
+    overflow: auto;
+    clear: both;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .author-img {
@@ -286,7 +290,7 @@ span.posts-title {
     height: 120px;
     border-radius: 20px;
     float: left;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .author-info {
@@ -306,6 +310,7 @@ span.posts-title {
 .author-info ul li > h1 {
     font-size: 12pt;
     font-weight: bold;
+    margin: 0;
 }
 
 .author-info ul li > span {
