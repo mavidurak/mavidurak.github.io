@@ -57,7 +57,7 @@ Uygulamayı ayağa kaldırdıktan sonra "/" adresini ziyaret edip sonucun html'e
 <div class="author-box">
 	<img class="author-img" src="https://pbs.twimg.com/profile_images/526826898177814529/IYKFyvya_400x400.jpeg"/>
 	<div class="author-info">
-		<ul>
+		<ul style="margin: 0;">
 			<li><h1>Furkan Başaran</h1></li>
 			<li><span>Web geliştirici</span></li>
 		</ul>
