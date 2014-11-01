@@ -343,7 +343,7 @@ div.pagination {
     margin-top: 5px;
 }
 
-div.pagination a {
+div.pagination a, div.pagination em, div.pagination span {
     padding: 8px;
     border: 1px solid #dbdbdb;
     border-radius: 5px;
