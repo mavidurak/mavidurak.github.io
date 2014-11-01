@@ -275,3 +275,39 @@ span.posts-title {
     background-position: center left;
     background-repeat: no-repeat;
 }
+
+.author-box {
+    display: block;
+    background-color: rgba(62,90,91,.3);
+}
+
+.author-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    float: left;
+    margin-right: 20px;
+}
+
+.author-info {
+    width: 600px;
+    float: left;
+}
+
+.author info ul {
+    display:block;
+}
+
+.author-info ul li {
+    display: block;
+    padding-bottom: 5px;
+}
+
+.author-info ul li > h1 {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.author-info ul li > span {
+    font-size: 9pt;
+}

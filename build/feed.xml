@@ -6,8 +6,8 @@
 </description>
     <link>http://mavidurak.github.io/</link>
     <atom:link href="http://mavidurak.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>2014-10-28 21:40:29 +0200</pubDate>
-    <lastBuildDate>2014-10-28 21:40:29 +0200</lastBuildDate>
+    <pubDate>2014-11-01 15:31:23 +0200</pubDate>
+    <lastBuildDate>2014-11-01 15:31:23 +0200</lastBuildDate>
     <generator>Jekyll v</generator>
     
       <item>
@@ -625,6 +625,89 @@ class App {
       </item>
     
       <item>
+        <title>EJS nedir? Nasıl kullanılır? Express &amp; Node.js</title>
+        <description>&lt;p&gt;Merhaba arkadaşlar. Bu yazımda sizlere Node.js’in Express modulüyle ejs’in nasıl kullanılacağından kısaca bahsedeceğim. Express ile default olarak gelen .jade’e ısınamayanlar için oldukça işe yarar olduğunu düşünüyorum.&lt;/p&gt;
+
+&lt;h3 id=&quot;ejs-nedir&quot;&gt;EJS nedir?&lt;/h3&gt;
+
+&lt;p&gt;Ejs, html şablonlarıyla, servis tarafımızdan gelen verileri birleştirebilmemizi sağlayan javascript kütüphanesidir. Php’de olduğu gibi html içerisine veri yollayıp bunu görüntüleyebilmemizi sağlar.&lt;/p&gt;
+
+&lt;p&gt;İlk olarak express ile yeni bir proje oluşturuyoruz. Express ile nasıl proje oluşturulacağını bilmiyorsanız ilgili &lt;a href=&quot;http://mavidurak.github.io/nodejs/2014/10/27/Express-nedir-Express-ile-nodejs-projesi-nas%C4%B1l-olusturulur%3F.html&quot;&gt;blog yazıma&lt;/a&gt; gözatabilirsiniz. Proje dosyalarımız içerisindeki package.json dosyasını açıp “dependencies” içerisindeki verilerin sonuna&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&amp;quot;ejs&amp;quot;: &amp;quot;*&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ekliyoruz.
+app.js dosyasındaki&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;app.set('view engine', 'jade');&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;“jade” ifadesini “ejs” olarak değiştiriyoruz.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;app.set('view engine', 'ejs');&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;/views klasörü içerisindeki .jade uzantılı index.jade dosyasının adını index.ejs olarak değiştiriyoruz.
+Bu işlemi kullanacağımız bütün view dosyaları için yapmamız gerekir. Tabi içerisine de ejs modulüne uygun olarak değiştirmemiz gerekecek. Şuan için basit bir html yapısı ve “title” verisiyle değiştirebiliriz.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+	&amp;lt;title&amp;gt;Nodejs title with ejs &amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;	
+&amp;lt;%- title %&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;bu title verisini servisten yollamamız lazım. Hali hazırda express modulünde default olarak gelen kod işimizi görür. Gene de index.js içerisini buraya yazıyorum.&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;var express = require('express');
+var router = express.Router();&amp;lt;/code&amp;gt;
+ 
+/* GET home page. */
+router.get('/', function(req, res) {
+res.render('index', { title: 'Express' });
+});
+module.exports = router;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Değişiklikleri kaydetmeyi unutmayalım.
+Terminal’den komut satırına projemizin bulunduğu klasöre gidiyoruz ve&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sudo npm install
+npm start&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;komutlarını uygulayarak projeyi ayağa kaldırıyoruz. 
+Herşey yolunda gittiyse tarayıcımızdan http://localhost:3000/ diyerek girdiğimizde karşımıza title verisinde belirttiğimiz “Express” yazısı gelecektir.&lt;/p&gt;
+
+&lt;p&gt;Okuduğunuz için teşekkür ederim.&lt;/p&gt;
+
+&lt;p&gt;Benimle aşağıdaki bağlantılardan iletişime geçebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;www.github.com/kadiryaka&quot;&gt;GitHub Account&lt;/a&gt;
+&lt;a href=&quot;www.kadiryaka.com&quot;&gt;Web Site&lt;/a&gt; 
+&lt;a href=&quot;yakakadir@gmail.com&quot;&gt;Mail&lt;/a&gt; 
+&lt;a href=&quot;https://www.linkedin.com/pub/kadir-yaka/7a/ba1/39&quot;&gt;Linkedin&lt;/a&gt; &lt;/p&gt;
+</description>
+        <pubDate>2014-10-27 14:30:00 +0200</pubDate>
+        <link>http://mavidurak.github.io/nodejs/2014/10/27/ejs-nedir-nas%C4%B1l-kullan%C4%B1l%C4%B1r-express-nodejs.html</link>
+        <guid isPermaLink="true">http://mavidurak.github.io/nodejs/2014/10/27/ejs-nedir-nas%C4%B1l-kullan%C4%B1l%C4%B1r-express-nodejs.html</guid>
+        
+        
+        <category>nodejs</category>
+        
+      </item>
+    
+      <item>
         <title>Express nedir? Express ile Node.js projesi nasıl oluşturulur?</title>
         <description>&lt;p&gt;Merhabalar, bu yazımda sizlere express.js modulünden bahsedeceğim. &lt;/p&gt;
 
@@ -1089,8 +1172,15 @@ app.set('view engine', 'ebe'); // dosya uzantımızı belirterek template motoru
 
 &lt;p&gt;Uygulamayı ayağa kaldırdıktan sonra “/” adresini ziyaret edip sonucun html’e render edilmiş halini görebilirsin.&lt;/p&gt;
 
-&lt;p&gt;Furkan BAŞARAN &lt;a href=&quot;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#116;&amp;#111;:&amp;#102;&amp;#114;&amp;#107;&amp;#110;&amp;#098;&amp;#097;&amp;#115;&amp;#097;&amp;#114;&amp;#097;&amp;#110;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&quot;&gt;&amp;#102;&amp;#114;&amp;#107;&amp;#110;&amp;#098;&amp;#097;&amp;#115;&amp;#097;&amp;#114;&amp;#097;&amp;#110;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&lt;/a&gt;
-@frknbasaran&lt;/p&gt;
+&lt;div class=&quot;author-box&quot;&gt;
+	&lt;img class=&quot;author-img&quot; src=&quot;https://pbs.twimg.com/profile_images/526826898177814529/IYKFyvya_400x400.jpeg&quot; /&gt;
+	&lt;div class=&quot;author-info&quot;&gt;
+		&lt;ul&gt;
+			&lt;li&gt;&lt;h1&gt;Furkan Başaran&lt;/h1&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;span&gt;Web geliştirici&lt;/span&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
 
 </description>
         <pubDate>2014-10-20 00:50:00 +0300</pubDate>
@@ -1205,6 +1295,11 @@ Uygulama başladıktan sonra siz dilediğiniz dosyası dilediğiniz yere kaydede
 &lt;h3 id=&quot;herey-mi-gzel&quot;&gt;Herşey Mi Güzel?&lt;/h3&gt;
 
 &lt;p&gt;Meteor yukarıdaki basit örnekte anlatıldığından çok daha fazlasını yapabiliyor elbette. Siz de internette çeşitli kaynaklarda gösterilen örnekleri inceleyebilirsiniz. Ancak ne yazık ki Meteor’un henüz bir &lt;strong&gt;stabil&lt;/strong&gt; sürümü bulunmuyor. Bu da yola çıkarken mutlaka düşünmeniz gereken bir durum. Henüz stabil olmadığı için de sürekli değişen bir yapısı bulunuyor. Dün yazdığınız kodların yarın çıkacak yeni sürümde çalışmayabilir. &lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ÖNEMLİ!
+Ben bu yazıyı yazdıktan bir süre sonra Meteor.JS’in stabil sürümü yayınlandı. Dolayısıyla üstteki paragrafı dikkate almayınız. &lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;Meteor ile çok geniş çaplı (birçok ekran ve tablodan oluşan) uygulamalar yapılabileceği bana pek mantıklı gelmiyor. Ancak basit bir startup fikriniz varsa ve bir an önce yayınlayıp kullanıcıların tepkilerini görmek istiyorsanız Meteor tam size göre. Sadece aşağıdaki iki komutla &lt;em&gt;Facebook’la Oturum Açma&lt;/em&gt; işlemini sisteminize entegre edebildiğinizi düşünen yeterli. :)&lt;/p&gt;
 
@@ -1571,7 +1666,8 @@ git fetch mavidurak&lt;/code&gt;&lt;/pre&gt;
 layout: post
 title:  &amp;quot;Blog Yazınızın Başlığı&amp;quot;
 date:   2014-08-19 13:09:27
-categories: kategori diğer php java
+categories: php
+keywords: php class oop
 ---&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -1598,41 +1694,6 @@ $ git push origin master&lt;/code&gt;&lt;/pre&gt;
         <pubDate>2014-08-19 16:09:27 +0300</pubDate>
         <link>http://mavidurak.github.io/mavidurak/2014/08/19/siz-de-blog-yazisi-yayinlayin.html</link>
         <guid isPermaLink="true">http://mavidurak.github.io/mavidurak/2014/08/19/siz-de-blog-yazisi-yayinlayin.html</guid>
-        
-        
-        <category>mavidurak</category>
-        
-      </item>
-    
-      <item>
-        <title>Mavidurak-IO Deklarasyonu</title>
-        <description>&lt;p&gt;Mavidurak-IO ne için var, ne yapmak istiyor ve nasıl yapmak istiyor sorularına vereceğimiz cevaplar bu başlık altında toplanacaktır. Önerilerinizi ve düzenlemeleriniz GitHub üzerinde bulunan &lt;a href=&quot;https://github.com/mavidurak/declaration&quot;&gt;repomuza&lt;/a&gt; pull-request ile gönderebilirsiniz.&lt;/p&gt;
-
-&lt;h3 id=&quot;ama-kural-ve-hedefler&quot;&gt;Amaç, Kural ve Hedefler&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Yazılım değil, geliştirici üretmek.&lt;/li&gt;
-  &lt;li&gt;Tanıtım ve eğitim amaçlı basit seminerler düzenlemek.&lt;/li&gt;
-  &lt;li&gt;Workshop çalışmalarına katılacak küçük grupları mülakat ile belirlemek.&lt;/li&gt;
-  &lt;li&gt;Amatör ruhu kaybetmemek.&lt;/li&gt;
-  &lt;li&gt;GitHub’sız geliştirici kabul etmemek.&lt;/li&gt;
-  &lt;li&gt;Öğrenmeyi öğrenmek ve hayat boyu öğrenmek felsefesini yaygınlaştırmak.&lt;/li&gt;
-  &lt;li&gt;Oyun oynamamak, oyun yazmak.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;workshop-ncesinde-alnmas-gereken-eitimler&quot;&gt;Workshop Öncesinde Alınması Gereken Eğitimler&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Soru Sormak ve Araştırma&lt;/li&gt;
-  &lt;li&gt;Yazılım Standartları ve SOLID&lt;/li&gt;
-  &lt;li&gt;Dökümantasyon&lt;/li&gt;
-  &lt;li&gt;Versiyonlama&lt;/li&gt;
-  &lt;li&gt;Standart Oluşturma&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>2014-08-19 16:09:27 +0300</pubDate>
-        <link>http://mavidurak.github.io/mavidurak/2014/08/19/mavidurak-io-deklerasyonu.html</link>
-        <guid isPermaLink="true">http://mavidurak.github.io/mavidurak/2014/08/19/mavidurak-io-deklerasyonu.html</guid>
         
         
         <category>mavidurak</category>
