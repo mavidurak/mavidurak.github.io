@@ -349,6 +349,10 @@ div.pagination a, div.pagination em, div.pagination span {
     border-radius: 5px;
 }
 
+div.pagination em {
+    background-color: #fafafa;
+}
+
 div.pagination a:hover {
     background-color: #fafafa;
 }
