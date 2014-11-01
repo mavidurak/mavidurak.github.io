@@ -59,11 +59,11 @@ Uygulamayı ayağa kaldırdıktan sonra "/" adresini ziyaret edip sonucun html'e
 	<div class="author-info">
 		<ul style="margin: 0;">
 			<li><h1>Furkan Başaran</h1></li>
-			<li><span>Web geliştirici / Sakarya Üniversitesi'nde Bilgisayar Mühendisliği okuyor.</span></li>
-			<li style="margin-top:5px;">
-				<a class="facebook" href=""></a>
-				<a class="twitter" href=""></a>
-				<a class="linkedin" href=""></a>
+			<li style="margin-top:5px;"><span>Web geliştirici / Sakarya Üniversitesi'nde Bilgisayar Mühendisliği okuyor.</span></li>
+			<li style="margin-top:10px;">
+				<a class="facebook" href="#"></a>
+				<a class="twitter" href="#"></a>
+				<a class="linkedin" href="#"></a>
 			</li>
 		</ul>
 	</div>

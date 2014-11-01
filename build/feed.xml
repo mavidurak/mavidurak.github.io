@@ -6,8 +6,8 @@
 </description>
     <link>http://mavidurak.github.io/</link>
     <atom:link href="http://mavidurak.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>2014-11-01 15:59:23 +0200</pubDate>
-    <lastBuildDate>2014-11-01 15:59:23 +0200</lastBuildDate>
+    <pubDate>2014-11-01 16:02:54 +0200</pubDate>
+    <lastBuildDate>2014-11-01 16:02:54 +0200</lastBuildDate>
     <generator>Jekyll v</generator>
     
       <item>
@@ -1177,11 +1177,11 @@ app.set('view engine', 'ebe'); // dosya uzantımızı belirterek template motoru
 	&lt;div class=&quot;author-info&quot;&gt;
 		&lt;ul style=&quot;margin: 0;&quot;&gt;
 			&lt;li&gt;&lt;h1&gt;Furkan Başaran&lt;/h1&gt;&lt;/li&gt;
-			&lt;li&gt;&lt;span&gt;Web geliştirici / Sakarya Üniversitesi'nde Bilgisayar Mühendisliği okuyor.&lt;/span&gt;&lt;/li&gt;
-			&lt;li style=&quot;margin-top:5px;&quot;&gt;
-				&lt;a class=&quot;facebook&quot; href=&quot;&quot;&gt;&lt;/a&gt;
-				&lt;a class=&quot;twitter&quot; href=&quot;&quot;&gt;&lt;/a&gt;
-				&lt;a class=&quot;linkedin&quot; href=&quot;&quot;&gt;&lt;/a&gt;
+			&lt;li style=&quot;margin-top:5px;&quot;&gt;&lt;span&gt;Web geliştirici / Sakarya Üniversitesi'nde Bilgisayar Mühendisliği okuyor.&lt;/span&gt;&lt;/li&gt;
+			&lt;li style=&quot;margin-top:10px;&quot;&gt;
+				&lt;a class=&quot;facebook&quot; href=&quot;#&quot;&gt;&lt;/a&gt;
+				&lt;a class=&quot;twitter&quot; href=&quot;#&quot;&gt;&lt;/a&gt;
+				&lt;a class=&quot;linkedin&quot; href=&quot;#&quot;&gt;&lt;/a&gt;
 			&lt;/li&gt;
 		&lt;/ul&gt;
 	&lt;/div&gt;
