@@ -60,7 +60,7 @@ Uygulamayı ayağa kaldırdıktan sonra "/" adresini ziyaret edip sonucun html'e
 		<ul style="margin: 0;">
 			<li><h1>Furkan Başaran</h1></li>
 			<li><span>Web geliştirici</span></li>
-			<li>
+			<li style="margin-top:5px;">
 				<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
 			        <a class="a2a_button_facebook" href="https://www.facebook.com/frknbasaran?fref=ts"></a>
 			        <a class="a2a_button_twitter" href="https://twitter.com/frknbasaran"></a>
