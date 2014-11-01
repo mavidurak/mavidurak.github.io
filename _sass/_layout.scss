@@ -339,16 +339,16 @@ a.linkedin {
     height: 32px;
 }
 
-.pagination {
+div.pagination {
     margin-top: 5px;
 }
 
-.pagination: a {
+div.pagination: a {
     padding: 8px;
     border: 1px solid $brand-color;
     border-radius: 5px;
 }
 
-.pagination: a:hover {
+div.pagination: a:hover {
     background-color: #fafafa;
 }
