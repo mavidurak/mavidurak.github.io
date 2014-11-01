@@ -338,3 +338,17 @@ a.linkedin {
     width: 32px;
     height: 32px;
 }
+
+.pagination {
+    margin-top: 5px;
+}
+
+.pagination: a {
+    padding: 8px;
+    border: 1px solid $brand-color;
+    border-radius: 5px;
+}
+
+.pagination: a:hover {
+    background-color: #fafafa;
+}
