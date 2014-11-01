@@ -59,14 +59,11 @@ Uygulamayı ayağa kaldırdıktan sonra "/" adresini ziyaret edip sonucun html'e
 	<div class="author-info">
 		<ul style="margin: 0;">
 			<li><h1>Furkan Başaran</h1></li>
-			<li><span>Web geliştirici</span></li>
+			<li><span>Web geliştirici / Sakarya Üniversitesi'nde Bilgisayar Mühendisliği okuyor.</span></li>
 			<li style="margin-top:5px;">
-				<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-			        <a class="a2a_button_facebook" href="https://www.facebook.com/frknbasaran?fref=ts"></a>
-			        <a class="a2a_button_twitter" href="https://twitter.com/frknbasaran"></a>
-			        <a class="a2a_button_google_plus" href="https://plus.google.com/+FurkanBA%C5%9EARAN/about"></a>
-			        <a class="a2a_button_linkedin" href="https://www.linkedin.com/pub/furkan-ba%C5%9Faran/73/731/b3b"></a>
-			    </div>
+				<a class="facebook" href=""></a>
+				<a class="twitter" href=""></a>
+				<a class="linkedin" href=""></a>
 			</li>
 		</ul>
 	</div>
