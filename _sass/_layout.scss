@@ -343,12 +343,12 @@ div.pagination {
     margin-top: 5px;
 }
 
-div.pagination: a {
+div.pagination a {
     padding: 8px;
-    border: 1px solid $brand-color;
+    border: 1px solid #dbdbdb;
     border-radius: 5px;
 }
 
-div.pagination: a:hover {
+div.pagination a:hover {
     background-color: #fafafa;
 }
