@@ -278,11 +278,12 @@ span.posts-title {
 
 .author-box {
     display: block;
-    background-color: rgba(0,0,0,.44);
+    background-color: rgba(0,0,0,.10);
     overflow: auto;
     clear: both;
     padding: 5px;
     border-radius: 5px;
+    margin: 10px 0;
 }
 
 .author-img {
@@ -298,14 +299,13 @@ span.posts-title {
     float: left;
 }
 
-.author info ul {
+.author info > ul {
     display:block;
     margin: 0;
 }
 
 .author-info ul li {
     display: block;
-    padding-bottom: 5px;
 }
 
 .author-info ul li > h1 {
