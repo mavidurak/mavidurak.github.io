@@ -94,5 +94,3 @@ Burada da fonksiyonumuzu if - else yapısıyla kullanarak, fonksiyondan gelecek 
 Uygulama geliştirirken çok yerde kullanacağınız bir kavram. Umarım faydalı olmuştur.
 
 Görüşmek üzere.
-
-Ömer Faruk Görmel <gormelomerfaruk@gmail.com> ([@gormelof](https://twitter.com/gormelof))
