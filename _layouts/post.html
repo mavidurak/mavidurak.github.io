@@ -22,7 +22,6 @@ layout: default
             {% when '12' %}Aralık
             {% endcase %}
             {{ post.date | date: "%Y" }}
-            {% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}
         </p>
     </header>
     <article class="post-content">
