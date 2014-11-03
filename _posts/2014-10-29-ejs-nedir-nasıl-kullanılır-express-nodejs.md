@@ -3,6 +3,7 @@ layout: post
 title:  "EJS nedir? Nasıl kullanılır? Express & Node.js"
 date:   2014-10-27 14:30
 categories: nodejs
+author: ozziest
 ---
  
 Merhaba arkadaşlar. Bu yazımda sizlere Node.js'in Express modulüyle ejs’in nasıl kullanılacağından kısaca bahsedeceğim. Express ile default olarak gelen .jade’e ısınamayanlar için oldukça işe yarar olduğunu düşünüyorum.

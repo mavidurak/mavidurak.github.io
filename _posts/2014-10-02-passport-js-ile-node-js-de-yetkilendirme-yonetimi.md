@@ -4,6 +4,7 @@ title:  "Passport.js ile Node JS'de Yetkilendirme Yönetimi"
 date:   2014-10-02 00:50
 categories: nodejs
 keywords: nodejs javascript oauth login authentication passportjs
+author: ozziest
 ---
  
  

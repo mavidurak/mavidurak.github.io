@@ -3,6 +3,7 @@ layout: post
 title:  "Nashorn JS  Motoru ve Diğer JVM Dilleri"
 date:   2014-10-24 00:59
 categories: java
+author: ozziest
 ---
 
 JVM içerisinde statik tipli dilleri çalıştırabilmenin birden fazla amacı bulunmaktadır. Bunlar;

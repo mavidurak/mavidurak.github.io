@@ -3,6 +3,7 @@ layout: post
 title:  "Express nedir? Express ile Node.js projesi nasıl oluşturulur?"
 date:   2014-10-27 12:50
 categories: nodejs
+author: ozziest
 ---
 
 Merhabalar, bu yazımda sizlere express.js modulünden bahsedeceğim. 

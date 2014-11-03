@@ -3,6 +3,7 @@ layout: post
 title: "Typescript Nedir? Nedendir? Nerededir?"
 date: 2014-10-27 14:31
 categories: javascript
+author: ozziest
 ---
 
 # Typescript
