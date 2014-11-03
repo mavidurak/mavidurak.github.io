@@ -25,6 +25,7 @@ authors:
     github: ozziest
     facebook: TheMornie
     linkedin: http://tr.linkedin.com/in/ozguradem/
+
   frknbasaran:
     display_name: Furkan Başaran
     bio: Toyota Motor Europe bünyesinde Web Developer olarak çalışıyor.
@@ -35,4 +36,15 @@ authors:
     github: frknbasaran
     facebook: frknbasaran
     linkedin: http://tr.linkedin.com/pub/furkan-ba%C5%9Faran/73/731/b3b/
+
+  gormelof:
+    display_name: Ömer Faruk Görmel
+    bio: Computer Eng. Student at Sakarya University
+    avatar: https://avatars2.githubusercontent.com/u/6938857?v=2&s=460
+    email: gormelomerfaruk@gmail.com
+    web: http://www.omerfarukgormel.com/
+    twitter: gormelof
+    github: gormelof
+    facebook: gormelomerfaruk
+    linkedin: http://tr.linkedin.com/in/gormelof/
 
