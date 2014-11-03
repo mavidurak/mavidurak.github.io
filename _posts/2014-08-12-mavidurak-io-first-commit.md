@@ -4,7 +4,7 @@ title:  "Mavidurak-IO First Commit!"
 date:   2014-08-12 13:09:27
 categories: mavidurak
 keywords: mavidurakio sakarya yazılım geliştirici
-author: Test
+author: ozziest
 ---
 
 Merhabalar,

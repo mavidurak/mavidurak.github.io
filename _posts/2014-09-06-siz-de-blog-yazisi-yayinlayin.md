@@ -4,6 +4,7 @@ title:  "Siz de Blog Yazısı Yayınlayın"
 date:   2014-08-19 13:09:27
 categories: mavidurak
 keywords: mavidurakio kolektif blog
+author: ozziest
 ---
 
 Mavidurak-IO'nun hedeflerinden biri de kollektif bir blog oluşturmaktır. Bu nedenle sizin de Mavidurak-IO üzerinde blog yazısı oluşturarak paylaşmanızı destekler. Sizin seçeceğiniz ana dalı bilişim olan bir konu üzerinde blog yazısı hazırlayarak, Mavidurak-IO blogunda yayınlayabilirsiniz.

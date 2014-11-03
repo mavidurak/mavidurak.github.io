@@ -13,3 +13,17 @@ paginate: 7
 # Build settings
 markdown: kramdown
 
+
+authors:
+  ozziest:
+    display_name: Özgür Adem Işıklı
+    bio: Ahir Ar-Ge AŞ bünyesinde Web Developer olarak çalışıyor.
+    avatar: https://pbs.twimg.com/profile_images/466225886530789377/P-fkjNMZ.jpeg
+    email: i.ozguradem@gmail.com
+    web: http://ozziest.github.io
+    twitter: iozguradem
+    github: ozziest
+    facebook: TheMornie
+    linkedin: http://tr.linkedin.com/in/ozguradem/
+
+
