@@ -55,19 +55,3 @@ app.get('/', function (req, res) {
 
 Uygulamayı ayağa kaldırdıktan sonra "/" adresini ziyaret edip sonucun html'e render edilmiş halini görebilirsin.
 
-<div class="author-box">
-	<img class="author-img" src="https://pbs.twimg.com/profile_images/526826898177814529/IYKFyvya_400x400.jpeg"/>
-	<div class="author-info">
-		<ul style="margin: 0;">
-			<li><h1>Furkan Başaran</h1></li>
-			<li style="margin-top:5px;"><span>Web geliştirici / Sakarya Üniversitesi'nde Bilgisayar Mühendisliği okuyor.</span></li>
-			<li style="margin-top:10px;">
-				<a class="facebook" href="#"></a>
-				<a class="twitter" href="#"></a>
-				<a class="linkedin" href="#"></a>
-			</li>
-		</ul>
-	</div>
-</div>
-
-
