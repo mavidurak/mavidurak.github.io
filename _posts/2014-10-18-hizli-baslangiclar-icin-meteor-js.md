@@ -124,11 +124,6 @@ $ meteor add accounts-facebook
 
 
 
-[Özgür Adem Işıklı](http://ozziest.github.io) ([@iozguradem](https://twitter.com/iozguradem))
-
-
-
-
 
 
 
