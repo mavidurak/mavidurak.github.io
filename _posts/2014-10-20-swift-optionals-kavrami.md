@@ -3,7 +3,7 @@ layout: post
 title:  "Swift - Optionals Kavramı"
 date:   2014-10-20 10:10
 categories: Swift
-author: ozziest
+author: gormelof
 ---
 Merhaba bugün 2014 model bir dil (Swift) ile gelen, çokta aşina olmadığımız bir kavrama değineceğim.
 
