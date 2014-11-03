@@ -37,7 +37,7 @@ Bu işlemi kullanacağımız bütün view dosyaları için yapmamız gerekir. Ta
 {% highlight bash %}
 <html>
 <head>
-	<title>Nodejs title with ejs </title>
+	<title> Express </title>
 </head>
 <body>	
 <%- title %>
