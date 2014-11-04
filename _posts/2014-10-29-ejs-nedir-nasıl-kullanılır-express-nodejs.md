@@ -3,7 +3,7 @@ layout: post
 title:  "EJS nedir? Nasıl kullanılır? Express & Node.js"
 date:   2014-10-27 14:30
 categories: nodejs
-author: ozziest
+author: kadiryaka
 ---
  
 Merhaba arkadaşlar. Bu yazımda sizlere Node.js'in Express modulüyle ejs’in nasıl kullanılacağından kısaca bahsedeceğim. Express ile default olarak gelen .jade’e ısınamayanlar için oldukça işe yarar olduğunu düşünüyorum.
@@ -70,10 +70,3 @@ komutlarını uygulayarak projeyi ayağa kaldırıyoruz.
 Herşey yolunda gittiyse tarayıcımızdan http://localhost:3000/ diyerek girdiğimizde karşımıza title verisinde belirttiğimiz “Express” yazısı gelecektir.
 
 Okuduğunuz için teşekkür ederim.
-
-Benimle aşağıdaki bağlantılardan iletişime geçebilirsiniz.
-
-[GitHub Account](www.github.com/kadiryaka)
-[Web Site](www.kadiryaka.com) 
-[Mail](yakakadir@gmail.com) 
-[Linkedin](https://www.linkedin.com/pub/kadir-yaka/7a/ba1/39) 
