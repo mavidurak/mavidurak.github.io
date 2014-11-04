@@ -6,6 +6,8 @@ categories: nodejs
 keywords: nodejs javascript oauth login authentication passportjs
 author: frknbasaran
 ---
+
+
  
  
   Passport.js Node JS için geliştirilmiş authentication(yetkilendirme) modülüdür, bu modülü kullanarak destek veren tüm sosyal ağ hesaplarına erişebilir, web uygulamalarınızda oturum denetimini bu sosyal ağların aracılığıyla yönetebilirsiniz.
