@@ -3,7 +3,7 @@ layout: post
 title: "Typescript Nedir? Nedendir? Nerededir?"
 date: 2014-10-27 14:31
 categories: javascript
-author: ozziest
+author: co3moz
 ---
 
 # Typescript
@@ -591,6 +591,4 @@ class App {
 
 ## Bölüm sonu
 Evet arkadaşlar bu bölümün sonuna geldik. Bir sonraki typescript ile ilgili yazımızı en kısa sürede sahnelerde göreceksiniz. Takip etmeye devam edin. kib bay sg kardeşler
-
-Doğan Derya @co3moz <doganderya59@gmail.com>
 
