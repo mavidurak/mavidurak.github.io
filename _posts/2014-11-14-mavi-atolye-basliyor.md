@@ -25,7 +25,13 @@ Eksiklikleri belirlenen katılımcılar, 1 hafta boyunca kaynaklar üzerinde ça
 
 Planlarımıza göre **Ön Çalışma** sonunda bir görüşme ile ne kadar ilerlediğimizi katılımcılar ile birlikte tartışarak, atölye gününe kadar neler yapabileceğimiz üzerinde duracağız. 
 
+> Bu bölümden sonrası 26 Kasım 2014 tarihinde tekrardan güncellenmiştir.
+
+Planımıza sadık kalarak, katılımcı arkadaşlara telefonla ulaşıp çalışmaların nasıl gittiğini öğrendik. Bu hem katılımcılar açısından, hem de bizim açımızdan süreci sıcak tutmak açısından önemliydi. Genelde katılımcıların hazırlandıklarını görmek bizi mutlu etti. Elbette birkaç katılımcı arkadaşımız öğrenciliğin de verdiği rahatlıkla henüz tam anlamıyla çalışmalarını tamamlamamıştı. Ancak şuanda görünen o ki; `Mavidurak-IO` kod yazmaya hazır!
+
+
 İlerleyen günlerde planlarımıza ve gelişmelere göre bu gönderimiz de güncellenerek sizleri haberdar etmeyi planlıyoruz. 
+
 
 Lütfen Mavidurak-IO'yu takipte kalın.
 
