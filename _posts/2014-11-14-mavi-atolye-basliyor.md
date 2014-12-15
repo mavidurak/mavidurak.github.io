@@ -30,10 +30,17 @@ Planlarımıza göre **Ön Çalışma** sonunda bir görüşme ile ne kadar iler
 Planımıza sadık kalarak, katılımcı arkadaşlara telefonla ulaşıp çalışmaların nasıl gittiğini öğrendik. Bu hem katılımcılar açısından, hem de bizim açımızdan süreci sıcak tutmak açısından önemliydi. Genelde katılımcıların hazırlandıklarını görmek bizi mutlu etti. Elbette birkaç katılımcı arkadaşımız öğrenciliğin de verdiği rahatlıkla henüz tam anlamıyla çalışmalarını tamamlamamıştı. Ancak şuanda görünen o ki; `Mavidurak-IO` kod yazmaya hazır!
 
 
-İlerleyen günlerde planlarımıza ve gelişmelere göre bu gönderimiz de güncellenerek sizleri haberdar etmeyi planlıyoruz. 
+### Atölye Günü (3. Hafta)
 
+Atölye gününde sadece 1 arkadaşımızın haricinde tüm katılımcılar aramızdaydı. Bu bizim için sevindirici bir haberdi. Hemen ekipleri ayrıştırarak çalışmaya başladık. Gün içinde bazı sorunlarla uğraştık, çoğunu çözdük. Ama günün sonuna baktığımızda, istediklerimizin yarısını bile yapamamış durumdaydık. Şahsım adına söyleyebilirim ki bu benim için bir başarısızlıktır. 
 
-Lütfen Mavidurak-IO'yu takipte kalın.
+Peki neyi yanlış ya da eksik yaptık? İyi planlayamadık. Adım adım süreci bilmemiz gerekiyordu ve elimizde proje için hangi işin hangi adımda yapılacağını gösterir bir döküman yoktu. Kullanıcı hikayeleri, her hikayenin altındaki işler atölye öncesinde tasarlanmalıydı. Mavidurak-IO olarak bu sorumluluğu üstleniyoruz; bunların yeterince iyi bir şekilde hazırlanmaması bizim hatamızdı. Bu nedenle katılımcı arkadaşlarımız hayal kırıklığı yaşamış olabilir. Özür dileriz...
+
+Ancak naçizane deneyimlerime dayanarak söyleyebilirim ki; hata yapmak güzel. Biz bir hata yaptık ve bunu sizlerle paylaşıyoruz. Bir adım attık ve başarısız olduk. İleride tekrar deneyeceğiz. Muhtemelen yine başarısız olacağız. Dahası, her başarısızlığımızı sizlerle paylaşacağız. Yeterince hata yaparsak ve her hatadan sonra kendimizi sorgularsak, ileride yapacak herhangi bir hata kalmayacağına inanıyoruz.
+
+Sözün özü; Mavidurak-IO yine buralarda olacak! 
+
+Lütfen siz de görüşlerinizi belirterek, hatalarımızı düzeltmemizde bizimle birlikte çalışın.
 
 
 
