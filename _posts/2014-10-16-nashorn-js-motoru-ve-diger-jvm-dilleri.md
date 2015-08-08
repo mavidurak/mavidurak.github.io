@@ -11,7 +11,7 @@ JVM içerisinde statik tipli dilleri çalıştırabilmenin birden fazla amacı b
 * JIT (Just in Time) Compiler ile yüksek performans sunmak
 * Birçok dilin çalıştırılmasıyla JVM’i Polyglot bir ortam haline getirmek
 * Farklı dil ve ekosistemleri Java ekosistemine yakınlaştırmak
-* Farklı dil ekosistemlerinin gücünü JVM’de birleştirmek
+* Farklı dil ekosistemlerinin gücünü JVM’de birleştirmek<!--more-->
 
 Java Sanal Makinesi üzerinde birçok programlama dili çalıştırılabilmektedir. Bu diller   ve   uygulayıcı kütüphaneler aşşağıdadır (dil= uygulayıcı  kütüphane şeklinde yazılmıştır. [*Kaynak](http://en.wikipedia.org/wiki/List_of_JVM_languages))
 
@@ -36,12 +36,12 @@ Yukarıda  listelenen programlama dilleri JVM bünyesinde koşturulabilmektedir.
 Örneğin JVM üzerinde Ruby dili ile uygulama geliştirmek istiyoranız, JRuby bağımlılığını Java projenize eklemelisiniz.
 
 JRuby Maven Dependency
-{% highlight xml %} 
+{% highlight xml %}
 <dependency>
 <groupId>org.jruby</groupId>
 <artifactId>jruby</artifactId>
 <version>1.7.16</version>
-</dependency> 
+</dependency>
 {% endhighlight %}
 
 Diğer  diller için de benzer biçimde gereken bağımlılık Java projenize eklenmelidir.
@@ -55,13 +55,13 @@ javax.script paketi oldukça basit arayüz ve sınıflar içermektedir.Bunlardan
 ScriptEngine türünden nesneler, ScriptEngineFactory#getEngine metodu üzerinden eşsiz bir takma isim ile elde edilmektedir. Bu nesneler ile, String türünden kod blokları koşturulabilmekte, ayrıca Java ile iletişim kurulabilmektedir. Örneğin, Nashorn JavaScript motoru için "nashorn" veya "rhino" takma adları, Ruby için ise "jruby" takma adı kullanılmaktadır.
 
 ###Örneğin;
-{% highlight java %} 
+{% highlight java %}
 // Java 8 için JavaScript motoru
 ScriptEngine engine = ScriptEngineFactory.getEngine("nashorn");
 //Java 7 için JavaScript motor
-ScriptEngine engine = ScriptEngineFactory.getEngine("rhino"); 
+ScriptEngine engine = ScriptEngineFactory.getEngine("rhino");
 //Ruby için JRuby motoru
-ScriptEngine engine = ScriptEngineFactory.getEngine("jruby"); 
+ScriptEngine engine = ScriptEngineFactory.getEngine("jruby");
 //Python için Jython motoru
 ScriptEngine engine = ScriptEngineFactory.getEngine("jython");
 {% endhighlight %}
@@ -98,7 +98,7 @@ nashornun  bir komut aracı ( shell)i var . java8 bilgisayarınızda yüklü ise
 
 Oracle  tarafından geliştirilen javascript dilidir. Nashorn JS motoru içinde çalıştırılabilir. Avatar.js'yi kullanabilmek için minimum Java 8  sürümü gerekmektedir. Open JDK  [sitesinden](https://avatar.java.net) indirilebilir. Avatar.js,Node.js'ye benzetilebilir. Nashorn ile  Avatar.js'yi birlikte kullanabiliriz.
 
-Bir Node.js  geliştiricisi, Avatar.js ile Java'nın framework'üne ya da teknolojisine erişmek  isterse,  Avatar.js kullanabilir. 
+Bir Node.js  geliştiricisi, Avatar.js ile Java'nın framework'üne ya da teknolojisine erişmek  isterse,  Avatar.js kullanabilir.
 
 ###  Engine Versiyonları ve Nashorn Takma Adları
 {% highlight java %}

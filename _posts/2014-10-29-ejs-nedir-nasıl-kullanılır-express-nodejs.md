@@ -5,12 +5,12 @@ date:   2014-10-27 14:30
 categories: nodejs
 author: kadiryaka
 ---
- 
+
 Merhaba arkadaşlar. Bu yazımda sizlere Node.js'in Express modulüyle ejs’in nasıl kullanılacağından kısaca bahsedeceğim. Express ile default olarak gelen .jade’e ısınamayanlar için oldukça işe yarar olduğunu düşünüyorum.
- 
+
 ### EJS nedir?
- 
-Ejs, html şablonlarıyla, servis tarafımızdan gelen verileri birleştirebilmemizi sağlayan javascript kütüphanesidir. Php’de olduğu gibi html içerisine veri yollayıp bunu görüntüleyebilmemizi sağlar.
+
+Ejs, html şablonlarıyla, servis tarafımızdan gelen verileri birleştirebilmemizi sağlayan javascript kütüphanesidir. Php’de olduğu gibi html içerisine veri yollayıp bunu görüntüleyebilmemizi sağlar.<!--more-->
 
 İlk olarak express ile yeni bir proje oluşturuyoruz. Express ile nasıl proje oluşturulacağını bilmiyorsanız ilgili [blog yazıma](http://mavidurak.github.io/nodejs/2014/10/27/Express-nedir-Express-ile-nodejs-projesi-nas%C4%B1l-olusturulur%3F.html) gözatabilirsiniz. Proje dosyalarımız içerisindeki package.json dosyasını açıp “dependencies” içerisindeki verilerin sonuna
 
@@ -39,7 +39,7 @@ Bu işlemi kullanacağımız bütün view dosyaları için yapmamız gerekir. Ta
 <head>
 	<title> Express </title>
 </head>
-<body>	
+<body>
 <%- title %>
 </body>
 </html>
@@ -50,7 +50,7 @@ bu title verisini servisten yollamamız lazım. Hali hazırda express modulünde
 {% highlight bash %}
 var express = require('express');
 var router = express.Router();</code>
- 
+
 /* GET home page. */
 router.get('/', function(req, res) {
 res.render('index', { title: 'Express' });
@@ -66,7 +66,7 @@ sudo npm install
 npm start
 {% endhighlight %}
 
-komutlarını uygulayarak projeyi ayağa kaldırıyoruz. 
+komutlarını uygulayarak projeyi ayağa kaldırıyoruz.
 Herşey yolunda gittiyse tarayıcımızdan http://localhost:3000/ diyerek girdiğimizde karşımıza title verisinde belirttiğimiz “Express” yazısı gelecektir.
 
 Okuduğunuz için teşekkür ederim.

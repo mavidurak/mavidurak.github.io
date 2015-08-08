@@ -10,9 +10,10 @@ layout: default
 
     <ul class="post-list">
         {% for post in paginator.posts %}
-            <li>
+            <li style="border-bottom: 1px dashed #dbdbdb; padding-bottom: 10px; margin-bottom: 10px;">
                 <span class="post-meta">
                     {% assign m = post.date | date: "%-m" %}
+                    <i style="padding-right: 4px;" class="fa fa-calendar"></i>
                     {{ post.date | date: "%-d" }}
                     {% case m %}
                         {% when '1' %}Ocak
@@ -29,6 +30,7 @@ layout: default
                         {% when '12' %}Aralık
                     {% endcase %}
                     {{ post.date | date: "%Y" }}
+                    <i style="padding-left: 12px; padding-right: 4px;" class="fa fa-user"></i>
                     {% if post.author %}{{ post.author }}{% endif %}
                 </span>
                 <h2>
@@ -36,6 +38,9 @@ layout: default
                         {{ post.title }}
                     </a>
                 </h2>
+                <article class="excerpt">
+                  {{ post.excerpt }}
+                </article>
             </li>
         {% endfor %}
     </ul>

@@ -9,7 +9,7 @@ author: ozziest
 
 #### A JavaScript Library Tale
 
-Biz bilgisayarı bızdıklayanların öyle havalı hikayeleri olmadığı için üzgünüm. Belki daha romantik girişli yani ne biliyim belki serseriye aşık olan bi kızın hikayesini okumak isterdiniz. Bizim serserimiz genelde **semicolon** bağımlı programlama dilleri oluyor.
+Biz bilgisayarı bızdıklayanların öyle havalı hikayeleri olmadığı için üzgünüm. Belki daha romantik girişli yani ne biliyim belki serseriye aşık olan bi kızın hikayesini okumak isterdiniz. Bizim serserimiz genelde **semicolon** bağımlı programlama dilleri oluyor.<!--more-->
 
 Hikayemiz böyle yukarda bahsettiğim bir programlama dilinin hikayesi işte. Tripli mi tripli *JavaScript*imizin. Öyle bir programalama dili ki adına milyonlarca satır kitap yazılıp raflara yerleştirilmiş binlerce kütüphaneye sahip olmuştur.
 

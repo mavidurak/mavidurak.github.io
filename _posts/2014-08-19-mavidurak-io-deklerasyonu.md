@@ -7,7 +7,7 @@ keywords: mavidurakio deklerasyon blog
 author: ozziest
 ---
 
-Mavidurak-IO ne için var, ne yapmak istiyor ve nasıl yapmak istiyor sorularına vereceğimiz cevaplar bu başlık altında toplanacaktır. Önerilerinizi ve düzenlemeleriniz GitHub üzerinde bulunan [repomuza](https://github.com/mavidurak/declaration) pull-request ile gönderebilirsiniz.
+Mavidurak-IO ne için var, ne yapmak istiyor ve nasıl yapmak istiyor sorularına vereceğimiz cevaplar bu başlık altında toplanacaktır. Önerilerinizi ve düzenlemeleriniz GitHub üzerinde bulunan [repomuza](https://github.com/mavidurak/declaration) pull-request ile gönderebilirsiniz.<!--more-->
 
 ### Amaç, Kural ve Hedefler
 

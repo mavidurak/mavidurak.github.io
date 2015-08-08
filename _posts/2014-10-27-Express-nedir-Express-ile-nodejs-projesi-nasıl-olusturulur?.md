@@ -6,13 +6,13 @@ categories: nodejs
 author: kadiryaka
 ---
 
-Merhabalar, bu yazımda sizlere express.js modulünden bahsedeceğim. 
+Merhabalar, bu yazımda sizlere express.js modulünden bahsedeceğim.
 
 ### Express.js nedir?
 
 Express, Nodejs ile hızlı ve düzenli proje gerçekleştirebilmemizi sağlayan web framework’üdür. Kurulumu da oldukça basittir.
 
-Express’i [NPM](https://www.npmjs.org/) ile yüklemek için komut satırına aşağıdaki komutu yazmamız yeterlidir. NPM yüklü değilse, öncelikle NPM'nin kurulumunu gerçekleştirmeniz gerekir.
+Express’i [NPM](https://www.npmjs.org/) ile yüklemek için komut satırına aşağıdaki komutu yazmamız yeterlidir. NPM yüklü değilse, öncelikle NPM'nin kurulumunu gerçekleştirmeniz gerekir.<!--more-->
 
 {% highlight bash %}
 $ sudo npm install -g express
@@ -40,4 +40,3 @@ $ npm start
 Tarayıcımızdan http://localhost:3000’e girerek sonucu görebiliriz.
 
 Okuduğunuz için teşekkür ederim.
-

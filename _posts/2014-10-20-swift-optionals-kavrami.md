@@ -9,18 +9,18 @@ Merhaba bugün 2014 model bir dil (Swift) ile gelen, çokta aşina olmadığım�
 
 Apple' ın desteği ile çıkan Swift yeni olmasının getirdiği bir çok avantaja sahip. Bunlardan bir tanesi, programlamada eksikliği hissedilen durumlara çözüm üreterek gelmesidir. Lafı daha fazla uzatmadan Optional kavramına giriş yapalım, buyrun.
 
-Optional, türkçede ki karşılığı opsiyonel, isteğe bağlı, standart olmayan anlamına gelmektedir. Ben yine burada yazarken Optional olarak kullanacağım.
+Optional, türkçede ki karşılığı opsiyonel, isteğe bağlı, standart olmayan anlamına gelmektedir. Ben yine burada yazarken Optional olarak kullanacağım.<!--more-->
 
 ##Problem?
-    
+
 Düşünün bir fonksiyonunuz var, sonucu ise gelen değere göre değişecek (bazen bir değer verip, bazende bir değer vermeme durumu var). Apple' ın daha önce uygulama geliştirmek için kullandığı Objective - C dilinde bu durum obje veya nil (boş değer) döndürerek çözülür. Ancak bu durum sadece objeler için geçerlidir. Obje dışında ki veri türleri için `NSNotFound` gibi özel bir değer döndürülür. Bu gibi durumlarda geriye dönecek değer bilinmelidir, yoksa çok ciddi güvenlik problemleri oluşabilir veya Runtime (Çalışma zamanı) hatası alabiliriz.  
-    
+
 ##Optional Kavramı
-    
+
 Yukarıda da bahsettik bu dilin yeni olmasının avantajı daha önce eksikliği hissedilmiş konulara çözüm getirmesiydi, Optional da bunlardan biri. Program yazarken sonucu net olmayan durumlarla karşılaşabiliriz, ailenin yeni üyesi (Swift), belirsizlikleri ortadan kaldırmak için tüm veri türlerini kapsayan, `Optional`' ı beraberinde getirdi.
 
 Hemen bir tane Optional tanımlayalım.
-  
+
 {% highlight swift %}
 var optionalValue : Int?
 {% endhighlight %}

@@ -8,9 +8,9 @@ author: okanvurdu
 ---
 Merhaba, bu yazıda geçtiğimiz günlerde keşfettiğim bir npm paketinden bahsedeceğim.
 
-Web üzerine çalışmalar yapıyorsanız, çeşitli sitelerden indirdiğiniz HTML üzerine inşa edilmiş basit uygulamalar, temalar vb. içerikleri kişisel bilgisayarınızda açıp incelerken bazı fonksiyonel bileşenlerin düzgün çalışmadığını, hatta hiç çalışmadığını görebilirsiniz.
+Web üzerine çalışmalar yapıyorsanız, çeşitli sitelerden indirdiğiniz HTML üzerine inşa edilmiş basit uygulamalar, temalar vb. içerikleri kişisel bilgisayarınızda açıp incelerken bazı fonksiyonel bileşenlerin düzgün çalışmadığını, hatta hiç çalışmadığını görebilirsiniz.<!--more-->
 
-Buna en basit örnek **doğru bir biçimde yüklenmeyen sayfa ögeleri (javascript betikleri, stil dosyaları vb.)** gösterilebilir. Bu durumun sebepleri arasında gösterebileceğimiz ilk şey; indirdiğiniz çalışmanın yerel dosya sisteminize uygun olarak düzenlenmemiş olmasıdır. Daha net ifade edecek olursak indirdiğiniz çalışma bir web sunucusunda çalışacakmış gibi tasarlanmış olabilir. 
+Buna en basit örnek **doğru bir biçimde yüklenmeyen sayfa ögeleri (javascript betikleri, stil dosyaları vb.)** gösterilebilir. Bu durumun sebepleri arasında gösterebileceğimiz ilk şey; indirdiğiniz çalışmanın yerel dosya sisteminize uygun olarak düzenlenmemiş olmasıdır. Daha net ifade edecek olursak indirdiğiniz çalışma bir web sunucusunda çalışacakmış gibi tasarlanmış olabilir.
 
 Sadece bu iş için sunucu kiralamak, satın almak ya da varolan sunucunuza bunun için sürekli dosya yüklemek bir hayli zahmetli ve optimize olmayan bir çözümdür.
 
