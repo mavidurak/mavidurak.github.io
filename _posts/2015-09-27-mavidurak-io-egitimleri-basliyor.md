@@ -12,7 +12,7 @@ Merhabalar,
 
 Yaz dönemini bugün itibari ile kapattığımıza göre, çalışmalarımıza kaldığımız yerden devam edebiliriz. 
 
-Geçtiğimiz dönemde pek çok [Tech Talks](/mavidurakio/2015/03/18/tech-talk-etkinlikleri.html) etkinliği gerçekleştirme fırsatı bulduk. Bu etkinliklerden aldığımız geri dönütlerde; tek bir konu üzerinde daha uzun ve detaylı eğitimlerin olması gerektiği isteği de yer almaktaydı. Biz de önümüzdeki dönemde bu isteği dikkate alarak, detaylı ve bütün bir haftasonunu kapsayacak eğitim içerikleri hazırladık. Bu hazırladığımız başlıklara ek olarak talepleriniz doğrultusunda da eğitimler şekillenecektir. 
+Geçtiğimiz dönemde pek çok [Tech Talks](/tech-talk-etkinlikleri/) etkinliği gerçekleştirme fırsatı bulduk. Bu etkinliklerden aldığımız geri dönütlerde; tek bir konu üzerinde daha uzun ve detaylı eğitimlerin olması gerektiği isteği de yer almaktaydı. Biz de önümüzdeki dönemde bu isteği dikkate alarak, detaylı ve bütün bir haftasonunu kapsayacak eğitim içerikleri hazırladık. Bu hazırladığımız başlıklara ek olarak talepleriniz doğrultusunda da eğitimler şekillenecektir. 
 
 <!--more-->
 
