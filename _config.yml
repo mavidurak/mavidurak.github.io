@@ -10,9 +10,10 @@ twitter_username: mavidurakio
 github_username:  mavidurak
 paginate: 7
 excerpt_separator: <!--more-->
-
 # Build settings
 markdown: kramdown
+include: ["_pages"]
+permalink: /:title/
 
 authors:
   ozziest:
