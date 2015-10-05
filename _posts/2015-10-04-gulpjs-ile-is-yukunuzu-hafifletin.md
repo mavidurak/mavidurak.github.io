@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "GulpJS ile iş yükünüzü hafifletin"
+title:  "GulpJS İle İş Yükünüzü Hafifletin"
 date:   2015-10-04 22:40
 categories: nodejs
 author: emrekose26
