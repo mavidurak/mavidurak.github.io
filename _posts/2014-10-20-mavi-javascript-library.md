@@ -4,7 +4,7 @@ title:  "Mavi.js"
 date:   2014-10-20 00:09:27
 categories: javascript
 keywords: mavi js javascript library mavidurakio
-author: ozziest
+author: erayarslan
 ---
 
 #### A JavaScript Library Tale
@@ -21,10 +21,6 @@ Bir aşk hikayesiyle yeşillendirmeyip hevesinizi kırdığım için özür dile
 
 ##### Belki destanlaşır, ne dersiniz?
 
-[benim de hikayem var!](https://github.com/mavidurak/mavi/pulls)
-
-[abi ben romantik şeyleri okumayı seviyorum ya :/](https://github.com/mavidurak/mavi)
-
-[peki kızın esas oğlana tepkisi neymiş?](https://github.com/mavidurak/mavi/blob/master/mavi.js)
-
-@eryarslan Eray Arslan
+- [benim de hikayem var!](https://github.com/mavidurak/mavi/pulls)
+- [abi ben romantik şeyleri okumayı seviyorum ya :/](https://github.com/mavidurak/mavi)
+- [peki kızın esas oğlana tepkisi neymiş?](https://github.com/mavidurak/mavi/blob/master/mavi.js)
