@@ -9,8 +9,8 @@ url: "http://mavidurak.github.io" # the base hostname & protocol for your site
 twitter_username: mavidurakio
 github_username:  mavidurak
 excerpt_separator: <!--more-->
+
 # Build settings
-markdown: kramdown
 include: ["_pages"]
 permalink: /:title/
 
@@ -125,17 +125,8 @@ authors:
     facebook: ekose26
     linkedin: https://www.linkedin.com/pub/emre-k%C3%B6se/a2/b16/a84  
 
-pagination:
-  
-  enabled: true
-  debug: false
-  collection: 'posts'
-  per_page: 7
-
-  permalink: '/page:num/'
-  title: ':title - page :num'
-  limit: 0
-  sort_field: 'date'
-  sort_reverse: true
-
-gems: [jekyll-paginate-v2]
+paginate: 7
+plugins: [
+  jekyll-paginate
+]
+paginate_path: "page:num"
