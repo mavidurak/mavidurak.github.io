@@ -138,4 +138,4 @@ pagination:
   sort_field: 'date'
   sort_reverse: true
 
-plugins: [jekyll-paginate-v2]
+gems: [jekyll-paginate-v2]
