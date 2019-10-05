@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kolektif Mavi</title>
-    <description>Mavidurak-IO Sakarya'da yaşayan ya da Sakarya'da öğrenim  gören geliştiricilerin oluşturduğu topluluktur.
+    <description>MaviDurak-IO Sakarya'da yaşayan ya da Sakarya'da öğrenim  gören geliştiricilerin oluşturduğu topluluktur.
 </description>
     <link>http://mavidurak.github.io/</link>
     <atom:link href="http://mavidurak.github.io/feed.xml" rel="self" type="application/rss+xml" />
@@ -1635,7 +1635,7 @@ Okuduysanız yazının linkini paylaşmanız teşekkür yerine geçecektir. Ayr�
     
       <item>
         <title>Siz de Blog Yazısı Yayınlayın</title>
-        <description>&lt;p&gt;Mavidurak-IO’nun hedeflerinden biri de kollektif bir blog oluşturmaktır. Bu nedenle sizin de Mavidurak-IO üzerinde blog yazısı oluşturarak paylaşmanızı destekler. Sizin seçeceğiniz ana dalı bilişim olan bir konu üzerinde blog yazısı hazırlayarak, Mavidurak-IO blogunda yayınlayabilirsiniz.&lt;/p&gt;
+        <description>&lt;p&gt;MaviDurak-IO’nun hedeflerinden biri de kollektif bir blog oluşturmaktır. Bu nedenle sizin de MaviDurak-IO üzerinde blog yazısı oluşturarak paylaşmanızı destekler. Sizin seçeceğiniz ana dalı bilişim olan bir konu üzerinde blog yazısı hazırlayarak, MaviDurak-IO blogunda yayınlayabilirsiniz.&lt;/p&gt;
 
 &lt;h3 id=&quot;nasl-birlikte-allr&quot;&gt;Nasıl Birlikte Çalışılır?&lt;/h3&gt;
 

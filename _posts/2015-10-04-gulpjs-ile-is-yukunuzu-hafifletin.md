@@ -7,7 +7,7 @@ author: emrekose26
 ---
 Gulpjs front-end’de iş akışınızı otomatikleştirmeye yarayan Nodejs tabanlı bir Javascript aracıdır.Bazen manuel olarak yapılan ve gereksiz yere vakit kaybedilen işlerde Gulpjs yardımınıza hızır gibi yetişmektedir.Alternatif olarak Grunt aracıda kullanılmaktadır ancak Grunt’u,Gulp’a göre kod bakımından okuması daha zordur ve Gulp üzerindeki konfigrasyonları nodejs kodu gibi çalıştırdığından Grunt’a göre daha hızlı çalışmaktadır.(Gulp ile yaptığınız tüm işleri Grunt ile de yapabilirsiniz)<!--more-->
 
-###Gulp ile neler yapılabilir ?
+### Gulp ile neler yapılabilir ?
 - Javascript dosyalarınızı sıkıştırabilirsiniz [(gulp-uglify)](https://github.com/terinjokes/gulp-uglify)
 - CSS dosyalarınızı sıkıştırabilirsiniz [(gulp-minify-css)](https://www.npmjs.com/package/gulp-minify-css)
 - CSS ve JS dosyalarınızı tek bir dosyada toplayabilirsiniz [(gulp-concat)](https://github.com/contra/gulp-concat)
@@ -20,7 +20,7 @@ Gulpjs front-end’de iş akışınızı otomatikleştirmeye yarayan Nodejs taba
 
 Daha fazla eklenti için [http://gulpjs.com/plugins/](http://gulpjs.com/plugins/) adresini ziyaret edebilirsiniz.
 
-###Kurulum
+### Kurulum
 
 Gulp yükleyebilmek için makinanızda nodejs yüklü olması gerekmektedir.Nodejs kendi sitesinden edinebilirsiniz.
 

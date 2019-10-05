@@ -1,14 +1,13 @@
 # Site settings
-title: Mavidurak-IO
+title: MaviDurak-IO
 email: mavidurak.io@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Mavidurak-IO Sakarya'da yaşayan ya da Sakarya'da öğrenim
+  MaviDurak-IO Sakarya'da yaşayan ya da Sakarya'da öğrenim
   gören geliştiricilerin oluşturduğu topluluktur.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://mavidurak.github.io" # the base hostname & protocol for your site
 twitter_username: mavidurakio
 github_username:  mavidurak
-paginate: 7
 excerpt_separator: <!--more-->
 # Build settings
 markdown: kramdown
@@ -18,13 +17,12 @@ permalink: /:title/
 authors:
   ozziest:
     display_name: Özgür Adem Işıklı
-    bio: Full Stack Developer
+    bio: Software Developer
     avatar: https://avatars2.githubusercontent.com/u/2325140?v=3&s=460
     email: i.ozguradem@gmail.com
     web: http://ozziest.github.io
     twitter: iozguradem
     github: ozziest
-    facebook: TheMornie
     linkedin: http://tr.linkedin.com/in/ozguradem/
 
   frknbasaran:
@@ -127,4 +125,17 @@ authors:
     facebook: ekose26
     linkedin: https://www.linkedin.com/pub/emre-k%C3%B6se/a2/b16/a84  
 
+pagination:
+  
+  enabled: true
+  debug: false
+  collection: 'posts'
+  per_page: 7
 
+  permalink: '/page:num/'
+  title: ':title - page :num'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+
+plugins: [jekyll-paginate-v2]

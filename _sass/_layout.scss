@@ -2,8 +2,14 @@
  * Site header
  */
 
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,800);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext);
+// @import url(http://fonts.googleapis.com/css?family=Raleway:400,800);
+// @import url(http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext);
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0, 0, 0, 0.82);
+}
 
 .site-header {
     border-top: 5px solid $grey-color-dark;

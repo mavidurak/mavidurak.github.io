@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kolektif Mavi</title>
-    <description>Mavidurak-IO Sakarya'da yaşayan ya da Sakarya'da öğrenim  gören geliştiricilerin oluşturduğu topluluktur.
+    <description>MaviDurak-IO Sakarya'da yaşayan ya da Sakarya'da öğrenim  gören geliştiricilerin oluşturduğu topluluktur.
 </description>
     <link>http://mavidurak.github.io/</link>
     <atom:link href="http://mavidurak.github.io/feed.xml" rel="self" type="application/rss+xml" />
@@ -873,7 +873,7 @@ Okuduysanız yazının linkini paylaşmanız teşekkür yerine geçecektir. Ayr�
     
       <item>
         <title>Siz de Blog Yazısı Yayınlayın</title>
-        <description>&lt;p&gt;Mavidurak-IO’nun hedeflerinden biri de kollektif bir blog oluşturmaktır. Bu nedenle sizin de Mavidurak-IO üzerinde blog yazısı oluşturarak paylaşmanızı destekler. Sizin seçeceğiniz ana dalı bilişim olan bir konu üzerinde blog yazısı hazırlayarak, Mavidurak-IO blogunda yayınlayabilirsiniz.&lt;/p&gt;
+        <description>&lt;p&gt;MaviDurak-IO’nun hedeflerinden biri de kollektif bir blog oluşturmaktır. Bu nedenle sizin de MaviDurak-IO üzerinde blog yazısı oluşturarak paylaşmanızı destekler. Sizin seçeceğiniz ana dalı bilişim olan bir konu üzerinde blog yazısı hazırlayarak, MaviDurak-IO blogunda yayınlayabilirsiniz.&lt;/p&gt;
 
 &lt;h3 id=&quot;nasl-birlikte-allr&quot;&gt;Nasıl Birlikte Çalışılır?&lt;/h3&gt;
 
@@ -943,8 +943,8 @@ $ git push origin master&lt;/code&gt;&lt;/pre&gt;
       </item>
     
       <item>
-        <title>Mavidurak-IO Deklerasyonu</title>
-        <description>&lt;p&gt;Mavidurak-IO ne için var, ne yapmak istiyor ve nasıl yapmak istiyor sorularına vereceğimiz cevaplar bu başlık altında toplanacaktır. Önerilerinizi ve düzenlemeleriniz GitHub üzerinde bulunan &lt;a href=&quot;https://github.com/mavidurak/declaration&quot;&gt;repomuza&lt;/a&gt; pull-request ile gönderebilirsiniz.&lt;/p&gt;
+        <title>MaviDurak-IO Deklerasyonu</title>
+        <description>&lt;p&gt;MaviDurak-IO ne için var, ne yapmak istiyor ve nasıl yapmak istiyor sorularına vereceğimiz cevaplar bu başlık altında toplanacaktır. Önerilerinizi ve düzenlemeleriniz GitHub üzerinde bulunan &lt;a href=&quot;https://github.com/mavidurak/declaration&quot;&gt;repomuza&lt;/a&gt; pull-request ile gönderebilirsiniz.&lt;/p&gt;
 
 &lt;h3 id=&quot;ama-kural-ve-hedefler&quot;&gt;Amaç, Kural ve Hedefler&lt;/h3&gt;
 
@@ -988,12 +988,12 @@ $ git push origin master&lt;/code&gt;&lt;/pre&gt;
       </item>
     
       <item>
-        <title>Mavidurak-IO First Commit!</title>
+        <title>MaviDurak-IO First Commit!</title>
         <description>&lt;p&gt;Merhabalar,&lt;/p&gt;
 
 &lt;p&gt;Oldukça heyecanlıyız. Ops! Kim olduğumuzu söylemeyi unuttum. Biz kim miyiz? Geçici ya da sürekli olarak Sakarya‘da yaşayan, Sakarya Üniversitesi‘nde okuyan bilişim teknolojileri meraklılarıyız. Sabah geç kalmamızın sebebi, bir önceki gece yazdığımız kodlar olan geliştiricileriz. Sadece yazılım da değil, bilgisayarların ve akıllı cihazların girdiği her yere el atmak isteyen, yerine duramayan ve çok konuşan geveze insanlarız.&lt;/p&gt;
 
-&lt;p&gt;Oldukça heyecanlıyız çünkü; bir araya gelerek bildiklerimizi hem kendimizle hem de bize katılmak isteyen herkesle paylaşmak istiyoruz. Dünyanın çok hızlı ilerlediğini biliyoruz. Okunacak, öğrenilecek ve yapılacak çok şey var. Gelişim yolunda Son Samuray değil, 300 Spartalı olmak istiyoruz. Bu nedenle Mavidurak-IO‘yu kurmak üzereyiz. Fakat bir kaç nerd‘e daha(200 küsür kadar) ihtiyaç var.&lt;/p&gt;
+&lt;p&gt;Oldukça heyecanlıyız çünkü; bir araya gelerek bildiklerimizi hem kendimizle hem de bize katılmak isteyen herkesle paylaşmak istiyoruz. Dünyanın çok hızlı ilerlediğini biliyoruz. Okunacak, öğrenilecek ve yapılacak çok şey var. Gelişim yolunda Son Samuray değil, 300 Spartalı olmak istiyoruz. Bu nedenle MaviDurak-IO‘yu kurmak üzereyiz. Fakat bir kaç nerd‘e daha(200 küsür kadar) ihtiyaç var.&lt;/p&gt;
 
 &lt;p&gt;Haydi! Sen de aramıza katıl. Bu oluşuma destek ver ve fikirlerimize fikir kat.&lt;/p&gt;
 
