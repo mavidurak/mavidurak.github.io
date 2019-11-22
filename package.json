@@ -1,0 +1,22 @@
+{
+  "name": "mavidurak.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "kommunity.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^0.19.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mavidurak/mavidurak.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mavidurak/mavidurak.github.io/issues"
+  },
+  "homepage": "https://github.com/mavidurak/mavidurak.github.io#readme"
+}

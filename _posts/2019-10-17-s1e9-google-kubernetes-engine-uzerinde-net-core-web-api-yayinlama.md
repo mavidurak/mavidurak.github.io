@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "S1E10 - Google Kubernetes Engine üzerinde, .NET Core Web Api Yayınlama"
+date:   2019-10-17 13:41:12
+categories: event
+author: ozziest
+---
+
+<div><div><div><p>Sakarya Coders ve Mavidurak-IO ortak etkinliği olarak gerçekleştireceğimiz, "Google Kubernetes Engine üzerinde, .NET Core Web Api Yayınlama" konusunu Barış ATEŞ'ten hep beraber uygulayarak öğrenelim.<!--more--><br><br>Geleceği programlayanların geleceği bu konferansımızda; Docker mimarisi ve .NET Core ile geliştirilen bir Web API‘ı nasıl Google Kubernetes Engine üzerinde yayınlayacağımızdan bahsedeceğiz.<br><br>Google Kubernetes Nedir?<br>Kubernetes; asıl olarak Google tarafından GO dilinde geliştirilmiş olup, şimdiler de Cloud Native Computing Foundation (CNCF) tarafından sağlanıyor. Konteyner haline getirilmiş uygulamalarınızı otomatik deploy etmek, sayılarını arttırıp azaltmak gibi ölçeklendirme işlemleri ile birlikte yönetmenizi sağlayan bir Konteyner kümeleme (container cluster) aracıdır.<br><br>Sürekli Gelişen Programlama Aracı: .Net Core<br>.NET Core; Microsoft tarafından açık kaynak kodlu olarak geliştirilmesi devam eden, cross platform olarak çalışan, self-hosted, esnek ve modern geliştirme platformudur. Biz de bu sunumda Docker mimarisi ve .NET Core ile geliştirilen bir Web API‘ı nasıl Google Kubernetes Engine üzerinde yayınlacağımızdan bahsedeceğiz.<br><br>Konteynerleştirme Platformu: Docker<br>Docker; dünyada en çok kullanılan yazılım konteynerleştirme (Container) platformudur. Linux Kernel’e 2008 yılında eklenen Linux Containers (LXC) üzerine kurulu bir teknolojidir. LXC, işletim sistemi seviyesinde bir sanallaştırma altyapısı sunmaktadır. Container’lar içerisinde aynı işletim sistemi tarafından çalıştırılan uygulamalara, LXC tarafından işletim sisteminde sadece kendileri koşuyormuş gibi düşünmeleri için bir sanallaştırma ortamı sağlanmıştır.<br><br>Deneyimler, Uzmanlığı Beraberinde Getirir: Barış ATEŞ<br>Yaklaşık on beş yıldır yazılım ile uğraşan Barış Ateş, hali hazırda Tra Bilişim bünyesinde Manager Assistant ünvanı ile çalışıyor. Öncesinde Tera Menkul Kıymetler ve Atig Menkul Değerler bünyesinde finansal yazılımlar üzerinde profesyonel çalışma tecrübesi edindi. C++, C# dilleri ve son olarak ReactJS, .NET Core ile yazılımlar geliştiriyor. Yeni teknolojileri araştırıyor, bu teknolojileri ekip arkadaşları ile paylaşarak geliştirilen projelerde kullanmaya teşvik ediyor.<br><br>Siz de bizimle Google Kubernetes Engine üzerinde, .NET Core Web Api Yayınlama inceliklerini öğrenmek ve tartışmak için 24 Ekim 2019 Perşembe günü saat 18:30'da Sakarya Üniversitesi - Sakarya Teknokent A Blok Konferans Salonuna gelin.<br><br>Not: Meetup sonrası soru cevap oyunumuzu kazanan kişiye, udemy’den<br>istediği bir konu hakkında kurs hediye edilecektir.<br><br>Etkinliğe Perculus Plus Platformu Üzerinden Online Olarak Katılmak İçin Aşağıdaki Bağlantıya Tıklayarak Formu Doldurunuz:<br><a href="https://forms.gle/iZ65wJohKWU8HPBw9">https://forms.gle/iZ65wJohKWU8HPBw9</a><br><br>Mavidurak-IO Twitter: <a href="https://twitter.com/mavidurakio">https://twitter.com/mavidurakio</a><br>Mavidurak-IO Web Site: <a href="http://mavidurak.github.io/">http://mavidurak.github.io/</a><br><br>Sakarya Coders İnstagram: <a href="https://www.instagram.com/sakaryacoders/">https://www.instagram.com/sakaryacoders/</a><br>Sakarya Coders Twitter: <a href="https://twitter.com/sakaryacoders">https://twitter.com/sakaryacoders</a><br>Sakarya Coders Facebook: <a href="https://www.facebook.com/sakaryacoders/">https://www.facebook.com/sakaryacoders/</a><br><br>Advancity Linkedin: <a href="https://www.linkedin.com/company/advancity/">https://www.linkedin.com/company/advancity/</a><br>Advancity Twitter: <a href="https://twitter.com/advancity">https://twitter.com/advancity</a><br>Advancity Facebook: <a href="https://www.facebook.com/Advancity">https://www.facebook.com/Advancity</a><br>Advancity Web Site: <a href="https://www.advancity.com.tr/">https://www.advancity.com.tr</a></p><div><br></div></div></div></div>
+
+<br >
+<iframe 
+    width="940" 
+    height="400" 
+    frameborder="0" 
+    scrolling="no" 
+    marginheight="0" 
+    marginwidth="0" 
+    src="https://maps.google.com/maps?q=40.74122880,30.33876570&hl=es&z=14&amp;output=embed"
+    >
+    </iframe>
