@@ -1,6 +1,0 @@
-I"<h1 id="typescript">Typescript</h1>
-
-<p>Merhabalar,</p>
-
-<p>Bu yazımızda javascript’in daha güvenilir hali olan typescript’i inceleyeceğiz. Öncelikle typescript tip desteğini, javascript’e katarak yazılım geliştiricileri için daha güvenli ve anlaşılabilir yazılımlar geliştirmeyi amaçlamıştır. Geliştiricisi Microsoft olan typescript diliyle; sınıflar, arayüzler yapabilir, oluşturacağınız değişkenlerin bu sınıflara kesinlik dahilinde erişilebilmesini sağlayabilirsiniz.</p>
-:ET
