@@ -1,0 +1,109 @@
+I"y*<p>JavaScript’in son dönemde artan popülerliğinin de etkisiyle gün geçmiyor ki yeni bir JavaScript kütüphanesi/paketi ortaya çıkmasın. Her ne kadar JS back-end tarafında kendisini yeterince ispat etmiş sayılmasa da (henüz bunun için çok erken olduğunu düşünüyorum, şahsi görüşüm), <strong>Node.JS</strong> ve Node.JS altyapısını kullanan sistemler yazılım dünyasında büyük değişiklikler yaratacak gibi gözüküyor. Ben de elimden geldiğince bu furyaya katılıp son gelişmeleri takip etmeye çalışıyorum. Bu bağlamda temel Node.JS’e ek olarak, <a href="http://expressjs.com">Express.JS</a> ve <a href="http://sailsjs.org">Sails.JS</a> framework’lerini de inceleme fırsatım olmuştu. Ancak beni bu tarafta asıl cezbeden <a href="http://www.meteor.com">Meteor.JS</a> adındaki platform oldu.<!--more--></p>
+
+<p>Meteor.JS’yi incelediğimizde, bana göre en önemli özelliği <em>back-end</em> ve <em>front-end</em> tarafına aynı anda kod yazılabiliyor olmasıdır. Bu nedenle <strong>Full-Stack JavaScript Framework</strong> olarak da anılıyor. İlk başta bu karışık gelse de, oldukça farklı bir çalışma yapısı var. Ama siz herşeyi kendiniz yapmayı seven bir geliştiriciyseniz muhtemelen kendisini pek sevmeyeceksiniz. Çünkü amacı; geliştiriciyi çok fazla uğraştırmadan, kısa sürede uygulama oluşturulabilmesi. Dilerseniz bundan sonraki bölümlerde biraz pratikte nasıl kullanılıyor bunu irdeleyelim.</p>
+
+<h3 id="kurulum">Kurulum</h3>
+
+<p>Çok basit bir kuluma sahip. Tek yapmanız gereken aşağıdaki kodu konsol üzerinde çalıştırmak ve Meteor’unuz kullanıma hazır.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>curl https://install.meteor.com/ | sh</code></pre></figure>
+
+<p>Bundan sonra hemen aşağıdaki komutla yeni bir proje oluşturabilirsiniz;</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>meteor create myapp</code></pre></figure>
+
+<p>Uygulamanızı çalıştırmak için tek yapmanız gereken uygulama klasörünüz içine girerek meteor ile uygulamanızı başlatmanız;</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cd </span>myapp
+<span class="nv">$ </span>meteor
+<span class="o">=&gt;</span> Meteor server running on: http://localhost:3000/</code></pre></figure>
+
+<p>Hepsi bu kadar! Artık uygulamanız <a href="http://localhost:3000">http://localhost:3000</a> adresi üzerinden çalışıyor. Yukarıdaki komutlardan başka hiçbir şeye ihtiyacınız yok.</p>
+
+<blockquote>
+  <p>Meteor’u çalıştırmak için ayrıca web sunucusuna ya da veritabanı kurulumuna ihtiyacınız bulunmuyor.
+Tek yapmanız gereken tek bir komutla Meteor’u bilgisayarınıza kurmak. Meteor.JS kendi içinde
+<a href="https://github.com/slacy/minimongo">minimongo</a> adında bir veritabanı ile birlikte geliyor.</p>
+</blockquote>
+
+<h3 id="meteorun-7-prensibi">Meteor’un 7 Prensibi</h3>
+
+<p>Meteor.JS geliştiricileri bize 7 tane olmazsa olmaz prensip sunuyorlar;</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Data on the Wire</code>: Asla ve asla isteklerde HTML döndermeyin. Siz sadece veri yollayın ve bırakın client bu verinin nasıl işlenileceğine (render) karar versin.</li>
+  <li><code class="highlighter-rouge">One Language</code>: Hem client hem de server tarafında tek dil olarak JavaScript kullanın.</li>
+  <li><code class="highlighter-rouge">Database Everywhere</code>: Veritabanına ulaşmak için hem server hem de client tarafında aynı API’yi kullanın.</li>
+  <li><code class="highlighter-rouge">Latency Compensation</code>: İstemci tarafında sıfır gecikmeyi sağlamak için önyükleme ve model simülasyonu kullanın.</li>
+  <li><code class="highlighter-rouge">Full Stack Reactivity</code>: Sürekli gerçek zamanlı kalın. Veritabanından şablonlara kadar olan tüm katmanlarda olay güdümlü olarak çalışın.</li>
+  <li><code class="highlighter-rouge">Embrace the Ecosystem</code>: Meteor açık kaynaklı ve entegre olmasından ziyade, bugünkü araçları ve frameworkleri kullanır.</li>
+  <li><code class="highlighter-rouge">Simplicity Equals Productivity</code>: Basit bir şay üretebilmenin en kolay yolu onun gerçekten basit olmasıdır. Bu temiz ve klasik API’ler ile başarılabilir.</li>
+</ul>
+
+<blockquote>
+  <p>Bu prensipler içerisinde özellikle <code class="highlighter-rouge">Database Everywhere</code> ve <code class="highlighter-rouge">Latency Compensation</code> oldukça önemlidir.
+Çünkü bu iki prensip nedeniyle gerçek zamanlı uygulamalar web üzerinden yapılabilmektedir.
+Bir kullanıcı uygulamaya bağlandığında kendi tarayıcısı üzerinde de veritabanının bir simülasyonu oluşturulmaktadır.</p>
+</blockquote>
+
+<h3 id="klasör-yapısı">Klasör Yapısı</h3>
+
+<p>Yeni bir Meteor uygulaması oluşturduğunuzda <strong>html</strong>, <strong>js</strong> ve <strong>css</strong> olmak üzere 3 farklı dosya ile çalışmaya başlarsınız. Tüm html tasarımlarınızı Template adı verdiğimiz .html dosyalarında tutarsınız. Aşağıda bir template örneği görülmektedir;</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- in myapp.html --&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;h1&gt;</span>Today's weather!<span class="nt">&lt;/h1&gt;</span>
+  
+  {{&gt; forecast}}
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;template</span> <span class="na">name=</span><span class="s">"forecast"</span><span class="nt">&gt;</span>
+  
+  <span class="nt">&lt;div&gt;</span>It'll be {{prediction}} tonight<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span></code></pre></figure>
+
+<p>JavaScript dosyalarının içerisine de ilgili template’e özel olarak olaylar yazılmaktadır.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// in client/myapp.js: reactive helper function</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">Meteor</span><span class="p">.</span><span class="nx">isClient</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">Template</span><span class="p">.</span><span class="nx">forecast</span><span class="p">.</span><span class="nx">helpers</span><span class="p">({</span>
+        <span class="na">prediction</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">Session</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">weather</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span> <span class="nx">elseif</span> <span class="p">(</span><span class="nx">Meteor</span><span class="p">.</span><span class="nx">isServer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// server code</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Şimdi yukarıdaki örneği inceleyelim. (CSS dosyalarına şuan ihtiyacımız yok.) <code class="highlighter-rouge">myapp.html</code> içerisinde body etiketleri arasında kalan bölümde <strong>forecast</strong> şablonunun nerede görüntüleneceği belirleniyor. Yine aynı dosya içerisinde template etiketiyle başlayan bölümlerde <strong>forecast</strong> şablonu tanımlanmış durumda. Uygulama başladığında <strong>forecast</strong> şabonu içerisinde bulunan <strong>prediction</strong> değeri javascript dosyası içerisinden dinamik olarak alınıyor.</p>
+
+<blockquote>
+  <p>Meteor bize dosya konumlandırmada sınırsız özgürlük sunmaktadır. <code class="highlighter-rouge">forecast</code> isimli şablonu aynı dosyaya koymak zorunda değiliz.
+Adı başka bir şey olan ve belkide başka bir dizinde bulunan bir dosya olabilirdi.
+Meteor uygulamayı başlatırken tüm klasörlerdeki tüm dosyaları tarar ve hangi şablonun nerede olduğunu belirler.
+Uygulama başladıktan sonra siz dilediğiniz dosyası dilediğiniz yere kaydedebilirsiniz. Yeterki şablon isimleri birbirleri ile tutarlı olsun.</p>
+</blockquote>
+
+<p>JavaScript dosyasını incelediğimizde <strong>isClient</strong> ve <strong>isServer</strong> kontrolleri dikkatinizi çekmiştir. Bu kontrollere göre hangi kodun sunucuda, hangi kodun istemcide çalıştığını belirtebiliyorsunuz. Neticede istemci tarafından e-posta gönderimi gerçekleştiremezsiniz ve bu tip kodları sunucu tarafında yazıyorsunuz. İstemci tarafındaki kodlara bakarsak, ilgili templatin <strong>helpers</strong> olarak adlandırılan fonksiyonlarının tanımlandığını görmekteyiz. Buradaki <strong>prediction</strong> şablon içerisinden çağırılır ve sonuç şablona aktarılır.</p>
+
+<h3 id="herşey-mi-güzel">Herşey Mi Güzel?</h3>
+
+<p>Meteor yukarıdaki basit örnekte anlatıldığından çok daha fazlasını yapabiliyor elbette. Siz de internette çeşitli kaynaklarda gösterilen örnekleri inceleyebilirsiniz. Ancak ne yazık ki Meteor’un henüz bir <strong>stabil</strong> sürümü bulunmuyor. Bu da yola çıkarken mutlaka düşünmeniz gereken bir durum. Henüz stabil olmadığı için de sürekli değişen bir yapısı bulunuyor. Dün yazdığınız kodların yarın çıkacak yeni sürümde çalışmayabilir.</p>
+
+<blockquote>
+  <p>ÖNEMLİ!
+Ben bu yazıyı yazdıktan bir süre sonra Meteor.JS’in stabil sürümü yayınlandı. Dolayısıyla üstteki paragrafı dikkate almayınız.</p>
+</blockquote>
+
+<p>Meteor ile çok geniş çaplı (birçok ekran ve tablodan oluşan) uygulamalar yapılabileceği bana pek mantıklı gelmiyor. Ancak basit bir startup fikriniz varsa ve bir an önce yayınlayıp kullanıcıların tepkilerini görmek istiyorsanız Meteor tam size göre. Sadece aşağıdaki iki komutla <em>Facebook’la Oturum Açma</em> işlemini sisteminize entegre edebildiğinizi düşünen yeterli. :)</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>meteor add accounts-ui
+<span class="nv">$ </span>meteor add accounts-facebook</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;<span class="o">!</span><span class="nt">--</span> <span class="k">in </span>login.html <span class="nt">--</span><span class="o">&gt;</span>
+&lt;template <span class="nv">name</span><span class="o">=</span><span class="s2">"login"</span><span class="o">&gt;</span>
+  
+  <span class="o">{{&gt;</span> loginButtons<span class="o">}}</span>
+&lt;/template&gt;</code></pre></figure>
+
+:ET

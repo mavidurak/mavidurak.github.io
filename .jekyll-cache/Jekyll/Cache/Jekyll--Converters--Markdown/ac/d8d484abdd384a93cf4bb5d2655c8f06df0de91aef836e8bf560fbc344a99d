@@ -1,0 +1,3 @@
+I"<p>Merhaba,
+Bir önceki yazıda stack buffer overflow zafiyetinin ne olduğunu ve mantığını açıklamaya çalışmıştım.Şimdiki yazıda windows üzerinde çalışan bir uygulamada bulunan stack buffer overflow zafiyetinin exploit edilmesini anlatmaya çalışacağım.</p>
+:ET

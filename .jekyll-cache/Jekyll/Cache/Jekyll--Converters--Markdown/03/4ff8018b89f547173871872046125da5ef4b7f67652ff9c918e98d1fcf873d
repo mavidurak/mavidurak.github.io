@@ -1,0 +1,22 @@
+I"�<p>Merhaba, bu yazıda geçtiğimiz günlerde keşfettiğim bir npm paketinden bahsedeceğim.</p>
+
+<p>Web üzerine çalışmalar yapıyorsanız, çeşitli sitelerden indirdiğiniz HTML üzerine inşa edilmiş basit uygulamalar, temalar vb. içerikleri kişisel bilgisayarınızda açıp incelerken bazı fonksiyonel bileşenlerin düzgün çalışmadığını, hatta hiç çalışmadığını görebilirsiniz.<!--more--></p>
+
+<p>Buna en basit örnek <strong>doğru bir biçimde yüklenmeyen sayfa ögeleri (javascript betikleri, stil dosyaları vb.)</strong> gösterilebilir. Bu durumun sebepleri arasında gösterebileceğimiz ilk şey; indirdiğiniz çalışmanın yerel dosya sisteminize uygun olarak düzenlenmemiş olmasıdır. Daha net ifade edecek olursak indirdiğiniz çalışma bir web sunucusunda çalışacakmış gibi tasarlanmış olabilir.</p>
+
+<p>Sadece bu iş için sunucu kiralamak, satın almak ya da varolan sunucunuza bunun için sürekli dosya yüklemek bir hayli zahmetli ve optimize olmayan bir çözümdür.</p>
+
+<p><code class="highlighter-rouge">http-server</code> kod adlı npm paketi bu işi kolay bir biçimde halletmek için ideal. Elbette çok daha farklı yolları seçerek daha optimize çözümler üretilebilir fakat, kısa sürede hızlıca çözüme ulaşmak için henüz daha iyi bir çözüm göremedim.</p>
+
+<p>######Kurulum:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install http-server -g
+</code></pre></div></div>
+
+<p>Evet, hepsi bu kadar. Artık komut istemcinizi açıp herhangi bir dizine gittikten sonra <code class="highlighter-rouge">http-server</code> komutunu verirseniz http://localhost:8080 üzerinde aktif klasörünüz serve edilecektir.</p>
+
+<blockquote>
+  <p><strong>Dipnot:</strong> npm node.js için paket yöneticisidir. Bir npm paketi kurmak için sisteminize node.js yüklemiş olmalısınız. Kurulum bir blog yazısıyla anlatılmayacak kadar kolay: https://nodejs.org/</p>
+</blockquote>
+
+<p>Görüşmek üzere!</p>
+:ET
