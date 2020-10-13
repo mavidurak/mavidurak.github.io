@@ -1,0 +1,113 @@
+#splash {
+  height: 650px;
+  background-color: $primary;
+  background-image: url('/images/blob-right.svg');
+  background-position: top right;
+  background-repeat: no-repeat;
+
+  & div.container {
+    width: $container-size;
+    height: 100%;
+    margin: 0 auto;
+
+    & div.navigation {
+      height: 80px;
+      left: 0px;
+      width: 100%;
+      top: 0px;
+
+      & a.logo {
+        top: 26px;
+        position: absolute;
+        font-family: $rubik;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+        color: $white;
+        text-decoration: none;
+
+        &:hover {
+          color: darken($white, 5%);
+        }
+      }
+
+      div.menu-links {
+        display: flex;
+        float: right;
+        padding-top: 29px;
+
+        & a {
+          font-family: $rubik;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 18px;
+          line-height: 21px;
+          color: $secondary;
+          margin-left: 30px;
+          text-decoration: none;
+
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+    }
+
+    & div.body {
+      height: 480px;
+
+      &::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      & div.left {
+        float: left;
+        width: 50%;
+        padding-top: 126px;
+        
+        & img {
+          width: 430px;
+        }
+      }
+
+      & div.right {
+        float: left;
+        width: 50%;
+        padding-top: 80px;
+
+        & div.text-container {
+          color: $white;
+
+          & h1 {
+            font-family: $rubik;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 47px;
+            margin-top: 0px;
+            margin-bottom: 30px;
+          }
+
+          & p {
+            margin-top: 0px;
+            font-family: Rubik;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 22px;
+            line-height: 30px;
+          }
+
+        }
+      }
+    }
+  }
+
+  & img.wave {
+    margin-top: -75px;
+    width: 100%;
+  }
+
+}

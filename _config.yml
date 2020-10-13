@@ -137,6 +137,6 @@ authors:
 
 paginate: 7
 plugins: [
-  jekyll-paginate
+  # jekyll-paginate
 ]
 paginate_path: "page:num"
