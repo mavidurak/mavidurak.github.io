@@ -1,0 +1,36 @@
+I"�<p>Merhabalar,</p>
+
+<p>Geçtiğimiz günlerde atölyeleri uygulama biçimimizi değiştireceğimizden bahsetmiştik. (<a href="/mavidurakio/2014/11/03/mavidurak-io-da-neler-oluyor.html">MaviDurak-IO’da Neler Oluyor?</a>) Buna paralel olarak yeni bir atölye kurguladık. Etkinlik detaylarına <a href="https://www.facebook.com/events/298666686989612">buradan</a> ulaşabilirsiniz.<!--more--></p>
+
+<p><strong>“Mavi Atölye”</strong> adını verdiğimiz bu workshop boyunca bir konu anlatıp örnekler gerçekleştirmek yerine, katılımcı arkadaşlarımızla sıfırdan bir uygulama geliştireceğiz. Uygulamamız son derece basit web tabanlı bir soru-cevap uygulaması olacak. Back-end tarafında Node.JS kullanmaya karar verdik ve çalışmalarımıza bu şekilde başladık. Katılımcılardan aldığımız geri dönüşler sonrasında gördük ki doğru yoldayız. Çünkü öğrenci olan katılımcılarımız temel C, C++ ve C# bilgisi dışında hiç gerçek bir uygulama geliştirme şansı bulamamış. Ne yazık ki eğitim sistemimiz buna pek olanak vermiyor. Biz de Mavi Atölye ile bu açığı kapatmayı hedefliyoruz.</p>
+
+<p>Aşağıdaki başlıklarda sürecin nasıl işleyeceğini anlatmaya çalışacağım.</p>
+
+<h3 id="başvuru-kabulü-1-hafta">Başvuru Kabulü (1. Hafta)</h3>
+
+<p>Katılımcılar katılmak istediklerini belirten bir e-posta gönderdikten sonra, atölye boyunca kullanılacak dil ve teknolojilere ne kadar hakim oldukları hususunda kendileri ile bir görüşme gerçekleştiriyoruz. Görüşmenin sonunda eksiklikler saptanarak, hangi takımda (Back-end, Front-end) yer almak istediklerine karar veriyoruz. Bu karar sonrasında ilgili takımla çalışmak için eksiklikler belirlenerek, bunlar ile ilgili hangi kaynaklardan ön çalışma yapılabileceği belirleniyor ve katılımcılara kaynaklara çalışmak için süre veriliyor.</p>
+
+<h3 id="ön-çalışma-2-hafta">Ön Çalışma (2. Hafta)</h3>
+
+<p>Eksiklikleri belirlenen katılımcılar, 1 hafta boyunca kaynaklar üzerinde çalışmalar gerçekleştiriyor. Şuan <strong>Başvuru Kabulü</strong> aşamasındayız ve bazı katılımcılar eksik başlıklar üzerinde çalışmalara başladılar.</p>
+
+<p>Planlarımıza göre <strong>Ön Çalışma</strong> sonunda bir görüşme ile ne kadar ilerlediğimizi katılımcılar ile birlikte tartışarak, atölye gününe kadar neler yapabileceğimiz üzerinde duracağız.</p>
+
+<blockquote>
+  <p>Bu bölümden sonrası 26 Kasım 2014 tarihinde tekrardan güncellenmiştir.</p>
+</blockquote>
+
+<p>Planımıza sadık kalarak, katılımcı arkadaşlara telefonla ulaşıp çalışmaların nasıl gittiğini öğrendik. Bu hem katılımcılar açısından, hem de bizim açımızdan süreci sıcak tutmak açısından önemliydi. Genelde katılımcıların hazırlandıklarını görmek bizi mutlu etti. Elbette birkaç katılımcı arkadaşımız öğrenciliğin de verdiği rahatlıkla henüz tam anlamıyla çalışmalarını tamamlamamıştı. Ancak şuanda görünen o ki; <code class="language-plaintext highlighter-rouge">MaviDurak-IO</code> kod yazmaya hazır!</p>
+
+<h3 id="atölye-günü-3-hafta">Atölye Günü (3. Hafta)</h3>
+
+<p>Atölye gününde sadece 1 arkadaşımızın haricinde tüm katılımcılar aramızdaydı. Bu bizim için sevindirici bir haberdi. Hemen ekipleri ayrıştırarak çalışmaya başladık. Gün içinde bazı sorunlarla uğraştık, çoğunu çözdük. Ama günün sonuna baktığımızda, istediklerimizin yarısını bile yapamamış durumdaydık. Şahsım adına söyleyebilirim ki bu benim için bir başarısızlıktır.</p>
+
+<p>Peki neyi yanlış ya da eksik yaptık? İyi planlayamadık. Adım adım süreci bilmemiz gerekiyordu ve elimizde proje için hangi işin hangi adımda yapılacağını gösterir bir döküman yoktu. Kullanıcı hikayeleri, her hikayenin altındaki işler atölye öncesinde tasarlanmalıydı. MaviDurak-IO olarak bu sorumluluğu üstleniyoruz; bunların yeterince iyi bir şekilde hazırlanmaması bizim hatamızdı. Bu nedenle katılımcı arkadaşlarımız hayal kırıklığı yaşamış olabilir. Özür dileriz…</p>
+
+<p>Ancak naçizane deneyimlerime dayanarak söyleyebilirim ki; hata yapmak güzel. Biz bir hata yaptık ve bunu sizlerle paylaşıyoruz. Bir adım attık ve başarısız olduk. İleride tekrar deneyeceğiz. Muhtemelen yine başarısız olacağız. Dahası, her başarısızlığımızı sizlerle paylaşacağız. Yeterince hata yaparsak ve her hatadan sonra kendimizi sorgularsak, ileride yapacak herhangi bir hata kalmayacağına inanıyoruz.</p>
+
+<p>Sözün özü; MaviDurak-IO yine buralarda olacak!</p>
+
+<p>Lütfen siz de görüşlerinizi belirterek, hatalarımızı düzeltmemizde bizimle birlikte çalışın.</p>
+:ET

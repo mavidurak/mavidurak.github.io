@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.bg-animation-left:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 56px;
+  width: 70%;
+  height: 100%;
+  background: #fff none repeat scroll 0 0;
+  opacity: 0.30;
+  -webkit-clip-path: polygon(0 0, 90% 0, 70% 100%, 0% 100%);
+  clip-path: polygon(0 0, 90% 0, 70% 100%, 0% 100%);
+}

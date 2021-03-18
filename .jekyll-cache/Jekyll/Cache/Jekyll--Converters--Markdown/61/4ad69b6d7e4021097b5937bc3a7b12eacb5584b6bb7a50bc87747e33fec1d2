@@ -1,0 +1,80 @@
+I"�<p>Merhaba bugün 2014 model bir dil (Swift) ile gelen, çokta aşina olmadığımız bir kavrama değineceğim.</p>
+
+<p>Apple’ ın desteği ile çıkan Swift yeni olmasının getirdiği bir çok avantaja sahip. Bunlardan bir tanesi, programlamada eksikliği hissedilen durumlara çözüm üreterek gelmesidir. Lafı daha fazla uzatmadan Optional kavramına giriş yapalım, buyrun.</p>
+
+<p>Optional, türkçede ki karşılığı opsiyonel, isteğe bağlı, standart olmayan anlamına gelmektedir. Ben yine burada yazarken Optional olarak kullanacağım.<!--more--></p>
+
+<p>##Problem?</p>
+
+<p>Düşünün bir fonksiyonunuz var, sonucu ise gelen değere göre değişecek (bazen bir değer verip, bazende bir değer vermeme durumu var). Apple’ ın daha önce uygulama geliştirmek için kullandığı Objective - C dilinde bu durum obje veya nil (boş değer) döndürerek çözülür. Ancak bu durum sadece objeler için geçerlidir. Obje dışında ki veri türleri için <code class="language-plaintext highlighter-rouge">NSNotFound</code> gibi özel bir değer döndürülür. Bu gibi durumlarda geriye dönecek değer bilinmelidir, yoksa çok ciddi güvenlik problemleri oluşabilir veya Runtime (Çalışma zamanı) hatası alabiliriz.</p>
+
+<p>##Optional Kavramı</p>
+
+<p>Yukarıda da bahsettik bu dilin yeni olmasının avantajı daha önce eksikliği hissedilmiş konulara çözüm getirmesiydi, Optional da bunlardan biri. Program yazarken sonucu net olmayan durumlarla karşılaşabiliriz, ailenin yeni üyesi (Swift), belirsizlikleri ortadan kaldırmak için tüm veri türlerini kapsayan, <code class="language-plaintext highlighter-rouge">Optional</code>’ ı beraberinde getirdi.</p>
+
+<p>Hemen bir tane Optional tanımlayalım.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nv">optionalValue</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">optionalValue</code> adında Integer bir Optional tanımladık, dikkat ederseniz normal bir değişken tanımlamadan farkı, veri tipinin sonuna <code class="language-plaintext highlighter-rouge">?</code> gelmesidir.</p>
+
+<p>Optional olarak bir değişken tanımladınız ve program öyle bir yere geldi ki sonucun ne olacağı belli, <code class="language-plaintext highlighter-rouge">?</code> işareti ile sonuca ulaşabilirsin.</p>
+
+<p>Madem o kadar eminsin buyur.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nv">possibleString</span> <span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"Merhaba"</span>
+
+<span class="nf">println</span><span class="p">(</span><span class="n">possibleString</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Ünlem işarei ile sonuca direkt ulaştık ve yazdırdık.</span></code></pre></figure>
+
+<p>Swift bize her ne kadar doğrudan erişim sunsa da uzmanlar böyle bir kullanıma sıcak bakmıyorlar. Peki önerilen ne? Şöyle ki; biz bu Optional değişkenimizi if - else yapısıyla entegre bir şekilde kullanabiliyoruz ve tavsiye edilende bu şekilde.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="n">possibleString</span> <span class="p">{</span>
+
+<span class="nf">println</span><span class="p">(</span><span class="s">"possibleString değeri : </span><span class="se">\(</span><span class="n">possibleString</span><span class="o">!</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+<span class="nf">println</span><span class="p">(</span><span class="s">"possibleString değeri nil"</span><span class="p">)</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">possibleString</code> değeri varsa ekrana yazacaktır, eğer yoksa da <code class="language-plaintext highlighter-rouge">nil</code>’ dir. Sağlıklı olan budur.</p>
+
+<p>Biz bunu neden yaptık? Belirsizlikleri ortadan kaldırmış olduk, burada çok fark etmeyebilir ancak büyük çaplı projelerde fark eder, kod satırlarımız kısalır ve dökümantasyonu yazarken ciddi anlamda işimizi kolaylaştırır, standartlar bellidir.</p>
+
+<p>Son olarak küçük bir uygulama yapıp bitirelim.</p>
+
+<p>Bir metin için aradığımız karakterin yerini gösteren bir uygulama olsun.</p>
+
+<p>Harfin yerini döndüren bir fonksiyon yazalım.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">positionFinding</span> <span class="p">(</span><span class="nv">letter</span><span class="p">:</span> <span class="kt">Character</span><span class="p">,</span> <span class="nv">str</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span><span class="p">?</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">location</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="k">in</span> <span class="n">str</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">location</span><span class="o">++</span>
+        <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="n">letter</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">location</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Fonksiyonumuz bu kadar, harfi ve metni parametre olarak alıyoruz, konumumu tutacak <code class="language-plaintext highlighter-rouge">location</code> adında bir değişken tanımladık ve çok aşina olmadığımız for döngüsüyle metnin harflerini tek tek kontrol kontrol ediyoruz.</p>
+
+<p>Dikkat ederseniz fonksiyon dönüş tipini Optional Integer olarak belirledik, yani bu fonksiyon bize Integer bir değerde döndürebilir veya hiç bir şey döndürmez (nil), bu fonksiyon bize ya harfin yerini verecek ya da boş bir değer verecek.</p>
+
+<p>Optional olarak tanımlanmayan bir değişkeni nil olarak tanımlayamayız, biz fonksiyonumuzun Optional bir değer döndüreceğini belirtmeseydik nil olarak döndüremezdik, hata alırdık.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="k">let</span> <span class="nv">location</span> <span class="o">=</span> <span class="nf">positionFinding</span> <span class="p">(</span><span class="s">"d"</span><span class="p">,</span> <span class="s">"test-mavidurak"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">println</span><span class="p">(</span><span class="s">"Aranan Harf </span><span class="se">\(</span><span class="n">location</span><span class="se">)</span><span class="s">. karakterde."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">println</span><span class="p">(</span><span class="s">"Harf yok kardeşim (nil)."</span><span class="p">)</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Burada da fonksiyonumuzu if - else yapısıyla kullanarak, fonksiyondan gelecek veriye göre çözüm üretiyoruz.</p>
+
+<p>Uygulama geliştirirken çok yerde kullanacağınız bir kavram. Umarım faydalı olmuştur.</p>
+
+<p>Görüşmek üzere.</p>
+:ET
