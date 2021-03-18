@@ -1,0 +1,219 @@
+I"�(<p>Merhabalar,
+Bugün sizlere benim de şu sıralar yeni yeni adım atmakta olduğum tersine mühendislik ve zararlı yazılım analiziyle alakalı, bana ilgi çekici gelen bir konudan bahsetmek istiyorum.”PDF Malware Analizi”.</p>
+
+<p>Bilindiği üzere PDF dosyalarını günlük yaşantımızda, işte, evde çoğu yerde kullanıyoruz.Bu PDFler olmadan iş yaşantısını hayal etmek bile oldukça zor aslında.Çünkü kurumsal/bireysel belgeler, şirket broşürleri ve hatta davetiyeler bile çoğu zaman PDF formatında tutuluyor.<!--more--></p>
+
+<p>Geçtiğimiz yıllarda PDF dosyalarıyla ilgili buffer overflow gibi zafiyetler yayınlandı ve bu zafiyetlere yönelik saldırılar oluşmaya başladı.Hatta saldırıların birçoğunun internet üzerinde, içinde zararlı kod bulunduran PDF dosyalarının sisteme indirilmesiyle veya bu PDF dosyalarının sosyal mühendislik yöntemleri kullanılarak sistemlere kullanıcının anlamayacağı bir şekilde yerleştirilerek gerçekleştirildiği görüldü.</p>
+
+<p>Sadece PDF dosyasını açmak gibi basit bir hareket bile internetten gelen zararlı kodun sisteme bulaşmasını sağlayacak bir güvenlik ihlali yaratabilir.Kullanıcının anlamaması için sahte bir PDF dosyası şekline bürünerek kullanıcıyı kandırabilir.</p>
+
+<p>Bu konuyla ilgili aşağıdaki resimde geçtiğimiz yıllardaki Adobe Reader saldırılarının yüzdelik artışını görebilirsiniz.</p>
+
+<p><img src="http://ferdogan.net/assets/z1.png" alt="Adobe Reader Saldırıları" /></p>
+
+<p>Zararlı PDF dosyaları demin bahsettiğim nedenlerin de etkisiyle sıklıkla kitlesel ölçekli bilgisayar saldırılarının bir parçası olarak kullanılır.</p>
+
+<p>PDF dosyalarını analiz etmeyi bilmek iyi güzel fakat analizi yapacak kişinin PDF dosya yapısı hakkında önceden bilgisinin olması her halükarda daha olumludur.
+Öyleyse şimdi bizde PDF dosya yapısını inceleyelim…</p>
+
+<h2 id="pdf-dosya-yapısı">PDF Dosya Yapısı</h2>
+
+<p>PDF, statik ve dinamik zengin içerik sunma yeteneğine sahiptir.PDF dosyalarıyla görsel olarak ilgi çekici, interaktif ve taşınabilir belgeler sunabilirsiniz.Her ne kadar bu geniş özellik ve imkanlardan yararlanıyor olsak bile işin bir karanlık tarafı vardır.Az önce bahsettiğimiz dinamik pdf özellikleri, zararlı kodları barındırabilecek şekilde kullanılmıştır.</p>
+
+<p>Önceki yıllarda bilgisayar korsanlarının bu tarz kötü niyetli dosyaları, zararlı kod barındıran kötü amaçlı yazılımları yüklemek ve kullanıcıların kimlik bilgilerini çalmak için kullandığı ortaya çıkmıştır.</p>
+
+<p>Normalde PDF zararlı yazılımları, bu dosyaların içine gömülen bir script sayesinde çalışmakta.Bu zararlı script PDF dosyasının çalışmasını destekleyen bir yapıya sahiptir.Bu amaca yönelik en yaygın kullanılan script dili JavaScript’tir.</p>
+
+<p>Çoğu durumda bu gömülü scriptler işlevselliği sağlamak veya işletim sistemine zararlı kod yüklemek için kullanılır.</p>
+
+<h1 id="pdf-döküman-yapısı">PDF Döküman Yapısı</h1>
+
+<p>Bir PDF dosyasının genel yapısı aşağıdaki bileşenlerden oluşur:
+	* Boolean values, representing true or false
+	* Numbers
+	* Strings
+	* Names
+	* Arrays, ordered collections of objects
+	* Dictionaries, collections of objects indexed by names
+	* Streams, usually containing large amounts of data
+	* The null object</p>
+
+<p><img src="http://ferdogan.net/assets/z2.png" alt="PDF Dosya YApısı" /></p>
+
+<h2 id="zararlı-yazılımın-pdf-ile-çalışması">Zararlı Yazılımın PDF ile Çalışması</h2>
+
+<p>Çalıştırma işlemi sırasında zararlı bir uygulama açılır ya da bir belgeye veri yazdırır.
+Biz bu işlemi Adobe Acrobat exploitini Metasploit ile PDF içine .exe dosyası gömerek yapıyoruz.</p>
+
+<ul>
+  <li>Zararlı PDF’in çalışması esnasında cmd’de aşağıdaki eylemleri uygulayarak açılacaktır.</li>
+</ul>
+
+<p><img src="http://ferdogan.net/assets/z3.png" alt="cmd" /></p>
+
+<p>Genellikle PDF içine JavaScript kullanarak zararlı yazılım gömülerek bu işlem yapılıyor, çünkü JavaScript heap spray gibi tekniklerle exploit etme yöntemlerinde sıkça kullanılır.</p>
+
+<p>Herhangi bir kötü niyetli PDF dosyasını açtığınızda ilk olarak JavaScript kodu yürütülecek ve exploit edilecektir.Daha sonra shellcode yürütülür ve Trojan .exe çalışacaktır.</p>
+
+<p><img src="http://ferdogan.net/assets/z3.png" alt="execute" /></p>
+
+<h2 id="metasploit-ile-zararlı-pdf-dosyası-oluşturma">Metasploit ile Zararlı PDF Dosyası Oluşturma</h2>
+
+<p>Şimdi Adobe Reader “util.printf()” JavaScript fonksiyonundaki stack buffer overflow zafiyetini kullanarak kendi zararlı PDF dosyamızı oluşturalım.Adobe Reader, genellikle stack-based-buffer-overflow zafiyetine meyilliymiş bende bunu yeni öğrendim…</p>
+
+<p>Herneyse şimdi zararlı PDF’i Metasploit kullanarak adım adım oluşturalım:</p>
+
+<ul>
+  <li>msfconsole’u açıp aşağıdaki komutları uygulayın.</li>
+</ul>
+
+<p><img src="http://ferdogan.net/assets/mw1.png" alt="mw1" /></p>
+
+<ul>
+  <li>Gerekli ayarlamaları yaptıktan sonra <code class="language-plaintext highlighter-rouge">exploit</code> komutuyla zararlı PDF dosyamızı /root/.msf4/local/zararlipdf.pdf dizininde bulabilirsiniz.</li>
+</ul>
+
+<p><img src="http://ferdogan.net/assets/mw2.png" alt="mw2" /></p>
+
+<ul>
+  <li>İşte badboy karşımızda :)</li>
+</ul>
+
+<p><img src="http://ferdogan.net/assets/mw3.png" alt="mw3" /></p>
+
+<ul>
+  <li>Zararlı PDF dosyasını göndermeden önce, reverse connection sağlamak için listener aktif etmemiz lazım.</li>
+</ul>
+
+<p><img src="http://ferdogan.net/assets/mw4.png" alt="mw4" /></p>
+
+<p>PDF dosyası açıldığında metasploit tarafından bize session yani bir oturum açılacaktır.Meterpreter kullanarak sisteme erişim sağlamış olduk böylece.</p>
+
+<ul>
+  <li>Zararlı PDF’i Analiz Etme Yöntemleri
+Başlıca iki analiz yöntemi vardır: online ve offline.Şimdi bunları inceleyelim.</li>
+</ul>
+
+<h2 id="online-pdf-analiz-araçları">Online PDF Analiz Araçları</h2>
+
+<p>Online PDF Analiz araçları çoğu zaman işleri daha da kolaylaştırıyor.Siteye upload edip analizden sonra raporları inceleyerek gerekli bilgiyi edinebiliriz.</p>
+
+<h1 id="wepawet">Wepawet</h1>
+
+<p>Wepawet Flash, JavaScript ve PDF dosyalarını analiz eden web tabanlı online malware tarayıcısı.<a href="http://wepawet.iseclab.org/">Wepawet</a> bağlantısından inceleyebilirsiniz.</p>
+
+<ul>
+  <li>PDF dosyası Detector-Result sonucununda “suspicious” yani şüpheli olarak görünüyor.</li>
+</ul>
+
+<p><img src="http://ferdogan.net/assets/on1.png" alt="on1" /></p>
+
+<ul>
+  <li>Exploit metodu “util.printf” ve shellcode..</li>
+</ul>
+
+<p><img src="http://ferdogan.net/assets/on2.png" alt="on2" /></p>
+
+<h1 id="pdf-examiner">PDF Examiner#</h1>
+
+<p>Kırmızı yazılı alanda analiz sonuçları belirtilmekte.<a href="http://www.malwaretracker.com/">PDF Examiner</a> adresinden ulaşabilirsiniz.</p>
+
+<p><img src="http://ferdogan.net/assets/on3.png" alt="on3" /></p>
+
+<h1 id="jsunpack">Jsunpack</h1>
+
+<p><a href="http://jsunpack.jeek.org/">Jsunpack</a> adresinden sisteme ulaşabilirsiniz.</p>
+
+<ul>
+  <li>malicios ile başlayan ilk iki satır, zafiyet hakkında bilgi vermekte.</li>
+</ul>
+
+<p><img src="http://ferdogan.net/assets/on4.png" alt="on4" /></p>
+
+<h2 id="offline-pdf-analiz-araçları">Offline PDF Analiz Araçları</h2>
+
+<h1 id="peepdf">Peepdf</h1>
+
+<p>Peepdf, PDF dosyalarının zararlı olup olmadığını öğrenmek ve incelemek amacıyla python dilinde geliştirilen bir araçtır.
+Peepdf’in güzel yanı, görevleri gerçekleştirmek için başka araçlara ihtiyacı olmaması, pdf analizi için gerekebilecek bileşenleri kendi içinde barındırması.</p>
+
+<ul>
+  <li>
+    <p>Şimdi adım adım inceleyelim…</p>
+  </li>
+  <li>
+    <p><img src="http://ferdogan.net/assets/mw5.png" alt="mw5" /></p>
+  </li>
+  <li>
+    <p><img src="http://ferdogan.net/assets/mw6.png" alt="mw6" /></p>
+  </li>
+  <li>
+    <p><img src="http://ferdogan.net/assets/mw7.png" alt="mw7" /></p>
+  </li>
+  <li>
+    <p><img src="http://ferdogan.net/assets/mw8.png" alt="mw8" /></p>
+  </li>
+</ul>
+
+<h1 id="pdfid">Pdfid</h1>
+
+<p>Pdfid, bir PDF dosyasından kullanışlı bilgiler elde etmenizi sağlayan bir araçtır.Peepdf gibi Pdfid’de python ile geliştirilmiştir.</p>
+
+<p>Analiz edilen pdf dosyasından javascript, obj, endobj, stream gibi headerları çıkarabilir.Bazı PDF exploitleri bu tarz headerları değiştirebilir, pdfid pdf içinde neler olduğunu tam anlamıyla gösterebilir.</p>
+
+<p><img src="http://ferdogan.net/assets/mw9.png" alt="mw9" /></p>
+
+<h1 id="origami">Origami</h1>
+
+<p>Origami, PDF dosyalarını parse, analiz ve forge etmek amacıyla kullanılan bir Ruby frameworktür.
+Varolan PDF dosyalarına zararlı kod enjekte etmek için de kullanılabilir.Yakın zamanda Origami ile ilgili daha ayrıntılı bir yazı yazmayı düşündüğümden, şu an ayrıntılı olarak incelemiyorum.</p>
+
+<ul>
+  <li>Ekran görüntüsü şu şekilde:</li>
+</ul>
+
+<p><img src="http://ferdogan.net/assets/of2.png" alt="of2" /></p>
+
+<h1 id="pdf-stream-dumper">PDF Stream Dumper</h1>
+
+<p>Bu programla ilgili varolan kaynaklardan aldığım ekran görüntülerini incelemenin yeterli olduğunu düşünüyorum.</p>
+
+<ul>
+  <li>
+    <p><img src="http://ferdogan.net/assets/of3.png" alt="of3" /></p>
+  </li>
+  <li>
+    <p><img src="http://ferdogan.net/assets/of4.png" alt="of4" /></p>
+  </li>
+  <li>
+    <p><img src="http://ferdogan.net/assets/of6.png" alt="of6" /></p>
+  </li>
+</ul>
+
+<h2 id="nasıl-korunabilirim">Nasıl Korunabilirim??</h2>
+
+<ul>
+  <li>
+    <p>Otomatik güncelleştirmeleri aktif edin.</p>
+  </li>
+  <li>
+    <p>PDF dosyasının browser ile entegre çalışmasını engelleyin.</p>
+  </li>
+  <li>
+    <p>Tüm Adobe ürünlerinin son patch ve update sürümlerini kullanın.</p>
+  </li>
+  <li>
+    <p>JavaScript’i deaktif edin.</p>
+  </li>
+  <li>
+    <p>“Allow non-PDF file attachments with external applications” tarzı mesaj seçeneklerini işaretlemeyin.</p>
+  </li>
+  <li>
+    <p>Alternatif PDF araçlarını kullanın.Foxit Reader, Sumatra, PDF XChange.</p>
+  </li>
+</ul>
+
+<p>Bir başka yazıda görüşmek dileğiyle.</p>
+
+<p><a href="http://ferdogan.net/PDF-Malware-Analiz-Teknikleri/">Kaynak</a></p>
+:ET

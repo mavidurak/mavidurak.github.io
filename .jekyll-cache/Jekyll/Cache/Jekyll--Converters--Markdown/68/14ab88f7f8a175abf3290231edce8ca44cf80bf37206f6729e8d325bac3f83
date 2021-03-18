@@ -1,0 +1,244 @@
+I"�<p>Passport.js Node JS için geliştirilmiş authentication(yetkilendirme) modülüdür, bu modülü kullanarak destek veren tüm sosyal ağ hesaplarına erişebilir, web uygulamalarınızda oturum denetimini bu sosyal ağların aracılığıyla yönetebilirsiniz.
+  Bu modül tek bir işi yerine getirmek için geliştirilmiştir, yetkilendirme. Yazıda ilerledikçe göreceksiniz ki işinde oldukça iyi ve oldukça kullanışlı özelliklere sahip. Destek veren herhangi bir sosyal ağın API(Application Programming Interface)’nı kullanarak ziyaretçilerin web uygulamanıza giriş yapmanızı sağlamanız Passport.js ile çok kolaydır.<!--more--></p>
+
+<p>Modern web uygulamalarında yetkilendirme çok farklı şekillerde yapılabilir, geleneksel yöntemde kullanıcılar sisteme kullanıcı adı ve parolalarıyla giriş yaparlar. Ancak sosyal ağların yükselişiyle birlikte artık yetkilendirme işlemleri Facebook Twitter gibi popüler OAuth sağlayıcılarının single sign-in (tek bir oturum açma) trendine doğru kaymaya başladı. Çoğu zaman bu sosyal ağların altyapılarını kullanarak oturum açabilmek ve kullanıcıların bilgilerine erişebilmek için token denilen geçici anahtarlar kullanılır.
+  Her web uygulamasının farklı kullanıcı bilgilerine gereksinimi vardır ancak passportJs tüm bu gereksinimleri karşılayabilecek şekilde tasarlanmış oldukça kullanışlı bir modül.
+  PassportJs’de yetkilendirme mekanizmaları “Strategy” diye tanımlanır, her sosyal ağın mekanizması farklıdır ancak passportJs bağımlılıkları yok ederek modüler şekilde tasarlandığından tüm “Strategy” modülleri ayrı birer pakettir. Hangi sosyal ağ aracılıyla bilgilere erişmek isterseniz uygulamanıza onu eklersiniz olur biter.</p>
+
+<p>Biraz sonra tek tek açıklamadan önce size ne kadar temiz bir kod yazımı sağladığını göstermek için basit bir örnek vermek istiyorum</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">,</span> <span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="dl">'</span><span class="s1">local</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">successRedirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span>
+                                                  <span class="na">failureRedirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span> <span class="p">}));</span></code></pre></figure>
+
+<p>PassportJS’i node package manager üzerinden tek satırla yükleyebilir, uygulamanıza ekleyebilirsiniz.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm <span class="nb">install </span>passport</code></pre></figure>
+
+<h3 id="yetkilendirme">Yetkilendirme</h3>
+
+<p>Server’a gelen bir yetkilendirme yani oturum açma isteğini uygun şekilde karşılamak <code class="language-plaintext highlighter-rouge">passport.authenticate()</code> yazmak kadar kolaydır. Methodun içine kendiniz için uygun olan “Strategy” i yazarsınız ve sistem tıkır tıkır işler.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"> <span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="dl">'</span><span class="s1">local</span><span class="dl">'</span><span class="p">),</span>
+  <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Eğer bu fonksiyon devreye girdiyse, yetkilendirme başarılı demektir</span>
+    <span class="c1">// `req.user` objesi yetkilendirilmiş kullanıcının bilgilerini içerir</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+  <span class="p">});</span></code></pre></figure>
+
+<p>Görüldüğü gibi yukarıdaki kodda stratejimizi <code class="language-plaintext highlighter-rouge">local</code> olarak belirledik. Yukarıdaki senaryo yetkilendirme sırasında bir hata oluşmaması durumunda olacak güllük gülistanlık durumu gösteriyor, ancak biliyoruz ki hayat bu kadar kolay değil. İşlerin boka sarması durumunda yani diğer tabirle yetkilendirme sırasında bir hata oluştuğunda PassportJS varsayılan olarak <code class="language-plaintext highlighter-rouge">401 Unauthorized</code> HTTP headerını döndürür. Eğer yetkilendirmede sorun çıkmazsa <code class="language-plaintext highlighter-rouge">req.user</code> objesi tanımlanır ve işlemlerimizde kolayca kullanabiliriz, bu kısımla ilgili ayrıntıları konfigrasyon kısmında detaylı şekilde beraber görücez.</p>
+
+<h2 id="yönlendirmeler">Yönlendirmeler</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Her yetkilendirme isteğinden sonra sonuca göre uygun bi yönlendirme mutlaka yapılır, tabi giriş isteği yaptıktan sonra ekrana bakıp bekleyen zombiler yaratmak istemiyorsanız.
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="dl">'</span><span class="s1">local</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">successRedirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span>
+                                 <span class="na">failureRedirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span> <span class="p">}));</span></code></pre></figure>
+
+<p>Bu düzenlemeyle fonksiyonun varsayılan davranışını override ettik, yani ezdik kendi kuralımızı belirledik. Herhangi bir problem olmadan yetkilendirme tamamlanırsa kullanıcıyı anasayfaya yönlendiricez, ancak herhangi bi problem oluşur da yetkilendirme başarısız olursa kullanıcı login sayfasına tekrar geri gelecek.</p>
+
+<h2 id="flash-bildirimler">Flash Bildirimler</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Yönlendirmelerle birlikte kullanıcılar için işleri anlamlı hale getirecek bildirimler de göndermeliyiz, o da şöyle.
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="dl">'</span><span class="s1">local</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">successRedirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span>
+                                 <span class="na">failureRedirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">,</span>
+                                 <span class="na">failureFlash</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
+<span class="p">);</span></code></pre></figure>
+
+<p>Muhtemelen sizin de dikkat ettiğiniz gibi kodumuza yeni bi parametre daha ekledik <code class="language-plaintext highlighter-rouge">failureFlash:true</code>, bu tanımlamayla PassportJs yetkilendirme sırasında oluşacak hatayı kullanıcıya kendiliğinden gösterecek.
+  Bu çoğu zaman tercih edilen bi kullanımdır, çünkü hata doğrudan passportJs’den geldiğinden oluşan hatanın içeriğini kullanıcının da öğrenmesini sağlar.</p>
+
+<p>Ancak alternatif bir yol olarak</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="dl">'</span><span class="s1">local</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">failureFlash</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Invalid username or password.</span><span class="dl">'</span> <span class="p">});</span></code></pre></figure>
+
+<p>şeklinde kendimiz de bir flash mesaj tanımlayabiliriz.</p>
+
+<p>“Araman için illa hata yapmam mı lazım” ilkesinde de yola çıkarak kullanıcıya işlerin sadece kötü gittiğini değil sorunsuz tamamlandığını göstermek için de flash mesaj yollayabiliriz. Şöyle ki:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="dl">'</span><span class="s1">local</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">successFlash</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Welcome!</span><span class="dl">'</span> <span class="p">});</span></code></pre></figure>
+
+<p>Burada hatırlatmam gereken küçük bi nokta var, flash mesajları kullanabilmek için <code class="language-plaintext highlighter-rouge">req.flash()</code> methoduna ihtiyaç var, Express framework’ün 2x versiyonları bu methodu destekliyor ancak 3x versiyonlarda kaldırıldı o yüzden şu modülü projenize dahil etmeniz lazım
+  https://github.com/jaredhanson/connect-flash</p>
+
+<h2 id="sessionı-devre-dışı-bırakmak">Session’ı Devre Dışı Bırakmak</h2>
+
+<p>Başarılı bi şekilde yetkilendirme yapıldıktan sonra, sistem kalıcı bir session oluşturacaktır. Bu ziyaretçilerin web tarayıcılarıyla kullandığı web uygulamarında tercih edilen genel bi kullanımdır, ancak bazı özel durumlarda, session gerekli değildir.
+   Örnek verecek olursak; API sunucularından her istekte kullanıcı kimliği zaten temin edilir. Bu durumda bizim için session’ı devre dışı bırakmak mantıklı bi seçim olacaktır. Peki nasıl bırakırız, şöyle ki:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/users/me</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="dl">'</span><span class="s1">basic</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">session</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}),</span>
+<span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="na">username</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span> <span class="p">});</span>
+<span class="p">});</span></code></pre></figure>
+
+<h2 id="kendi-i̇htiyacımıza-göre-callback-oluşturma">Kendi İhtiyacımıza Göre Callback Oluşturma</h2>
+
+<p>Yukarıdaki tüm senaryolar failure ya da success durumlarında uygulamanın nasıl davranacağını verdiğimiz parametrelerle yönetiyordu, ancak bazen kuralları bizim koymamız gerekir. Bizim geliştirdiğimiz uygulamada bizim sözümüz geçer hafız.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="dl">'</span><span class="s1">local</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">user</span><span class="p">,</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">);</span> <span class="p">}</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">logIn</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="dl">'</span><span class="s1">/users/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Yukarıdaki kodda <code class="language-plaintext highlighter-rouge">authenticate()</code> methodunun router’ın altında olduğuna dikkat edin, bu şekilde kullanımamızın nedeni <code class="language-plaintext highlighter-rouge">authenticate()</code> methodunun içinde <code class="language-plaintext highlighter-rouge">req</code> ve <code class="language-plaintext highlighter-rouge">res</code> nesnelerine erişmek istememiz.
+  Yetkilendirme işlemi sırasında bir hata oluştuğunda <code class="language-plaintext highlighter-rouge">user</code> nesnesi <code class="language-plaintext highlighter-rouge">false</code> ‘a eşit olur. Bir hata oluştuğunda <code class="language-plaintext highlighter-rouge">err</code> nesnesi aracılığıyla otomatik olarak hata fırlatılır, aksi durumlarda <code class="language-plaintext highlighter-rouge">null</code> a eşittir.</p>
+
+<h3 id="konfigrasyon">Konfigrasyon</h3>
+
+<p>PassportJS’de yetkilendirme için üç konfigrasyona ihtiyaç duyarız</p>
+
+<p>1- Yetkilendirme Stratejileri
+  2- Uygulama Katmanları
+  3- Sesssionlar (Bu tercihe bağlı)</p>
+
+<h2 id="stratejiler-strategies">Stratejiler (Strategies)</h2>
+
+<p>PassportJs bağlantıları yetkilendirirken <code class="language-plaintext highlighter-rouge">Strategy</code> denilen kuralları kullanır. Kullanıcı adı ve parolayı <code class="language-plaintext highlighter-rouge">OAuth</code> ya da <code class="language-plaintext highlighter-rouge">OpenID</code> aracılığıyla doğrular ve oturumu yönetir.
+  Passport’a bir doğrulama-yetkilendirme isteği yollamadan önce <code class="language-plaintext highlighter-rouge">Strategy</code> denilen kurallar mutlaka tanımlanmalıdır.
+  Stratejiler ve onların konfigrasyonları <code class="language-plaintext highlighter-rouge">use()</code> fonksiyonunu destekler, Kullanıcı adı ve şifreyle yapılan bir lokal doğrulama için şu koda bi göz atalım;</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">passport</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">passport</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">,</span> <span class="nx">LocalStrategy</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">passport-local</span><span class="dl">'</span><span class="p">).</span><span class="nx">Strategy</span><span class="p">;</span>
+<span class="nx">passport</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">new</span> <span class="nx">LocalStrategy</span><span class="p">(</span>
+  <span class="kd">function</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span> <span class="na">username</span><span class="p">:</span> <span class="nx">username</span> <span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Incorrect username.</span><span class="dl">'</span> <span class="p">});</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">.</span><span class="nx">validPassword</span><span class="p">(</span><span class="nx">password</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Incorrect password.</span><span class="dl">'</span> <span class="p">});</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">));</span></code></pre></figure>
+
+<h2 id="doğrulama-yanıtları-verify-callbacks">Doğrulama Yanıtları (Verify Callbacks)</h2>
+
+<p>Her ne kadar Türkçe kaynak oluşsun diye uğraşıyor olsak da bazı terimlerin ingilizcelerini duymanız sizin için daha yararlı olcaktır, aksi halde bildiğiniz terimleri duyduğunuz dahi ingilizcesini bilmediğinizden olaya fransız kalmanız kaçınılmaz olacaktır, bu yüzden elimden geldiğince Türkçe’ye çevirmeye çalışsam da özgün tabirleri ingilizce olarak da yazıyorum.</p>
+
+<p>Yukarıdaki örnek kodumuz önemli bi konsepti içeriyor, Stratejilerde durumlara göre geri dönüşleri tanımlamamız gerekir. Flash Bildirimleri başlığını hatırlayın, doğrulamanın amacı gönderilen kimlik bilgilerine sahip kullanıcı bulup yetkilendirmeyi yapmaktır.</p>
+
+<p>Kimlik bilgileri geçerliyse ve Passport tarafından onaylandıysa (ki belirlediğimiz stratejiye uygunsa passport tarafından valid olarak tanımlanacak yani onaylanacaktır) passportJS kullanıcıyı doğruladığını belirtmek için <code class="language-plaintext highlighter-rouge">done</code> methodunu çağıracaktır.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span></code></pre></figure>
+
+<p>Eğer bilgiler geçerli değilse mesela parola yanlışsa <code class="language-plaintext highlighter-rouge">done</code> methodu <code class="language-plaintext highlighter-rouge">false</code> parametresiyle çağrılacaktır.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span></code></pre></figure>
+
+<p>Bu gibi durumlarda opsiyonel mesajlar da eklenerek flash bildirimler gösterilebilir ve kullanıcılar yeniden denemeye yönlendirilir</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Incorrect password.</span><span class="dl">'</span> <span class="p">});</span></code></pre></figure>
+
+<p>Son olarak eğer daha derin bi hata varsa mesela database bağlantısı yoksa işid Sakarya’ya geldiyse ya da bulunduğunuz konuma yaklaşan devasa bi meteor varsa falan bilindik node tarzı <code class="language-plaintext highlighter-rouge">err</code> fırlatılır siz de bunu yakalayıp döndürürsünüz.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span></code></pre></figure>
+
+<h2 id="katmanlar">Katmanlar</h2>
+
+<p>Express framework ile web uygulamaları geliştirirken ki çoğu zaman uygulamalarımızı bu çatı altında geliştiririz, passportJs’in ihtiyaç duyduğu bazı konfigrasyonlar vardır, <code class="language-plaintext highlighter-rouge">passport.initialize()</code> belirtimi yapılmalıdır, eğer uygulamanızda session kullanıyosanız bunun yanında <code class="language-plaintext highlighter-rouge">passport.session()</code> da deklare edilmek zorundadır.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="dl">'</span><span class="s1">public</span><span class="dl">'</span><span class="p">));</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">cookieParser</span><span class="p">());</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">bodyParser</span><span class="p">());</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">session</span><span class="p">({</span> <span class="na">secret</span><span class="p">:</span> <span class="dl">'</span><span class="s1">keyboard cat</span><span class="dl">'</span> <span class="p">}));</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">passport</span><span class="p">.</span><span class="nx">initialize</span><span class="p">());</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">passport</span><span class="p">.</span><span class="nx">session</span><span class="p">());</span>
+  <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">router</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<h3 id="kullanıcı-adı--parola-aracılığıyla-giriş">Kullanıcı Adı &amp; Parola Aracılığıyla Giriş</h3>
+
+<p>En çok tercih edilen yöntemle beraber bir örnek yapıp yazımı sonlandırmak istiyorum</p>
+
+<p>Bu uygulama için <code class="language-plaintext highlighter-rouge">passport-local</code> modülüne ihtiyacımız var, npm denilen canımız ciğerimiz paket yöneticisi aracılığıyla tabi ki çok kolay.</p>
+
+<h2 id="yükleme">Yükleme</h2>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm <span class="nb">install </span>passport-local</code></pre></figure>
+
+<h2 id="konfigrasyon-1">Konfigrasyon</h2>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">passport</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">passport</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">,</span> <span class="nx">LocalStrategy</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">passport-local</span><span class="dl">'</span><span class="p">).</span><span class="nx">Strategy</span><span class="p">;</span>
+<span class="nx">passport</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">new</span> <span class="nx">LocalStrategy</span><span class="p">(</span>
+<span class="kd">function</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span> <span class="na">username</span><span class="p">:</span> <span class="nx">username</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span> <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Incorrect username.</span><span class="dl">'</span> <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">.</span><span class="nx">validPassword</span><span class="p">(</span><span class="nx">password</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Incorrect password.</span><span class="dl">'</span> <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">done</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="p">}</span>
+<span class="p">));</span></code></pre></figure>
+
+<p>Local yetkilendirme için formumuzdan gelecek username ve password verilerine uygun olarak callbacklerimizi tanımladık.</p>
+
+<h2 id="form">Form</h2>
+
+<p>Şimdi formu oluşturalım</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/login"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;label&gt;</span>Username:<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"username"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;label&gt;</span>Password:<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"password"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Log In"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<h2 id="yönlendirme-routing">Yönlendirme (Routing)</h2>
+
+<p>formdan gelen post isteğini yakalayıp passport ile konuşturmak için gerekli kodlarımızı yazıyoruz</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">,</span>
+<span class="nx">passport</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="dl">'</span><span class="s1">local</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">successRedirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span>
+                             <span class="na">failureRedirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span class="p">,</span>
+                             <span class="na">failureFlash</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
+<span class="p">);</span></code></pre></figure>
+
+<p><code class="language-plaintext highlighter-rouge">failureFlash</code> parametresinin true olmasına dikkat etmişsinizdir, kullanıcılar için Flash Bildirimler gönderiyoruz.</p>
+
+<h2 id="parametreler">Parametreler</h2>
+
+<p>Varsayılan olarak <code class="language-plaintext highlighter-rouge">LocalStrategy</code> de formdan gelen kullanıcı adı <code class="language-plaintext highlighter-rouge">username</code> ve <code class="language-plaintext highlighter-rouge">password</code> olarak tanımlıdır, ben değişiklik yapmak istiyorum dersen şu şekilde yapabilirsin diyerek bu gereksiz bilgiyle yazıma son veriyorum.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">passport</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="k">new</span> <span class="nx">LocalStrategy</span><span class="p">({</span>
+<span class="na">usernameField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">email</span><span class="dl">'</span><span class="p">,</span>
+<span class="na">passwordField</span><span class="p">:</span> <span class="dl">'</span><span class="s1">passwd</span><span class="dl">'</span>
+<span class="p">},</span>
+<span class="kd">function</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">,</span> <span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="p">));</span></code></pre></figure>
+
+<p>Oldukça kullanışlı bi modül olan PassportJS’i her geliştiriciye tavsiye ederim, eski projelerimde kullanmamış olsam da bundan sonraki her projemde kesinlikle tercih edeceğim bir modül.
+Okuduysanız yazının linkini paylaşmanız teşekkür yerine geçecektir. Ayrıca sizler de blogda kendi yazılarınızı yayınlayabilirsiniz. Şimdiden teşekkürler.</p>
+
+<p>Furkan BAŞARAN <a href="mailto:frknbasaran@gmail.com">frknbasaran@gmail.com</a>
+@frknbasaran</p>
+:ET

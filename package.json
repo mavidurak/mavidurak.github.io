@@ -2,12 +2,14 @@
   "name": "mavidurak.github.io",
   "version": "1.0.0",
   "description": "",
-  "main": "kommunity.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "css:watch": "nodemon -x yarn run css:dev --watch tailwind.config.js --watch ./_includes/ --watch ./_layouts/ --watch ./*.html -e css,html",
+    "css:dev": "tailwindcss-cli build ./css/styles.css -o ./dist/styles.css",
+    "css:build": "export NODE_ENV=production && tailwindcss-cli build ./css/styles.css -o ./dist/styles.css"
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "tailwindcss": "^2.0.3",
+    "tailwindcss-cli": "^0.1.2"
   },
   "repository": {
     "type": "git",

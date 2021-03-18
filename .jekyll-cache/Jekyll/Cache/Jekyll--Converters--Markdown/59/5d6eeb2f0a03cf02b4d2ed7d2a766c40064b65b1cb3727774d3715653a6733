@@ -1,0 +1,5 @@
+I"<p>Merhabalar,
+Vizelerin, finallerin vs. araya girmesiyle neredeyse iki aydır yazmaya vakit bulamamıştım.
+Bugün elimden geldiğince stack tabanlı zafiyetlerden ve ne şekilde exploit edilebileceğinden bahsetmeye çalışacağım.Sonraki yazılarda stack tabanlı zafiyetlerin windows ve linux üzerinde exploit edilmesini anlatarak exploit geliştirme konularına girmeyi düşünüyorum.Bu yazı daha çok stack overflow zafiyetinin mantığını anlamaya yönelik olacaktır.
+Her neyse fazla uzatmadan başlayalım.</p>
+:ET

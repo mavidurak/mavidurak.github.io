@@ -1,0 +1,204 @@
+I"i<p>JVM içerisinde statik tipli dilleri çalıştırabilmenin birden fazla amacı bulunmaktadır. Bunlar;</p>
+
+<ul>
+  <li>JIT (Just in Time) Compiler ile yüksek performans sunmak</li>
+  <li>Birçok dilin çalıştırılmasıyla JVM’i Polyglot bir ortam haline getirmek</li>
+  <li>Farklı dil ve ekosistemleri Java ekosistemine yakınlaştırmak</li>
+  <li>Farklı dil ekosistemlerinin gücünü JVM’de birleştirmek<!--more--></li>
+</ul>
+
+<p>Java Sanal Makinesi üzerinde birçok programlama dili çalıştırılabilmektedir. Bu diller   ve   uygulayıcı kütüphaneler aşşağıdadır (dil= uygulayıcı  kütüphane şeklinde yazılmıştır. <a href="http://en.wikipedia.org/wiki/List_of_JVM_languages">*Kaynak</a>)</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Ada</code>: JGNAT</li>
+  <li><code class="language-plaintext highlighter-rouge">BBx</code>: BBj is a superset of BBx, PRO/5, and Visual PRO/5.</li>
+  <li><code class="language-plaintext highlighter-rouge">C</code>: C to Java Virtual Machine compilers</li>
+  <li><code class="language-plaintext highlighter-rouge">CFML</code>: Adobe ColdFusion,Railo,Open BlueDragon</li>
+  <li><code class="language-plaintext highlighter-rouge">Common :Lisp</code> Armed Bear Common Lisp,CLforJava</li>
+  <li><code class="language-plaintext highlighter-rouge">JavaScript</code>: Rhino,Nashorn</li>
+  <li><code class="language-plaintext highlighter-rouge">Pascal</code>: Free Pascal,MIDletPascal</li>
+  <li><code class="language-plaintext highlighter-rouge">Perl :6</code> Rakudo Perl 6</li>
+  <li><code class="language-plaintext highlighter-rouge">Prolog</code>: JIProlog,TuProlog</li>
+  <li><code class="language-plaintext highlighter-rouge">Python</code>: Jython</li>
+  <li><code class="language-plaintext highlighter-rouge">REXX</code>: NetRexx</li>
+  <li><code class="language-plaintext highlighter-rouge">Ruby</code>: JRuby</li>
+  <li><code class="language-plaintext highlighter-rouge">Scheme</code>: Bigloo,Kawa,SISC,JScheme</li>
+  <li><code class="language-plaintext highlighter-rouge">Tcl</code>: Jacl</li>
+</ul>
+
+<p>Yukarıda  listelenen programlama dilleri JVM bünyesinde koşturulabilmektedir.jsr 223( javax.scipt  paketi )  sayesinde jvm ortamında farklı  script dilleri koşturulabiliyor. Bazı diller yorumlama usülüyle koşturulurken, bazıları ise bayt koda dönüştürüldükten sonra koşturulmaktadır. Fakat, JavaScript haricindeki dillere karşılık bir uygulayıcı kütüphaneyi projenize eklemeniz gerekmektedir.</p>
+
+<p>Örneğin JVM üzerinde Ruby dili ile uygulama geliştirmek istiyoranız, JRuby bağımlılığını Java projenize eklemelisiniz.</p>
+
+<p>JRuby Maven Dependency</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+<span class="nt">&lt;groupId&gt;</span>org.jruby<span class="nt">&lt;/groupId&gt;</span>
+<span class="nt">&lt;artifactId&gt;</span>jruby<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;version&gt;</span>1.7.16<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+<p>Diğer  diller için de benzer biçimde gereken bağımlılık Java projenize eklenmelidir.
+Fakat, JavaScript programlama dili için olay biraz farklı bir durumda. Çünkü, Java 7 Rhino, Java 8 ise Nashorn isimli JavaScript motorlarını gömülü olarak JVM içerisinde bulundurmaktadır. Bu Java ekosisteminin JavaScript diline ne kadar önem verdiğini ayrıca göstermektedir.</p>
+
+<p>##Java Scripting API
+Java programlama dili, tüm bu listeli dilleri koşturabilmek için ortak arayüzlerin bulunduğu bir API sunmaktadır. Java Scripting API bileşenleri javax.script paketi içerisinde bulunmaktadır.
+javax.script paketi oldukça basit arayüz ve sınıflar içermektedir.Bunlardan en önemlisi ScriptEngine arayüzüdür.</p>
+
+<p>##ScriptEngine
+ScriptEngine türünden nesneler, ScriptEngineFactory#getEngine metodu üzerinden eşsiz bir takma isim ile elde edilmektedir. Bu nesneler ile, String türünden kod blokları koşturulabilmekte, ayrıca Java ile iletişim kurulabilmektedir. Örneğin, Nashorn JavaScript motoru için “nashorn” veya “rhino” takma adları, Ruby için ise “jruby” takma adı kullanılmaktadır.</p>
+
+<p>###Örneğin;</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Java 8 için JavaScript motoru</span>
+<span class="nc">ScriptEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="nc">ScriptEngineFactory</span><span class="o">.</span><span class="na">getEngine</span><span class="o">(</span><span class="s">"nashorn"</span><span class="o">);</span>
+<span class="c1">//Java 7 için JavaScript motor</span>
+<span class="nc">ScriptEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="nc">ScriptEngineFactory</span><span class="o">.</span><span class="na">getEngine</span><span class="o">(</span><span class="s">"rhino"</span><span class="o">);</span>
+<span class="c1">//Ruby için JRuby motoru</span>
+<span class="nc">ScriptEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="nc">ScriptEngineFactory</span><span class="o">.</span><span class="na">getEngine</span><span class="o">(</span><span class="s">"jruby"</span><span class="o">);</span>
+<span class="c1">//Python için Jython motoru</span>
+<span class="nc">ScriptEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="nc">ScriptEngineFactory</span><span class="o">.</span><span class="na">getEngine</span><span class="o">(</span><span class="s">"jython"</span><span class="o">);</span></code></pre></figure>
+
+<h2 id="nashorn">Nashorn</h2>
+
+<p>Nashorn, Java 8 için özel olarak sıfırdan geliştirilen bir JavaScript motorudur.En buyuk avantajı jvm  ortamında  javascript dilini kullanmaya  olanak tanır.Aslında JVM içinde javascript çalışması okadar da yeni değil 1998 yılında  çıkarılan Rhino motoru  kullanılıyordu fakat  diğer js mootorlarına  göreçok yavaştı. Nashorn, Rhino JavaScript motoruna göre 5 kat daha fazla performans sunmaktadır.</p>
+
+<p>Nashorn JavaScript motoru ecmascript 5.1 i destekler ecmascript  js dilinin standardize edilmiş halidir.Nashorn  bir browser  ortamı  değildir</p>
+
+<p>JVM dillerinden Java Scripting API destekleyenler, ScriptEngine eval metodu ile kod bloklarını koşturma imkanı elde etmektedir. Bu sayede ortak arayüz bileşenleri üzerinden Java harici diller JVM üzerinde koşturulabilmektedir.</p>
+
+<p>JS’de diziler dinamiktir. Bir eleman eklendiğinde devamlı olarakelaman eklenebilir. Nashorn tip dönüşümü açısından sadece  dizilere  izin vermektedir.</p>
+<h2 id="kullanım-alanları">Kullanım Alanları</h2>
+<p>-konsolda(jjs)
+-masaüstü ve  javascript
+-java fx projelerinde
+-sunucu taraflı  javaascipt
+kullanılabilir</p>
+
+<h3 id="nashorn-engine-örneği">Nashorn Engine Örneği</h3>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Nashorn Engine elde ediliyor.</span>
+<span class="nx">ScriptEngine</span> <span class="nx">engine</span> <span class="o">=</span> <span class="nx">ScriptEngineFactory</span><span class="p">.</span><span class="nx">getEngine</span><span class="p">(</span><span class="dl">"</span><span class="s2">nashorn</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">engine</span><span class="p">.</span><span class="nb">eval</span><span class="p">(</span><span class="dl">"</span><span class="s2">function topla(a,b){ return a + b; }</span><span class="dl">"</span><span class="p">);</span>
+<span class="nb">String</span> <span class="nx">sonuc</span><span class="o">=</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span><span class="nx">engine</span><span class="p">.</span><span class="nb">eval</span><span class="p">(</span><span class="nx">topla</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">););</span> <span class="c1">//topla isimli JavaScript fonksiyonu tanımlanıyor.</span>
+<span class="nx">System</span><span class="p">.</span><span class="nx">out</span><span class="p">.</span><span class="nx">println</span><span class="p">(</span><span class="nx">sonuc</span><span class="p">);</span> <span class="c1">// topla fonksiyonu Nashorn ile koşturuluyor, ve sonucu elde ediliyor.sonuc=8</span></code></pre></figure>
+
+<h2 id="jjsjava-javascript-shell">JJS(Java Javascript Shell)</h2>
+<p>nashornun  bir komut aracı ( shell)i var . java8 bilgisayarınızda yüklü ise hemen cmd yi açıp JJS yazıp  javascript kodlarınızı  yazıp çalıştıabilir veya cmd den  dosyanızın oldugu bölüme kadar  gelin ve  jjs yi çalıştırın daha sonra load(“dosyanızın_adı.js”); komutuu girersk çalıştırın. jjs  de  console.log  diye ekrana  çıktı veremeyiz tabiki  onun  yerine  print(); kullanacağız</p>
+
+<h2 id="avatarjs">Avatar.JS</h2>
+
+<p>Oracle  tarafından geliştirilen javascript dilidir. Nashorn JS motoru içinde çalıştırılabilir. Avatar.js’yi kullanabilmek için minimum Java 8  sürümü gerekmektedir. Open JDK  <a href="https://avatar.java.net">sitesinden</a> indirilebilir. Avatar.js,Node.js’ye benzetilebilir. Nashorn ile  Avatar.js’yi birlikte kullanabiliriz.</p>
+
+<p>Bir Node.js  geliştiricisi, Avatar.js ile Java’nın framework’üne ya da teknolojisine erişmek  isterse,  Avatar.js kullanabilir.</p>
+
+<h3 id="engine-versiyonları-ve-nashorn-takma-adları">Engine Versiyonları ve Nashorn Takma Adları</h3>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span>  <span class="kd">static</span>  <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span>  <span class="n">args</span><span class="o">[])</span><span class="kd">throws</span> <span class="nc">FileNotFoundException</span><span class="o">,</span><span class="nc">ScriptException</span><span class="o">{</span>
+<span class="nc">ScriptEngineManager</span>  <span class="n">mgr</span><span class="o">=</span> <span class="k">new</span> <span class="nc">ScriptEngineManager</span><span class="o">();</span>
+<span class="k">for</span><span class="o">(</span><span class="nc">ScriptEngineFactory</span>  <span class="n">factory</span> <span class="o">:</span> <span class="n">mgr</span><span class="o">.</span><span class="na">getEngineFactories</span><span class="o">())</span> <span class="o">{</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"scrip tengine factory info"</span><span class="o">);</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"\t script engine %s(%s)\n"</span><span class="o">,</span><span class="n">factory</span><span class="o">.</span><span class="na">getEngineName</span><span class="o">(),</span><span class="n">factory</span><span class="o">.</span><span class="na">getEngineVersion</span><span class="o">());</span>
+  <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"\t language ::%s (%s)\n"</span><span class="o">,</span><span class="n">factory</span><span class="o">.</span><span class="na">getLanguageName</span><span class="o">(),</span><span class="n">factory</span><span class="o">.</span><span class="na">getLanguageVersion</span><span class="o">());</span>
+  <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">na</span> <span class="o">:</span> <span class="n">factory</span><span class="o">.</span><span class="na">getNames</span><span class="o">())</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"\t engine  alias ::::::: %s\n"</span><span class="o">,</span><span class="n">na</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h2 id="invocable-arayüzü">Invocable Arayüzü</h2>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span>  <span class="kd">static</span>  <span class="kt">void</span>  <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span> <span class="o">)</span><span class="kd">throws</span> <span class="nc">ScriptException</span><span class="o">,</span><span class="nc">NoSuchMethodException</span><span class="o">{</span>
+<span class="c1">// invocable arayüzü java tarafından  javascript fonksiyonarını koşturmak için  bulunan  opsiyonel  bir arayüzdürs</span>
+<span class="nc">ScriptEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ScriptEngineManager</span><span class="o">().</span><span class="na">getEngineByName</span><span class="o">(</span><span class="s">"nashorn"</span><span class="o">);</span>
+<span class="n">engine</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"var  person={};"</span><span class="o">);</span>
+<span class="n">engine</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"person.name='onur';"</span><span class="o">);</span>
+<span class="n">engine</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"person.surname='altunsoy';"</span><span class="o">);</span>
+<span class="n">engine</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"person.calculate=function(age){return  this.name+'::: '+this.surname+'::: '+age};"</span><span class="o">);</span>
+<span class="n">engine</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"calculate=function(one,two){return (one*two);}"</span><span class="o">);</span>
+<span class="nc">Invocable</span> <span class="n">inv</span> <span class="o">=(</span><span class="nc">Invocable</span><span class="o">)</span><span class="n">engine</span><span class="o">;</span>
+<span class="nc">Object</span> <span class="n">person</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"person"</span><span class="o">);</span>
+<span class="nc">Object</span>  <span class="n">calculate</span> <span class="o">=</span>  <span class="n">inv</span><span class="o">.</span><span class="na">invokeMethod</span><span class="o">(</span><span class="n">person</span> <span class="o">,</span><span class="s">"calculate"</span><span class="o">,</span> <span class="mi">24</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">calculate</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">inv</span><span class="o">.</span><span class="na">invokeFunction</span><span class="o">(</span><span class="s">"calculate"</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">4</span><span class="o">));</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>sonuç:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">onur::: altunsoy::: 24
+20.0</code></pre></figure>
+
+<h2 id="eval-metodu-örneği">Eval Metodu Örneği</h2>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span>  <span class="kd">static</span>  <span class="kt">void</span>  <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span> <span class="o">)</span><span class="kd">throws</span> <span class="nc">ScriptException</span><span class="o">{</span>
+<span class="nc">ScriptEngine</span> <span class="n">engine</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ScriptEngineManager</span><span class="o">().</span><span class="na">getEngineByName</span><span class="o">(</span><span class="s">"nashorn"</span><span class="o">);</span>
+<span class="n">engine</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"var person= new  Object();"</span><span class="o">);</span>
+<span class="n">engine</span> <span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"person.name='onur';"</span><span class="o">);</span>
+<span class="n">engine</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"person.surname='altunsoy';"</span><span class="o">);</span>
+<span class="n">engine</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"print(JSON.stringify(person));"</span><span class="o">);</span>
+<span class="n">engine</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"person.age=24;"</span><span class="o">);</span>
+<span class="n">engine</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"print(JSON.stringify(person));"</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
+<h2 id="java-arraylist-sınıfını-kullanma">Java Arraylist Sınıfını Kullanma</h2>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span>  <span class="nx">arrayList</span><span class="o">=</span> <span class="nx">java</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">ArrayList</span><span class="p">;</span>
+<span class="kd">var</span>  <span class="nx">arrayListType</span><span class="o">=</span> <span class="k">new</span>  <span class="nx">arrayList</span><span class="p">;</span>
+<span class="nx">arrayListType</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">onur</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">print</span><span class="p">(</span><span class="nx">arrayListType</span><span class="p">.</span><span class="nx">size</span><span class="p">());</span></code></pre></figure>
+
+<h3 id="js-nesnelerini-json-olarak-yazma">JS Nesnelerini JSON Olarak Yazma</h3>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span>  <span class="nx">person</span> <span class="o">=</span><span class="p">{};</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">onur</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">surname</span><span class="o">=</span><span class="dl">"</span><span class="s2">altunsoy</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">fullName</span><span class="o">=</span><span class="nx">fullName</span><span class="o">=</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span><span class="dl">"</span><span class="s2">  </span><span class="dl">"</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">surname</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">print</span> <span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">person</span><span class="p">));</span>
+<span class="nx">print</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">fullName</span><span class="p">());</span></code></pre></figure>
+
+<h3 id="javanın-thread-sınıfını-javascript-i̇çinde-kullanma">Java’nın Thread Sınıfını JavaScript İçinde Kullanma</h3>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Thread</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">type</span><span class="p">(</span><span class="dl">"</span><span class="s2">java.lang.Thread</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">MyThread</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">Thread</span><span class="p">,</span> <span class="p">{</span>
+<span class="na">run</span> <span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">print</span><span class="p">(</span><span class="dl">"</span><span class="s2">thread calisiyor</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">th</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyThread</span><span class="p">();</span>
+<span class="nx">th</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+<span class="nx">th</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span></code></pre></figure>
+
+<h3 id="javanın-hashmap-sınıfını-kullanma">Java’nın Hashmap Sınıfını Kullanma</h3>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">HashMap</span> <span class="o">=</span> <span class="nx">java</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">HashMap</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HashMap</span><span class="p">();</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="dl">"</span><span class="s2">apple</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="dl">"</span><span class="s2">car</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">black</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">grey</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">print</span><span class="p">(</span><span class="dl">"</span><span class="s2">phone </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">map</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">phone</span><span class="dl">"</span><span class="p">));</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span>  <span class="nx">key</span>  <span class="k">in</span> <span class="nx">map</span><span class="p">)</span> <span class="nx">print</span><span class="p">(</span><span class="dl">"</span><span class="s2">key  </span><span class="dl">"</span><span class="o">+</span><span class="nx">key</span><span class="p">);</span>
+<span class="k">for</span> <span class="nx">each</span><span class="p">(</span><span class="kd">var</span> <span class="nx">value</span> <span class="k">in</span> <span class="nx">map</span><span class="p">)</span> <span class="nx">print</span><span class="p">(</span><span class="dl">"</span><span class="s2">value  </span><span class="dl">"</span><span class="o">+</span><span class="nx">value</span><span class="p">);</span></code></pre></figure>
+
+<p>Sonuç:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html">phone  grey
+key  apple
+key  car
+key  phone
+value  red
+value  black
+value  grey</code></pre></figure>
+
+<h2 id="string-sınıfını-kullanma">String Sınıfını Kullanma</h2>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">StrArray</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">type</span><span class="p">(</span><span class="dl">"</span><span class="s2">java.lang.String</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">print</span><span class="p">(</span><span class="nx">StrArray</span><span class="p">);</span>
+<span class="kd">var</span>  <span class="nx">StrArray</span>  <span class="o">=</span><span class="k">new</span>  <span class="nx">StrArray</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="nx">print</span><span class="p">(</span><span class="nx">StrArray</span><span class="p">);</span>
+<span class="nx">StrArray</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="dl">"</span><span class="s2">onur</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">StrArray</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="dl">"</span><span class="s2">furkan</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">StrArray</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="dl">"</span><span class="s2">ömer</span><span class="dl">"</span><span class="p">;</span></code></pre></figure>
+
+:ET
