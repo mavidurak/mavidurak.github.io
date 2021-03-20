@@ -1,6 +1,0 @@
-I"�<p>Merhaba arkadaşlar. Bu yazımda sizlere Node.js’in Express modulüyle ejs’in nasıl kullanılacağından kısaca bahsedeceğim. Express ile default olarak gelen .jade’e ısınamayanlar için oldukça işe yarar olduğunu düşünüyorum.</p>
-
-<h3 id="ejs-nedir">EJS nedir?</h3>
-
-<p>Ejs, html şablonlarıyla, servis tarafımızdan gelen verileri birleştirebilmemizi sağlayan javascript kütüphanesidir. Php’de olduğu gibi html içerisine veri yollayıp bunu görüntüleyebilmemizi sağlar.</p>
-:ET
