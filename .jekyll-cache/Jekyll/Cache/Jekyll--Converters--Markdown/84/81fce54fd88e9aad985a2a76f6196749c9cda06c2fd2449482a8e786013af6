@@ -1,9 +1,0 @@
-I"�<p>JVM içerisinde statik tipli dilleri çalıştırabilmenin birden fazla amacı bulunmaktadır. Bunlar;</p>
-
-<ul>
-  <li>JIT (Just in Time) Compiler ile yüksek performans sunmak</li>
-  <li>Birçok dilin çalıştırılmasıyla JVM’i Polyglot bir ortam haline getirmek</li>
-  <li>Farklı dil ve ekosistemleri Java ekosistemine yakınlaştırmak</li>
-  <li>Farklı dil ekosistemlerinin gücünü JVM’de birleştirmek</li>
-</ul>
-:ET

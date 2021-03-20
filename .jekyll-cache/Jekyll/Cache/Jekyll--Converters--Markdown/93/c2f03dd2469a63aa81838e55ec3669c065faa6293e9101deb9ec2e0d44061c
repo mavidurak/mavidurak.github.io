@@ -1,6 +1,0 @@
-I"�<p>Merhabalar</p>
-
-<p>Bu yazımda express uygulamalarımızda kullanmak üzere kendi template motorlarımızı nasıl yaratabileceğimizi anlatmaya çalışıyorum.</p>
-
-<p>Node JS’in en popüler uygulama geliştirme çatısı olan express’de server-side render yani sunucu taraflı çıktı hazırlama işlemleri için template engine adı verilen şablon motorlarını kullanırız, örneğin en popülerleri <b>jade</b> ve <b>ejs</b> dir.</p>
-:ET
