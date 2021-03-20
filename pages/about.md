@@ -4,13 +4,90 @@ title: Hakkında
 permalink: /mavidurak-io-hakkinda/
 ---
 
-MaviDurak-IO, yazılım sektörü çalışanları ve Sakarya Üniversitesi‘nde öğrenim gören öğrenciler tarafından Sakarya'da kurulmuş olan bir yazılım topluluğudur. Yazılım sektöründeki gelişmeleri yakından takip etmek, yeni bakış açıları keşfetmek, öğrendiklerimizi paylaşabilmek ve bildiklerimizi sorgulayabilmek amacıyla bir aradayız. Bu birlikteliğimizi güzel dostluklar ile pekiştirerek, bildiklerimizin üzerine koyabilmek ve daha fazlasını üretebilmek hedefini paylaşıyoruz.
+<div class="flex">
+  <div class="w-3/5 py-4 pt-10 pb-10 pr-20">
+    <h1 class="font-bold text-5xl mb-8 text-gray-800 leading-20">
+      Bi tık uzaktaki <br />
+      <span class="text-mavidurak-700">kolektif</span> yazılım topluluğu
+    </h1>
+    <p class="text-lg text-gray-600 font-medium leading-7">
+      <span class="text-mavidurak-700 font-bold">mavidurak.io</span>,
+      yazılım sektörü çalışanları ve Sakarya Üniversitesi‘nde öğrenim gören
+      öğrenciler tarafından Sakarya’da kurulmuş olan bir yazılım
+      topluluğudur. Yazılım sektöründeki gelişmeleri yakından takip etmek,
+      yeni bakış açıları keşfetmek, öğrendiklerimizi paylaşabilmek ve
+      bildiklerimizi sorgulayabilmek amacıyla bir aradayız.
+    </p>
+  </div>
+  <div class="w-2/5">
+    <img src="/images//hero1.png" />
+  </div>
+</div>
 
-MaviDurak-IO ismi, Sakarya Üniversitesi öğrencilerinin yoğun olarak yaşadığı, Serdivan ilçesinin **Mavi Durak** bölgesinden esinlenilmiştir. Topluluk kurucuları ilk olarak Mavi Durak'ta bir araya gelmiş ve bir hayal olarak çıktıkları bu yolda MaviDurak-IO'ya hayat vermişlerdir.
-
-### Toplulukta Yaşam
-
-Siz de MaviDurak-IO'ya destek vermek ve onun bir parçası olmak istiyorsanız tek yapmanız gereken; topluluk iletişim kanallarında paylaşılan ve düzenli olarak gerçekleştirdiğimiz toplantılarımıza katılmaktır. Dilerseniz toplantılara katılmanın daha da ötesinde, aktif olarak topluluk çalışmalarında görev alabilir, seminer ve çeşitli organizasyonlara katkı sağlayabilirsiniz.
+<section class="text-gray-600 body-font">
+  <div class="py-24">
+    <div class="flex items-center lg:w-4/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
+      <img
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0"
+        src="/images/image-1.jpg">
+      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+        <h2 class="text-gray-900 text-lg title-font font-medium mb-2">Kuruluş Hikayesi</h2>
+        <p class="leading-relaxed text-base">
+          <span class="text-mavidurak-700 font-bold">mavidurak.io</span>, 2014 yılında bir grup öğrenci ve sektör çalışanı tarafından genellikle
+          öğrencilerin yerleşim yeri olarak bilinen Sakarya Serdivan'daki Mavi Durak bölgesinde, bir kafede kurulmuştur. Kuruluş döneminde, Sakarya'da
+          böyle bir topluluğun eksikliği fark edilmiş ve bu eksiklik giderilmek istenmiştir.
+        </p>
+      </div>
+    </div>
+    <div class="flex items-center lg:w-4/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
+      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+        <h2 class="text-gray-900 text-lg title-font font-medium mb-2">Açık Kürsü</h2>
+        <p class="leading-relaxed text-base">
+          Topluluk üyeleri ilk yıllarda <span class="italic">Açık Kürsü</span> adı verilen seminer formatını uygulamaya başladı. Bu formata göre dileyen herkes
+          <span class="text-mavidurak-700 font-bold">mavidurak.io</span> sahnesinde yer alarak, belirledikleri bir konu üzerinde 20 dakikalık kısa bir sunum 
+          gerçekleştirebiliyordu. Böylece herhangi bir konu hakkında anahtar kelimeler üzerinden yürüyen ve oldukça pratik bir bilgi edinme formatına sahip olduk.
+        </p>
+      </div>
+      <img
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0"
+        src="/images/image-2.jpg">
+    </div>
+    <div class="flex items-center lg:w-4/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
+      <img
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0"
+        src="/images/image-3.jpg">
+      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+        <h2 class="text-gray-900 text-lg title-font font-medium mb-2">Atölye Çalışmaları</h2>
+        <p class="leading-relaxed text-base">
+          Atölyeye rehberlik edebilecek düzeyde bilgi sahibi olan sektör çalışanları atölye çalışmalarında aktif rol oynamaktadır. Sektör çalışanları tarafından
+          yönlendirilen atölye çalışmaları ile bütün bir hafta sonu boyunca, seçilen bir konu derinlemesine incelenebilmektedir. Böylece ciddi bir pratik imkanı bulan katılımcılar yaşadıkları sorunları sektör çalışanlarının yardımıyla aşma imkanı bulmaktadır.
+        </p>
+      </div>
+    </div>
+    <div class="flex items-center lg:w-4/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
+      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+        <h2 class="text-gray-900 text-lg title-font font-medium mb-2">Seminer</h2>
+        <p class="leading-relaxed text-base">
+          Seminerler topluluğun bel kemiğini oluşturmaktadır. Dileyen tüm katılımcılar başvuru formunu kullanarak <span class="text-mavidurak-700 font-bold">mavidurak.io</span> seminerlerinde konuşmacı olarak yer alabilir. Seminerler maksimum <span class="italic">1 saat 30 dakika</span> olabilecek şekilde ayarlanmakta ve 2 oturuma bölünebilmektedir. Seminerlerin amacı belirli bir konu üzerinde derinlemesine teorik bilgi verilmesidir.
+        </p>
+      </div>
+      <img
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0"
+        src="/images/image-4.jpg">
+    </div>
+    <div class="flex items-center lg:w-4/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
+      <img
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0"
+        src="/images/image-5.jpg">
+      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+        <h2 class="text-gray-900 text-lg title-font font-medium mb-2">Webinar</h2>
+        <p class="leading-relaxed text-base">
+          Pandemi nedeniyle zorunlu olarak topluluk faaliyetlerimizi uzaktan gerçekleştirmeye başlamamızla birlikte, online eğitimler kaçınılmaz olarak hayatımıza dahil oldu. Böylece sadece Sakarya'ya değil, Türkiye'nin her yerinden katılımcılara açık olarak eğitimler organize etmeye başladık. Bunun sonunca <span class="text-mavidurak-700 font-bold">mavidurak.io</span> ismi tüm Türkiye'de duyulmaya başladı.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
 ### İşbirliklerimiz
 
