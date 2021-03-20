@@ -86,6 +86,17 @@ permalink: /mavidurak-io-hakkinda/
         </p>
       </div>
     </div>
+    <div class="flex items-center lg:w-4/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
+      <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
+        <h2 class="text-gray-900 text-lg title-font font-medium mb-2">Mentörlük</h2>
+        <p class="leading-relaxed text-base">
+          Sektör çalışanlarının yönlendirmeleriyle, henüz hiç kod yazmamış ya da junior düzeyindeki katılımcılarla birlikte, programlamanın temellerinden başlanarak, doğrudan proje geliştirmek suretiyle pratik eğitimler gerçekleştiriyoruz. Mentörlük gruplarında mentörler aktif olarak kod yazmak yerine, mentörlük grubundaki katılımcıları yönlendiriyor ve onları hataları konusunda uyarıp doğru yolu gösteriyor.
+        </p>
+      </div>
+      <img
+        class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0"
+        src="/images/image-6.jpg">
+    </div>
   </div>
 </section>
 
