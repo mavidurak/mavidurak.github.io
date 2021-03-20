@@ -1,10 +1,8 @@
 ---
 layout: page
 title: Hakkında
-permalink: /about/
+permalink: /mavidurak-io-hakkinda/
 ---
-
-<img src="/images/logos/dark.png" class="about-logo" alt="MaviDurak-IO Logo" title="MaviDurak-IO Logo" />
 
 MaviDurak-IO, yazılım sektörü çalışanları ve Sakarya Üniversitesi‘nde öğrenim gören öğrenciler tarafından Sakarya'da kurulmuş olan bir yazılım topluluğudur. Yazılım sektöründeki gelişmeleri yakından takip etmek, yeni bakış açıları keşfetmek, öğrendiklerimizi paylaşabilmek ve bildiklerimizi sorgulayabilmek amacıyla bir aradayız. Bu birlikteliğimizi güzel dostluklar ile pekiştirerek, bildiklerimizin üzerine koyabilmek ve daha fazlasını üretebilmek hedefini paylaşıyoruz.
 
@@ -16,17 +14,19 @@ Siz de MaviDurak-IO'ya destek vermek ve onun bir parçası olmak istiyorsanız t
 
 ### İşbirliklerimiz
 
-<a style="margin-right:10px; float:left;" href="https://www.meetup.com/Sakarya-Coders/" target="_blank" alt="Sakarya Coders">
-  <img src="/images/logos/sakarya-coders.jpg" title="Sakarya Coders" height="100" />
-</a>
+<div class="flex">
+  <a class="mr-4" href="https://www.meetup.com/Sakarya-Coders/" target="_blank" alt="Sakarya Coders">
+    <img class="h-20" src="/images/logos/sakarya-coders.jpg" title="Sakarya Coders" height="100" />
+  </a>
 
-<a style="margin-right:10px; float:left;" href="https://advancity.com.tr/" target="_blank" alt="Advancity">
-  <img src="/images/logos/advancity.jpg" title="Advancity" height="100" />
-</a>
+  <a class="mr-4" href="https://advancity.com.tr/" target="_blank" alt="Advancity">
+    <img class="h-20" src="/images/logos/advancity.jpg" title="Advancity" height="100" />
+  </a>
 
-<a style="clear:left;" href="https://kommunity.com/" target="_blank" alt="Kommunity.com">
-  <img src="https://media-exp1.licdn.com/dms/image/C560BAQHzJL-1O_p3ZQ/company-logo_200_200/0?e=2159024400&v=beta&t=S5eecgVW-ecYLI29gDOP3ewSpvVkwulhHyuIDl-sS1I" title="Kommunity.com" height="100" />
-</a>
+  <a class="mr-4" href="https://kommunity.com/" target="_blank" alt="Kommunity.com">
+    <img class="h-20" src="https://media-exp1.licdn.com/dms/image/C560BAQHzJL-1O_p3ZQ/company-logo_200_200/0?e=2159024400&v=beta&t=S5eecgVW-ecYLI29gDOP3ewSpvVkwulhHyuIDl-sS1I" title="Kommunity.com" height="100" />
+  </a>
+</div>
 
 ### İletişim
 
