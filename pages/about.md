@@ -5,7 +5,7 @@ permalink: /mavidurak-io-hakkinda/
 ---
 
 <div class="flex">
-  <div class="w-3/5 py-4 pt-10 pb-10 pr-20">
+  <div class="w-3/5 py-4 pt-10 pr-20">
     <h1 class="font-bold text-5xl mb-8 text-gray-800 leading-20">
       Bi tık uzaktaki <br />
       <span class="text-mavidurak-700">kolektif</span> yazılım topluluğu
@@ -100,7 +100,7 @@ permalink: /mavidurak-io-hakkinda/
   </div>
 </section>
 
-### İşbirliklerimiz
+<!-- ### İşbirliklerimiz
 
 <div class="flex">
   <a class="mr-4" href="https://www.meetup.com/Sakarya-Coders/" target="_blank" alt="Sakarya Coders">
@@ -125,4 +125,4 @@ Sahip olduğunuz her türlü fikir ve soru için bizimle aşağıdaki kanallar a
 - [Twitter](https://twitter.com/mavidurakio)
 - [Discord](https://discord.gg/7zaXka9)
 - [Telegram](https://t.me/mavidurakio)
-- [GitHub](https://github.com/mavidurak)
+- [GitHub](https://github.com/mavidurak) -->
