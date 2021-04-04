@@ -7,8 +7,8 @@ permalink: /felsefemiz/
 <div class="block">
   <h1 class="text-3xl font-bold text-gray-800 mb-4">Felsefemiz</h1>
 
-  <img
-    class="lg:h-48 md:h-36 w-full object-cover object-center rounded mb-4"
+<img
+    class="lg:h-60 md:h-36 w-full object-cover object-center rounded mb-4"
     src="/images/bg1.jpg"
     alt="blog"
   />
