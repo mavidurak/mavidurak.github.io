@@ -37,7 +37,7 @@ permalink: /yontemlerimiz/
   </p>
 
   <p class="leading-7 mb-2">
-    Head Of Community görevi, <a class="text-mavidurak-700 font-bold" href="#">Deklerasyon</a>'numuzda belirtilen şartlar dikkate alınarak herkese açık bir görevdir. Ancak topluluk kültürü açısından, gönüllüler arasından en tecrübeli adaylardan ziyade, en tecrübesiz adayların bu görevi almaları istenen fakat zorunlu olmayan bir dilektir. Her ne kadar tecrübesiz adaylar bu göreve gelse de biz bunu bir sorun olarak görmez, ve uzun vadede topluluk içerisinde "Pathfinder" rolündeki gönüllülerin sayısını arttırmayı amaçlamaktayız. Yıllar boyunca varlığını devam ettirecek bir topluluk yaşatmak için bu yapıya sadık kalmanın, şimdilik bulabildiğimiz en doğru yol olduğunu düşünüyor ve genç nesile her zaman güven duyuyoruz.
+    Head Of Community görevi, <a class="text-mavidurak-700 font-bold" href="/deklerasyon">Deklerasyon</a>'numuzda belirtilen şartlar dikkate alınarak herkese açık bir görevdir. Ancak topluluk kültürü açısından, gönüllüler arasından en tecrübeli adaylardan ziyade, en tecrübesiz adayların bu görevi almaları istenen fakat zorunlu olmayan bir dilektir. Her ne kadar tecrübesiz adaylar bu göreve gelse de biz bunu bir sorun olarak görmez, ve uzun vadede topluluk içerisinde "Pathfinder" rolündeki gönüllülerin sayısını arttırmayı amaçlamaktayız. Yıllar boyunca varlığını devam ettirecek bir topluluk yaşatmak için bu yapıya sadık kalmanın, şimdilik bulabildiğimiz en doğru yol olduğunu düşünüyor ve genç nesile her zaman güven duyuyoruz.
   </p>
 
   <p class="leading-7 mb-2">
