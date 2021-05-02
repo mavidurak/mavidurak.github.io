@@ -5,8 +5,8 @@ permalink: /mavidurak-io-hakkinda/
 ---
 
 <div class="flex">
-  <div class="w-3/5 py-4 pt-10 pr-20">
-    <h1 class="font-bold text-5xl mb-8 text-gray-800 leading-20">
+  <div class="w-full lg:w-3/5 py-4 pt-5 pb-10 lg:pr-20">
+    <h1 class="font-bold lg:text-5xl text-3xl mb-8 text-gray-800 leading-20">
       Bi tık uzaktaki <br />
       <span class="text-mavidurak-700">kolektif</span> yazılım topluluğu
     </h1>
@@ -19,7 +19,7 @@ permalink: /mavidurak-io-hakkinda/
       bildiklerimizi sorgulayabilmek amacıyla bir aradayız.
     </p>
   </div>
-  <div class="w-2/5">
+  <div class="w-0 lg:w-2/5 lg:visible invisible">
     <img src="/images//hero1.png" />
   </div>
 </div>
