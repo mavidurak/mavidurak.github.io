@@ -5,7 +5,7 @@
   "scripts": {
     "css:watch": "nodemon -x yarn run css:dev --watch tailwind.config.js --watch ./_includes/ --watch ./_layouts/ --watch ./*.html -e css,html",
     "css:dev": "tailwindcss-cli build ./css/styles.css -o ./dist/styles.css",
-    "css:build": "export NODE_ENV=production && tailwindcss-cli build ./css/styles.css -o ./dist/styles.css"
+    "css:build": "tailwindcss-cli build ./css/styles.css -o ./dist/styles.css"
   },
   "dependencies": {
     "tailwindcss": "^2.0.3",
