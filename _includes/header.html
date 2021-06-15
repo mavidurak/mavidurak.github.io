@@ -6,44 +6,182 @@
     >
       <div>mavidurak.io</div>
     </a>
-    <div class="flex-auto">
+    <div class="flex-auto hidden lg:block">
       <ul class="flex justify-center lg:justify-end mt-2">
         <li class="ml-8">
           <a
-            class="font-poppins font-medium text-base text-gray-600 hover:text-mavidurak-700"
+            class="
+              font-poppins font-medium
+              text-base text-gray-600
+              hover:text-mavidurak-700
+            "
             href="/mavidurak-io-hakkinda"
             >Hakkında</a
           >
         </li>
         <li class="ml-8">
           <a
-            class="font-poppins font-medium text-base text-gray-600 hover:text-mavidurak-700"
+            class="
+              font-poppins font-medium
+              text-base text-gray-600
+              hover:text-mavidurak-700
+            "
             href="/#ekip"
             >Ekip</a
           >
         </li>
         <li class="ml-8">
           <a
-            class="font-poppins font-medium text-base text-gray-600 hover:text-mavidurak-700"
+            class="
+              font-poppins font-medium
+              text-base text-gray-600
+              hover:text-mavidurak-700
+            "
             href="/etkinlik-basvurusu"
             >Etkinlik Başvurusu</a
           >
         </li>
         <li class="ml-8">
           <a
-            class="font-poppins font-medium text-base text-gray-600 hover:text-mavidurak-700"
+            class="
+              font-poppins font-medium
+              text-base text-gray-600
+              hover:text-mavidurak-700
+            "
             href="/c-dili-egitim-programi"
             >C Dili Eğitim Programı</a
           >
         </li>
         <li class="ml-8">
           <a
-            class="font-poppins font-medium text-base text-gray-600 hover:text-mavidurak-700"
+            class="
+              font-poppins font-medium
+              text-base text-gray-600
+              hover:text-mavidurak-700
+            "
             href="/iletisim"
             >İletişim</a
           >
         </li>
       </ul>
     </div>
+    <div class="flex-auto lg:hidden">
+      <button
+        onclick="showMobileMenu()"
+        id="mobile-menu-button"
+        class="
+          mt-2
+          flex
+          justify-end
+          rounded
+          w-8
+          h-8
+          bg-mavidurak-700
+          text-white
+          rounded-t
+          outline-none
+          focus:outline-none
+          p-1
+          float-right
+        "
+      >
+        <svg
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    id="mobile-menu"
+    style="display: none"
+    class="
+      bg-mavidurak-700
+      text-white
+      block
+      shadow
+      p-4
+      -mt-2
+      rounded-b rounded-tl
+    "
+  >
+    <ul>
+      <li>
+        <a
+          class="
+            font-poppins font-medium
+            text-base text-white
+            hover:text-gray-200
+          "
+          href="/mavidurak-io-hakkinda"
+          >Hakkında</a
+        >
+      </li>
+      <li>
+        <a
+          class="
+            font-poppins font-medium
+            text-base text-white
+            hover:text-gray-200
+          "
+          href="/#ekip"
+          >Ekip</a
+        >
+      </li>
+      <li>
+        <a
+          class="
+            font-poppins font-medium
+            text-base text-white
+            hover:text-gray-200
+          "
+          href="/etkinlik-basvurusu"
+          >Etkinlik Başvurusu</a
+        >
+      </li>
+      <li>
+        <a
+          class="
+            font-poppins font-medium
+            text-base text-white
+            hover:text-gray-200
+          "
+          href="/c-dili-egitim-programi"
+          >C Dili Eğitim Programı</a
+        >
+      </li>
+      <li>
+        <a
+          class="
+            font-poppins font-medium
+            text-base text-white
+            hover:text-gray-200
+          "
+          href="/iletisim"
+          >İletişim</a
+        >
+      </li>
+    </ul>
   </div>
 </header>
+
+<script>
+  function showMobileMenu() {
+    const menu = document.getElementById("mobile-menu");
+    const menuButton = document.getElementById("mobile-menu-button");
+    if (menu.style.display == "" || menu.style.display == "none") {
+      menu.style.display = "block";
+      menuButton.classList.remove("rounded");
+    } else {
+      menu.style.display = "none";
+      menuButton.classList.add("rounded");
+    }
+  }
+</script>
