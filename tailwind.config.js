@@ -1,13 +1,16 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: [
-    "./_includes/**/*.html",
-    "./_layouts/**/*.html",
-    "./_posts/**/*.md",
-    "./pages/**/*.md",
-    "*.html",
-  ],
+  purge: {
+    enabled: true,
+    content: [
+      "./_includes/**/*.html",
+      "./_layouts/**/*.html",
+      "./_posts/**/*.md",
+      "./pages/**/*.md",
+      "*.html",
+    ],
+  },
   darkMode: false,
   theme: {
     container: {
