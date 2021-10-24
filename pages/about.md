@@ -123,6 +123,6 @@ Sahip olduğunuz her türlü fikir ve soru için bizimle aşağıdaki kanallar a
 - [E-Posta](mailto:mavidurak.io@gmail.com)
 - [Kommunity](https://kommunity.com/mavidurakio)
 - [Twitter](https://twitter.com/mavidurakio)
-- [Discord](https://discord.gg/7zaXka9)
+- [Discord](https://discord.gg/AFPrcccyTp)
 - [Telegram](https://t.me/mavidurakio)
 - [GitHub](https://github.com/mavidurak) -->
