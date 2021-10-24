@@ -42,7 +42,7 @@ permalink: /deklerasyon/
   <ul class="leading-7 mb-2 list-disc pl-5">
     <li><a class="text-mavidurak-500 hover:text-mavidurak-700" href="mailto:mavidurak.io@gmail.com" target="_blank">E-Posta</a></li>
     <li><a class="text-mavidurak-500 hover:text-mavidurak-700" href="https://kommunity.com/mavidurakio" target="_blank">Kommunity</a></li>
-    <li><a class="text-mavidurak-500 hover:text-mavidurak-700" href="https://discord.gg/7zaXka9" target="_blank">Discord</a></li>
+    <li><a class="text-mavidurak-500 hover:text-mavidurak-700" href="https://discord.gg/AFPrcccyTp" target="_blank">Discord</a></li>
     <li><a class="text-mavidurak-500 hover:text-mavidurak-700" href="https://twitter.com/mavidurakio" target="_blank">Twitter</a></li>
     <li><a class="text-mavidurak-500 hover:text-mavidurak-700" href="https://www.instagram.com/mavidurak.io/" target="_blank">Instagram</a></li>
     <li><a class="text-mavidurak-500 hover:text-mavidurak-700" href="https://www.facebook.com/mavidurakio/" target="_blank">Facebook</a></li>
